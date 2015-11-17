@@ -32,10 +32,8 @@ keystone.init({
 	'auto update': true,
 	'session': true,
 	'auth': true,
-	'user model': 'User'
-	/**
-	 * TODO - Need to specify environment variables for Mongo.
-	 */
+	'user model': 'User',
+	'mongo' : process.env.MONGOLAB_URI
 
 });
 
