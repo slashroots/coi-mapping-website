@@ -33,6 +33,9 @@ keystone.init({
 	'session': true,
 	'auth': true,
 	'user model': 'User'
+	/**
+	 * TODO - Need to specify environment variables for Mongo.
+	 */
 
 });
 
