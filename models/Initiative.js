@@ -13,7 +13,8 @@
 		country: {type: Types.Relationship, ref: 'Country', index: true},
 		url: {type: Types.Url},
 		date: {type: Types.Date},
-		state: {type: Types.Select, options: 'draft, published, archived', default: 'draft', required: true}
+		state: {type: Types.Select, options: 'draft, published, archived', default: 'draft', required: true},
+		createdAt: { type: Date, default: Date.now, hidden: true }
 	});
 
 	Initiative.defaultColumns = 'title,type,state';

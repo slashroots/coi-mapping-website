@@ -24,6 +24,7 @@ exports = module.exports = function(app) {
 	// Industry
 	app.get('/industries', routes.api.industry.index);
 	 //Stakeholder
-	app.get('/stakeholders', routes.api.stakeholder.index); 	
+	app.get('/stakeholders', routes.api.stakeholder.index); 
+	app.post('/stakeholders', routes.api.stakeholder.create);	
 
 };

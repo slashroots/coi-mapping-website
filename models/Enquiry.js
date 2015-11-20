@@ -21,7 +21,7 @@ Enquiry.add({
 		{ value: 'other', label: 'Something else...' }
 	] },
 	message: { type: Types.Markdown, required: true },
-	createdAt: { type: Date, default: Date.now }
+	createdAt: { type: Date, default: Date.now, hidden: true }
 });
 
 Enquiry.defaultSort = '-createdAt';
