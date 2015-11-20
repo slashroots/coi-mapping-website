@@ -1,6 +1,7 @@
 (function(){
 	var keystone = require('keystone'),
-		Stakeholder = keystone.list('Stakeholder');
+		Stakeholder = keystone.list('Stakeholder'),
+		common = require('../common/common');
 	/**
 	 * Get all Stakeholders 
 	 * @param  {[type]} req [description]
@@ -24,9 +25,9 @@
 	exports.create = function(req, res){
 		Stakeholder.model(req.body).save(function(err){
 			if(err){
-				res.json(err);
+				common.handleDBError(err, res);
 			}else{
-				res.json({message: 'Saved'});
+				common.handleSuccess({'http_code': 200, 'name': 'Stakeholder'}, res);
 			}
 		});
 	};
