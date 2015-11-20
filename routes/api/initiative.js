@@ -1,6 +1,7 @@
 (function(){
 	var keystone = require('keystone'),
-		Initiative = keystone.list('Initiative');
+		Initiative = keystone.list('Initiative'),
+		common = require('../common/common');
 	/**
 	 * Get all initiatives 
 	 * @param  {[type]} req [description]
@@ -27,5 +28,20 @@
     				});
     			});
 			});
+	};
+	/**
+	 * [create description]
+	 * @param  {[type]} req [description]
+	 * @param  {[type]} res [description]
+	 * @return {[type]}     [description]
+	 */
+	exports.create = function(req, res){
+		Initiative.model(req.body).save(function(err){
+			if(err){
+				common.handleDBError(err, res);
+			}else{
+				common.handleDBSuccess({'http_code': 200, 'name': 'Initiative'}, res);
+			}
+		});
 	};
 })();

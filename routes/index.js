@@ -21,6 +21,7 @@ exports = module.exports = function(app) {
 	//API Endpoints
 	//Initiatives
  	app.get('/initiatives', routes.api.initiative.index);
+ 	app.post('/initiatives', routes.api.initiative.create);
 	// Industry
 	app.get('/industries', routes.api.industry.index);
 	 //Stakeholder

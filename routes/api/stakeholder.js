@@ -13,7 +13,8 @@
 			.find()
 			.populate('industry country')
 			.exec(function(err, stakeholders){				  
-				  res.json(stakeholders);     
+				 if(err) common.handleDBError(err, res); 
+				 res.json(stakeholders);    
     		});
 		};
 	/**
@@ -27,7 +28,7 @@
 			if(err){
 				common.handleDBError(err, res);
 			}else{
-				common.handleSuccess({'http_code': 200, 'name': 'Stakeholder'}, res);
+				common.handleDBSuccess({'http_code': 200, 'name': 'Stakeholder'}, res);
 			}
 		});
 	};
