@@ -27,5 +27,7 @@ exports = module.exports = function(app) {
 	 //Stakeholder
 	app.get('/stakeholders', routes.api.stakeholder.index); 
 	app.post('/stakeholders', routes.api.stakeholder.create);	
+	//Country
+	app.get('/countries', routes.api.country.index);
 
 };
