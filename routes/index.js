@@ -30,4 +30,6 @@ exports = module.exports = function(app) {
 	//Country
 	app.get('/countries', routes.api.country.index);
 
+	app.get('/register', routes.views.register);
+
 };
