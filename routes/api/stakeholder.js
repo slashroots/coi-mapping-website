@@ -11,6 +11,7 @@
 	exports.index = function(req, res){
 		Stakeholder.model
 			.find()
+			.where('state', 'published')
 			.populate('industry country')
 			.exec(function(err, stakeholders){				  
 				 if(err) common.handleDBError(err, res); 
