@@ -174,6 +174,19 @@ module.exports = function() {
 		});
 		return rtn;
 	};
+
+	/**
+	 * Map and Home Page Helpers
+	 */
+	// _helpers.isMapView = function(view, options){
+	// 	var output = '';
+	// 	if(typeof(view) !== 'undefined' && view.name === 'map'){
+	// 		output = scriptTemplate({
+	// 			href: '/keystone/js/content/editor.js'
+	// 		});
+	// 	}
+	// 	return new hbs.SafeString(output);
+	// }
 	
 	// ### CloudinaryUrl Helper
 	// Direct support of the cloudinary.url method from Handlebars (see

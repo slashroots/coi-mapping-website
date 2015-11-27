@@ -32,4 +32,6 @@ exports = module.exports = function(app) {
 
 	app.get('/register', routes.views.register);
 
+	app.get('/map', routes.views.map);
+
 };
