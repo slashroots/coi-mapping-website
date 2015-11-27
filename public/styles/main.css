@@ -1,0 +1,16 @@
+.callout a.action-btns,a.call-to-action{
+	text-decoration: none;
+}
+
+.callout a.call-to-action{
+	color: #ffffff;
+}
+
+.callout a.action-btns{
+	color: #000000;
+}
+
+.banner > img{
+	width: 100%;
+	height: 200px;
+}
