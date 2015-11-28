@@ -1,16 +1,67 @@
-.callout a.action-btns,a.call-to-action{
-	text-decoration: none;
+body{
+	font-family: 'Lato', sans-serif;
+}
+.content-wrapper{
+	background-color: #ffffff;
 }
 
-.callout a.call-to-action{
-	color: #ffffff;
+.call-to-action{
+	background-image: url(/images/banner.png);
+	background-size: cover;
+	height: 475px; 
+	width:100%; 
 }
 
-.callout a.action-btns{
-	color: #000000;
+.inner-content{
+	background-color: rgba(255, 255, 255, 0.5);
+	height: 475px; 
+	width:100%; 
+	padding-top: 120px;
+}
+.inner-content > h2{
+	font-weight: 300;
+	font-size: 48px;
+	line-height: 50px;
 }
 
-.banner > img{
-	width: 100%;
-	height: 200px;
+.inner-content > p{
+	font-size: 18px;
+	line-height: 28px;
+	font-weight: normal;
+}
+
+.inner-content > .btn{
+	font-size: 22px;
+	font-weight: bold;
+	line-height: 22px;
+	margin: 20px 0px 40px 0px;
+	margin: 20px 0px 20px 0px;
+}
+
+/*.logos div{
+	float: left;
+}*/
+.logos img{
+	height: auto;
+	width: auto;
+	display: block;
+	max-width: 194px;
+	max-height: 183px;
+	float: left;
+	margin-left: 60px;
+}
+
+.logos img:nth-child(1){
+	margin-left: 10px;
+}
+.logos img:nth-child(3){
+	margin-top: 30px;
+}
+
+.logos img:nth-child(4){
+	margin-top: 20px;
+}
+
+.logos img:nth-child(5){
+	margin-top: -15px;
 }
