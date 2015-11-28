@@ -34,4 +34,8 @@ exports = module.exports = function(app) {
 
 	app.get('/map', routes.views.map);
 
+	// app.get('/search', routes.api.search.search);
+
+	app.get('/stats', routes.api.statistics.index);
+
 };
