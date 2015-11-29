@@ -11,6 +11,7 @@
 		name_lower: {type: String, index: true, hidden: true},
 		category: {type: Types.Relationship, ref: 'InitiativeCategory'},
 		organizer: {type: String},
+		country: {type: Types.Relationship, ref: 'Country'},
 		url: {type: Types.Url},
 		date: {type: Types.Date},
 		state: {type: Types.Select, options: 'draft, published, archived', default: 'draft', required: true},
