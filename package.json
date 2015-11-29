@@ -3,14 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "keystone": "^0.3.14",
-    "async": "^1.4.2",
-    "underscore": "^1.8.3",
-    "moment": "^2.10.6",
     "cloudinary": "^1.2.4",
+    "dotenv": "^1.1.0",
     "express-handlebars": "^1.1.0",
     "handlebars": "^2.0.0",
-    "dotenv": "^1.1.0"
+    "keystone": "^0.3.14",
+    "moment": "^2.10.6",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "grunt": "^0.4.4",
