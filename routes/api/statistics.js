@@ -3,7 +3,6 @@
 		Stakeholder = keystone.list('Stakeholder'),
 		Initiative = keystone.list('Initiative'),
 		Country = keystone.list('Country'),
-		Industry = keystone.list('Industry'),
 		common = require('../common/common');
 
 	/**
@@ -29,7 +28,7 @@
 						var stats = { 'stakeholders' : stakeholders,
 									  'industries' : industries,
 									  'initiatives' : initiatives,
-									  'countries' : countries
+									  'industries' : industries
 									};
 						res.json(stats);
 					});
