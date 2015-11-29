@@ -19,11 +19,6 @@ exports = module.exports = function(app) {
 	app.get('/', routes.views.index);
 	app.all('/contact', routes.views.contact);
 	//API Endpoints
-	//Initiatives
- 	app.get('/initiatives', routes.api.initiative.index);
- 	app.post('/initiatives', routes.api.initiative.create);
-	// Industry
-	app.get('/industries', routes.api.industry.index);
 	 //Stakeholder
 	app.get('/stakeholders', routes.api.stakeholder.index); 
 	app.post('/stakeholders', routes.api.stakeholder.create);	
@@ -33,5 +28,9 @@ exports = module.exports = function(app) {
 	app.get('/register', routes.views.register);
 
 	app.get('/map', routes.views.map);
+
+	app.get('/categories', routes.api.category.index);
+
+	app.get('/search', routes.api.search.search);
 
 };

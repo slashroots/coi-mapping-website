@@ -57,7 +57,6 @@ keystone.set('routes', require('./routes'));
 
 keystone.set('nav', {
 	'users': 'users',
-	'industries': 'industries',
 	'stakeholders': 'stakeholders',
 	'countries' : 'countries',
 	'initiatives': 'initiatives'
