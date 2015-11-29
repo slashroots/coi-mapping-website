@@ -175,19 +175,36 @@ module.exports = function() {
 		return rtn;
 	};
 
-	/**
-	 * Map and Home Page Helpers
-	 */
-	// _helpers.isMapView = function(view, options){
-	// 	var output = '';
-	// 	if(typeof(view) !== 'undefined' && view.name === 'map'){
-	// 		output = scriptTemplate({
-	// 			href: '/keystone/js/content/editor.js'
-	// 		});
-	// 	}
-	// 	return new hbs.SafeString(output);
-	// }
-	
+	_helpers.getMapJS = function(view, options){
+		var output = '';
+		if(typeof(view) !== 'undefined' && view === 'map'){
+			output = scriptTemplate({
+				src: '/js/app.map.js'
+			});
+		}
+		return new hbs.SafeString(output);
+	};
+
+	_helpers.getLeafletJS = function(view, options){
+		var output = '';
+		if(typeof(view) !== 'undefined' && view === 'map'){
+			output = scriptTemplate({
+				src: 'http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js'
+			});
+		}
+		return new hbs.SafeString(output);
+	};
+
+	_helpers.getMapCSS = function(view, options) {
+		var output = '';
+		if (typeof(view) !== 'undefined' && view === 'map') {
+			output = cssLinkTemplate({
+				href: "http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css"
+			});
+		}
+		return new hbs.SafeString(output);
+	};
+
 	// ### CloudinaryUrl Helper
 	// Direct support of the cloudinary.url method from Handlebars (see
 	// cloudinary package documentation for more details).

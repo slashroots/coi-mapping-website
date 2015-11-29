@@ -65,3 +65,19 @@ body{
 .logos img:nth-child(5){
 	margin-top: -15px;
 }
+
+/**
+ * Map Page
+ */
+
+.stats{
+	list-style: none;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 25px;
+	padding: 10px 10px;
+}
+
+.stats > li{
+	text-align: left;
+}

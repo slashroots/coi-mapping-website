@@ -82,9 +82,5 @@ $(document).ready(function(){
 			element.parent().removeClass('has-error').addClass('has-success');
 		}	
 	 return isValid;	
-	}
-
-	
-
-	
+	}	
 });

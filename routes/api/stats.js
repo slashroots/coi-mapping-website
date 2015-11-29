@@ -22,9 +22,9 @@
 					if(err || !initiative) common.handleDBError(err, res);
 					
 					var stats = {};
-					if(country > 0) stats.countries = country;
-					if(stakeholder > 0) stats.stakeholders = stakeholder;
-					if(initiative > 0) stats.initiatives = initiative;
+					if(country > 0) stats.Countries = country;
+					if(stakeholder > 0) stats.Stakeholders = stakeholder;
+					if(initiative > 0) stats.Initiatives = initiative;
 
 					res.json(stats);
 				});
