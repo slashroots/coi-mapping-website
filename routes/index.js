@@ -33,6 +33,6 @@ exports = module.exports = function(app) {
 
 	app.get('/search', routes.api.search.search);
 
-	app.get('/stats', routes.api.statistics.index);
+	app.get('/stats', routes.api.stats.index);
 
 };
