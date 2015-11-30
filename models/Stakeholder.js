@@ -4,12 +4,21 @@
 		Stakeholder = new keystone.List('Stakeholder');
 
 	Stakeholder.add({
-		name: {type: String, initial: true, required: true, index: true},
-		industry: {type: Types.Relationship, ref: 'Industry', index: true},
-		url: {type: Types.Url},
+		name: {type: String, initial: true, required: true},
+		name_lower: {type: String, index: true, hidden: true},
+		category: {type: Types.Relationship, ref: 'StakeholderCategory'},
 		country: {type: Types.Relationship, ref: 'Country', index: true},
+		functionalArea: {type: Types.Relationship, ref: 'FunctionalArea' },
+		description: {type: String},
+		url: {type: Types.Url},			
 		state: {type: Types.Select, options: 'draft, published, archived', default: 'draft'}//,
-		//functional_area: {type: String, initial: true, required: true, index: true, default : 'None Specified'},
+	});
+
+	//Converts the title of the stakeholder to lower case. 
+	//This field will assist in searching for an stakeholder.
+	Stakeholder.schema.pre('save', function(next){
+		this.name_lower = this.name.toLowerCase();
+		next();
 	});
 
 	Stakeholder.defaultColumns = 'name,country,state';
