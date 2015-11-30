@@ -12,7 +12,7 @@
 		Stakeholder.model
 			.find()
 			.where('state', 'published')
-			.populate('industry country')
+			.populate('functionalArea country category')
 			.exec(function(err, stakeholders){				  
 				 if(err) common.handleDBError(err, res); 
 				 res.json(stakeholders);    
