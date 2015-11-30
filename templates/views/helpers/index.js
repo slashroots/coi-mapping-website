@@ -195,6 +195,17 @@ module.exports = function() {
 		return new hbs.SafeString(output);
 	};
 
+
+	_helpers.getMapCtrl = function(view, options){
+		var output = '';
+		if(typeof(view) !== 'undefined' && view === 'map'){
+			output = scriptTemplate({
+				src: '/js/map/map.js'
+			});
+		}
+		return new hbs.SafeString(output);
+	};
+
 	_helpers.getMapCSS = function(view, options) {
 		var output = '';
 		if (typeof(view) !== 'undefined' && view === 'map') {

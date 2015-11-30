@@ -10,6 +10,46 @@ $(document).ready(function(){
 		}
 	});
 
+	$.ajax({
+			url: '/countries',
+			type: 'GET',
+			success: function(data){
+				displayCountryList(data);
+			},
+			error: function(){
+				console.log('Error');
+			}
+	});
+
+	$.ajax({
+			url: '/categories?category=stakeholder',
+			type: 'GET',
+			success: function(data){
+				// console.log(data);
+				displayStakeholderCategoryList(data);
+			},
+			error: function(){
+				console.log('Error');
+			}
+	});
+
+	var displayStakeholderCategoryList = function(categories){
+		var stakeholder_type_list = $('#entity-list'), i = 0, len = categories.length;
+		for(;i<len;i++){
+			stakeholder_type_list.append('<li><input type="checkbox"><span>' + categories[i].name + '</span></li>');
+		}
+	}
+
+	var displayCountryList = function(countries){
+		var country_list = $('#country-list'), 
+			i = 0, 
+			len = countries.length;
+		
+		for (;i<len;i++){
+			country_list.append('<li><input type="checkbox">' + countries[i].name + '</li>');
+		}
+	}
+
 	var displayStats = function(stats){
 		var stat_list = $('#stats');
 		for (var stat in stats){
