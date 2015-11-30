@@ -7,7 +7,7 @@
 		});
 
 	Initiative.add({
-		title: {type: String, initial: true, required: true},
+		title: {type: String, initial: true, required: true, index: true},
 		type: {type: Types.Select,options: 'Hackaton, Summit, Conference', default: 'Conference', index: true},
 		stakeholder: {type: Types.Relationship, ref: 'Stakeholder', index: true, many: true},
 		country: {type: Types.Relationship, ref: 'Country', index: true},
