@@ -175,6 +175,16 @@ module.exports = function() {
 		return rtn;
 	};
 
+	_helpers.getAppJS = function(view, options){
+		var output = '';
+		if(typeof(view) !== 'undefined' && view === 'home'){
+			output = scriptTemplate({
+				src: '/js/app.home.js'
+			});
+		}
+		return new hbs.SafeString(output);
+	};
+
 	_helpers.getMapJS = function(view, options){
 		var output = '';
 		if(typeof(view) !== 'undefined' && view === 'map'){

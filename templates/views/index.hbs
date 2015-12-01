@@ -7,33 +7,37 @@
           <section class="content">
            <div class="text-center call-to-action">
               <div class="inner-content">
-                  <h2>Caribbean Tech <strong>Stakeholder Map</strong></h2>
-                  <p>The Caribbean Tech Stakeholder Map is an interactive, searchable, centralized database of ICT, mobile and open data stakeholders and initiatives from across
+                  <h2>Caribbean Tech <strong>Ecosystem Map</strong></h2>
+                  <p>The Caribbean Tech Ecosystem Map is an interactive, searchable, centralized database of ICT, mobile and open data stakeholders and initiatives from across
                   the Caribbean. Explore the beta version of the map, contribute updates and stay tuned for the full launch at PitchIT Caribbean and DevCA 2016.</p>
                   <a href="/map" class="btn btn-primary btn-lg">EXPLORE THE MAP</a>
                 </div>
             </div>
 
             <div class="text-center" class="cta-content">
-                <h2>Help the Map Ecosystem</h2>
+                <h2>Help Map the Caribbean Tech Ecosystem</h2>
                 <div class="row cta-actions">
-                  <div class="col-md-4">
+
+                  <div class="col-md-6">
                     <h4>Submit Your Organization</h4>
                     <p>Do you represent an organization that is
                         involved in ICT, mobile or open data in the
                         Caribbean? Take our survey to be
-                      displayed on the Stakeholder Map.</p>                      
+                      displayed on the Ecosystem Map.</p>                      
                   </div>
-                  <div class="col-md-4 cta-action-center">
+
+              {{!--   <div class="col-md-4">
+                    <h4>Submit Your Initiative</h4>
+                    <p>Are you organizTake our survey to be
+                      displayed on the Stakeholder Map.</p>
+                  </div> --}}
+
+                  
+                  <div class="col-md-6">
                     <h4>Share Examples</h4>
                     <p class="cta-action-center">Do you want to share examples of
                         organizations or initiatives involved in ICT,
                         mobile or open data in the Caribbean?</p>                    
-                  </div>
-                  <div class="col-md-4 cta-action-right">
-                    <h4>Contribute a Viz</h4>
-                    <p>Do you want to create your own vizualization of the Caribbean Tech
-                        Ecosystem?</p>
                   </div>
                 </div>
 
@@ -41,14 +45,14 @@
 
             <div class="text-center">
               <div class="row">
-                <div class="col-md-4">
-                  <a href="#register" data-toggle="modal" data-target="#register" class="btn btn-default btn-lg action-btns">Take the Survey</a>
+                <div class="col-md-6">
+                  <a href="#register" data-toggle="modal" data-target="#success" class="btn btn-default btn-lg action-btns">Take the Survey</a>
                 </div>
-                <div class="col-md-4">
+                {{!-- <div class="col-md-4">
                     <a href="/" class="btn btn-default btn-lg action-btns">Email Us</a>
-                </div>
-                <div class="col-md-4">
-                  <a href="/" class="btn btn-default btn-lg action-btns">Get the API</a>
+                </div> --}}
+                <div class="col-md-6">
+                  <a href="/" class="btn btn-default btn-lg action-btns">Submit your Example</a>
                 </div>
               </div>
             </div>
@@ -130,3 +134,4 @@
       </footer>
     </div><!-- ./wrapper -->
     {{> form}}
+    {{> dialog_success}}

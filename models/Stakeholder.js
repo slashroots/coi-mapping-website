@@ -10,12 +10,13 @@
 		country: {type: Types.Relationship, ref: 'Country', index: true},
 		functionalArea: {type: Types.Relationship, ref: 'FunctionalArea' },
 		description: {type: String},
-		url: {type: Types.Url},			
+		url: {type: Types.Url},		
+		email: {type: Types.Email},
 		state: {type: Types.Select, options: 'draft, published, archived', default: 'draft'}//,
 	});
 
 	//Converts the title of the stakeholder to lower case. 
-	//This field will assist in searching for an stakeholder.
+	//This field will assist in searching for a stakeholder.
 	Stakeholder.schema.pre('save', function(next){
 		this.name_lower = this.name.toLowerCase();
 		next();

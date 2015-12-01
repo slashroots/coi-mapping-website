@@ -14,6 +14,52 @@
                 <input type="text" class="form-control" id="name" placeholder="Meduim Development Inc">
               </div>
 
+               <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label for="url">Organization's URL</label>
+                    <input type="text" class="form-control" id="url" placeholder="www.mediumdevinc.com">
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group">
+                   <label for="email">Email</label>
+                    <input type="text" class="form-control" id="email" placeholder="admin@mediumdevinc.com">
+                </div>
+              </div>
+            </div>
+            
+              <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" rows="4" id="description"></textarea>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="category">Category</label>
+                    <select class="form-control" id="category">
+                      <option val="" selected="selected">Select Category</option>
+                      {{#each data.categories}}
+                          <option value="{{id}}">{{name}}</option>
+                      {{/each}}
+                    </select>
+                  </div> 
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="functional_area">Functional Area</label>
+                    <select class="form-control" id="functional_area">
+                     <option val="" selected="selected">Select Functional Area</option>
+                      {{#each data.func_areas}}
+                          <option value="{{id}}">{{name}}</option>
+                      {{/each}}
+                    </select>
+                  </div>
+                </div>
+              </div>
+               
+
               <div class="form-group">
                 <label for="country">Country</label>
                 <select class="form-control" id="country">
@@ -23,35 +69,15 @@
                   {{/each}}
                 </select>
             </div>  
+          
+           
+            
 
-            <div class="form-group">
-                <label for="industry">Industry</label>
-                <select class="form-control" id="industry">
-                 <option val="" selected="selected">Select Industry</option>
-                  {{#each data.func_areas}}
-                      <option value="{{id}}">{{name}}</option>
-                  {{/each}}
-                </select>
-            </div>     
-
-            <div class="form-group">
-               <label for="url">Your Organization's URL</label>
-                <input type="text" class="form-control" id="url" placeholder="www.mediumdevinc.com">
-            </div>
-
-              {{!-- <div class="form-group">
-                <label for="sel1">Select list:</label>
-                <select class="form-control" id="sel1">
-                  {{#each data.industries}}
-                      <option value="{{id}}">{{name}}</option>
-                  {{/each}}
-                </select>
-            </div>      --}} 
     </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" id="close">Cancel</button>
-        <button type="button" class="btn btn-primary" id="register">Submit</button>
+        <button type="button" class="btn btn-primary" id="submit">Submit</button>
       </div>
     </div>
   </div>
