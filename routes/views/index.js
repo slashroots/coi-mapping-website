@@ -1,44 +1,46 @@
-var keystone = require('keystone');
+(function(){
+	var keystone = require('keystone'),
+		Country = keystone.list('Country'),
+		StakeholderCategory = keystone.list('StakeholderCategory'),
+		FunctionalArea = keystone.list('FunctionalArea');
 
-exports = module.exports = function(req, res) {
-	
-	var view = new keystone.View(req, res);
-	var Country = keystone.list("Country");
-	var Industry = keystone.list("Industry");
-	var locals = res.locals;
-	
-	// locals.section is used to set the currently selected
-	// item in the header navigation.
-	locals.section = 'home';
-	locals.data = {};
-	
-	locals.industryData = {};
-	view.on('init', function(next) {
+		exports = module.exports = function(req, res) {
 
-		Country.model.find().where("state", "published").exec(function (err, countries) {
+		var view = new keystone.View(req, res),
+			locals = res.locals;
 
-			locals.data.countries = countries;
-			
-			next(err);
-
+		locals.data = {};
+		locals.view = 'home';
+		//Get the countries from the database to populate dropdown menu on registration form
+		view.on('init', function(next) {
+			Country.model.find().where("state", "published").exec(function (err, countries) {
+				locals.data.countries = countries;
+				next(err);
+			});
 		});
+		//Get the stakeholder categories from the database 
+		//to populate dropdown menu or registration form
+		view.on('init', function(next) {
+			StakeholderCategory.model
+						.find()
+						.where("state", "published")
+						.exec(function (err, categories) {
+				locals.data.categories = categories;
+				next(err);
+			});
+		});	
+		//Get the functional areas from the database to populate
+		// dropdown menu or registration form
+		view.on('init', function(next) {
+			FunctionalArea.model
+						.find()
+						.where("state", "published")
+						.exec(function (err, areas) {
+				locals.data.func_areas = areas;
+				next(err);
+			});
+		});	
 
-
-	});
-
-	view.on('init', function(next) {
-
-		Industry.model.find().where("state", "published").exec(function (err, industries) {
-
-			locals.data.industries = industries;
-
-			next(err);
-
-		});
-
-	});	
-	
-	// Render the view
-	view.render('index');
-	
-};
+		view.render('index');
+	}
+})();

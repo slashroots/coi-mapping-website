@@ -1,14 +1,14 @@
 (function(){
 	var keystone = require('keystone'),
 		Types = keystone.Field.Types,
-		Industry = new keystone.List('Industry');
-
-	Industry.add({
+		StakeholderCategory = new keystone.List('StakeholderCategory');
+		
+	StakeholderCategory.add({
 		name: {type: String, initial: true, required: true, index: true},
-		description: {type: String, initial: true, required: true},
+		description: {type: String},
 		state: {type: Types.Select, options: 'draft, published, archived', default: 'draft'}
 	});
 
-	Industry.defaultColumns = 'name,description,state';
-	Industry.register();
+	StakeholderCategory.defaultColumns = 'name,description,state';
+	StakeholderCategory.register();
 })();

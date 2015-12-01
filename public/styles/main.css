@@ -1,3 +1,214 @@
-div > a.menu-item{
+body{
+	font-family: 'Lato', sans-serif;
+}
+
+.top-nav{
+	height: 100px;
+	padding: 0px 15px 0px 15px;
+	max-height: 100px;
+}
+
+.top-logos{
+	width: 100%;
+	margin: 0 auto;
+}
+.top-logos img.left-img{
+	float: right;
+	height:100px; 
+	width:200px;
+	/*margin-right:18px;*/
+}
+
+.navbar-nav {
+   float: left;
+   margin: 0;
+   margin-left: 34%;
+}
+
+.skin-blue-light .main-header .navbar .nav>li>a {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 300;
+    text-transform: uppercase;
+ }
+
+
+.cta-content > h2{
+	font-weight: 300;
+	font-size: 37px;
+}
+
+.cta-actions{
+	padding-top: 20px;
+}
+
+.col-md-6 > h4{
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.col-md-6 > p{
+	margin: 0px 0px 45px 0px;
+	font-weight: 300;
+	font-size: 18px;
+}
+
+.content-wrapper{
+	background-color: #ffffff;
+}
+
+.call-to-action{
+	background-image: url(/images/banner.png);
+	background-size: cover;
+	height: 475px; 
+	width:100%; 
+
+}
+
+.inner-content{
+	background-color: rgba(255, 255, 255, 0.6);
+	height: 475px; 
+	width:100%; 
+	padding-top: 120px;
+}
+.inner-content > h2{
+	font-weight: 300;
+	font-size: 48px;
+	line-height: 50px;
+}
+
+.inner-content > p{
+	font-size: 18px;
+	line-height: 28px;
+	font-weight: normal;
+}
+
+.inner-content > .btn{
+	font-size: 22px;
+	font-weight: bold;
+	line-height: 22px;
+	margin: 20px 0px 40px 0px;
+	padding: 20px 0px 20px 0px;
+	height: 65px;
+	width: 400px;
+}
+
+.share-btns{
 	background-color: red;
+	margin: 40px 0px 40px 0px;
+}
+
+.share-container{
+	margin: 40px 0px 40px 0px;
+}
+.share-container h4{
+	font-size: 20px;
+	font-weight: bold;
+	float: left;
+	margin-right: -20px;
+}
+.share-icons > img{
+	height: 42px;
+	width: 42px;
+	margin: 0px 10px 0px 10px;
+}
+
+.map-desc{
+	background-color: #F8F8F8;
+	padding: 10px 20px 10px 20px;
+	font-size: 17px;
+}
+.map-desc > h4.text-center{ 
+	font-size: 32px;
+	font-weight: bold;
+}
+
+.map-desc p{
+	margin-bottom: 30px;
+	line-height: 150%;
+}
+.map-desc p, ul > li{
+	font-size: 17px;
+	font-weight: 300;
+	text-align: left;
+}
+
+.partners, .map-desc{
+	margin-bottom: 40px;
+}
+.partners h4{
+	font-size: 32px;
+	font-weight: bold;
+}
+
+.partners > p{
+	text-align: center;
+	font-weight: 300;
+	font-size: 19px;
+}
+/*.logos div{
+	float: left;
+}*/
+.logos img{
+	height: auto;
+	width: auto;
+	display: block;
+	max-width: 194px;
+	max-height: 183px;
+	float: left;
+	margin-left: 60px;
+}
+
+.logos img:nth-child(1){
+	margin-left: 10px;
+}
+.logos img:nth-child(3){
+	margin-top: 30px;
+}
+
+.logos img:nth-child(4){
+	margin-top: 20px;
+}
+
+.logos img:nth-child(5){
+	margin-top: -15px;
+}
+
+/**
+ * Map Page
+ */
+
+.stats{
+	list-style: none;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 25px;
+	padding: 10px 10px;
+}
+
+.stats > li{
+	text-align: left;
+}
+
+ul.sidebar-menu > li.treeview > a{
+	font-weight: normal;
+	font-size: 16px;
+	padding-left: 10px;
+}
+
+ul.treeview-menu > li{
+	font-weight: normal;
+	font-size: 16px;
+	padding: 5px 0px 5px 10px;
+}
+
+.content{
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+#map{
+	max-height:550px;
+	height:550px;
+	margin-left:220px;
 }

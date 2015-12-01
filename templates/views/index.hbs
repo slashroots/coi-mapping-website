@@ -1,7 +1,137 @@
-{{> top}}
-{{> accordion}}
-<div>
-	<div id="map" style="width:100%; margin: 0 auto;"></div>
-</div>	
-{{> form}}
+{{> top }}
+ <div class="wrapper">
+     {{> header}}
+      <!-- Full Width Column -->
+      <div class="content-wrapper">
+        <div class="container">
+          <section class="content">
+           <div class="text-center call-to-action">
+              <div class="inner-content">
+                  <h2>Caribbean Tech <strong>Ecosystem Map</strong></h2>
+                  <p>The Caribbean Tech Ecosystem Map is an interactive, searchable, centralized database of ICT, mobile and open data stakeholders and initiatives from across
+                  the Caribbean. Explore the beta version of the map, contribute updates and stay tuned for the full launch at PitchIT Caribbean and DevCA 2016.</p>
+                  <a href="/map" class="btn btn-primary btn-lg">EXPLORE THE MAP</a>
+                </div>
+            </div>
 
+            <div class="text-center" class="cta-content">
+                <h2>Help Map the Caribbean Tech Ecosystem</h2>
+                <div class="row cta-actions">
+
+                  <div class="col-md-6">
+                    <h4>Submit Your Organization</h4>
+                    <p>Do you represent an organization that is
+                        involved in ICT, mobile or open data in the
+                        Caribbean? Take our survey to be
+                      displayed on the Ecosystem Map.</p>                      
+                  </div>
+
+              {{!--   <div class="col-md-4">
+                    <h4>Submit Your Initiative</h4>
+                    <p>Are you organizTake our survey to be
+                      displayed on the Stakeholder Map.</p>
+                  </div> --}}
+
+                  
+                  <div class="col-md-6">
+                    <h4>Share Examples</h4>
+                    <p class="cta-action-center">Do you want to share examples of
+                        organizations or initiatives involved in ICT,
+                        mobile or open data in the Caribbean?</p>                    
+                  </div>
+                </div>
+
+            </div>
+
+            <div class="text-center">
+              <div class="row">
+                <div class="col-md-6">
+                  <a href="#register" data-toggle="modal" data-target="#register" class="btn btn-default btn-lg action-btns">Take the Survey</a>
+                </div>
+                {{!-- <div class="col-md-4">
+                    <a href="/" class="btn btn-default btn-lg action-btns">Email Us</a>
+                </div> --}}
+                <div class="col-md-6">
+                  <a href="/" class="btn btn-default btn-lg action-btns">Submit your Example</a>
+                </div>
+              </div>
+            </div>
+
+            <hr>
+            <div class="row share-container">
+              <div class="col-md-4"></div>
+              <div class="col-md-4">
+                <div class="row share-icons text-center">
+                <h4>Share</h4>
+                    <img src="/images/logos/social/twitter.png">
+                    <img src="/images/logos/social/facebook.png">
+                    <img src="/images/logos/social/linkedin.png">
+                    <img src="/images/logos/social/mail.png">
+                </div>
+              </div>
+              <div class="col-md-4"></div>
+            </div>
+
+             <div class="map-desc">
+              <h4 class="text-center">About the Map</h4>
+              <p>The Caribbean Tech Stakeholder Map is an interactive, searchable, centralized database of ICT, mobile and open data stakeholders and initiatives from
+              across the Caribbean.</p>
+              <p>It is a collaborative effort that builds on a baseline study commissioned by Infodev/World Bank, and supplemented by crowdsourced data and desk
+              research. By bringing these many examples together in a centralized platform, the Map makes it possible to filter, compare, analyze, and study the wide
+              range of actors and initiatives that comprise the Caribbean Tech Ecosystem, including ICT organizations and practitioners, mobile and open data tech
+              startups, businesses and initiatives. The Map is now in beta and is being continuously maintained and updated. It will be officially launched in 2016 at the
+              PitchIT competition and DevCA 2016.</p>
+              <p>The Tech Stakeholder Map is a joint initiative of the Caribbean Mobile Innovation Project (CMIP) and Developing the Caribbean (DevCA) that seeks to
+              harness the powerful synergy between mobile innovation and open data. It benefits considerable from adaptation and re-use of the technology platform
+              and administrative processes developed by The Open Data Impact Map, a project of the Center for Open Data Enterprise. Slashroots Foundation, Co-
+              founders and Regional Coordinators of DevCA carried out the adaptation/re-development of the Caribbean Stakeholder Map.</p>
+              <p>The Map is intended to:</p>
+              <ul>
+                <li>Discover key technology stakeholders, innovators and enablers in the Caribbean</li>
+                <li>Identify emerging trends and developments in mobile innovation and open data initiatives in the Caribbean</li>
+                <li>Provide a basis for partner mobilization and collaboration in regional technology innovation</li>
+                <li>Facilitate research and analysis of the growing Caribbean tech ecosystem</li>
+              </ul>
+              <p>The vibrancy and currency of the Map is made possible by the Caribbean Tech community. We invite your feedback and input so we can continue to
+              develop the Map through an iterative process. We also encourage developers and researchers to visualize, analyze and share data from the Map for further
+              insights. The map data is available as open data and can be downloaded in machine readable formats or accessed through an API.</p>
+
+              <p>The Caribbean Stakeholder Map is supported by funding from the Caribbean Mobile Innovation Project under the EPIC Program and through the
+              Developing the Caribbean Open Data Initiative supported by the International Development Research Centre (IDRC).</p>
+            </div>
+
+            <div class="text-center partners">
+              <h4>mHub Partners</h4>
+              <p>The CMIP Hub partners help to build mobile innovation communities across the Caribbean by convening a variety of local stakeholder groups, and will be a key source of contribution to the Caribbean Tech Stakeholder Map. Their local context knowledge, unique insights and the examples they provide are critical to the success of this initiative. These Partners will
+              help make the map a truly comprehensive regional view of the Caribbean Tech Ecosystem.</p>
+            </div>
+
+           
+              <div class="row logos">
+                <img src="/images/logos/bcsi.png">
+                <img src="/images/logos/tmil.png">  
+                <img src="/images/logos/startup.png">
+                <img src="/images/logos/cariri.png">
+                <img src="/images/logos/quint.jpg">                   
+              </div>           
+
+            <div class="partners">
+              <div class="row text-center">
+                  <h4>CMIP Implementation and Funding PARTNERS</h4>
+                  <img src="/images/logos/cmip.png">
+              </div>
+            </div>          
+          </section><!-- /.content -->
+        </div><!-- /.container -->
+      </div><!-- /.content-wrapper -->
+      <footer class="main-footer">
+        <div class="container">
+          {{!-- <div class="pull-right hidden-xs">
+            <b>Version</b> 2.3.0
+          </div> --}}
+          {{!-- <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved. --}}
+        </div><!-- /.container -->
+      </footer>
+    </div><!-- ./wrapper -->
+    {{> form}}
+    {{> dialog_success}}

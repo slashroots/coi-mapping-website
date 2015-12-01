@@ -2,21 +2,29 @@
 	var keystone = require('keystone'),
 		Types = keystone.Field.Types,
 		Initiative = new keystone.List('Initiative',{
-			map: { name: 'title' },
-			autokey: { path: 'slug', from: 'title', unique: true }
+			map: { name: 'name' },
+			autokey: { path: 'slug', from: 'name', unique: true }
 		});
 
 	Initiative.add({
-		title: {type: String, initial: true, required: true},
-		type: {type: Types.Select,options: 'Hackaton, Summit, Conference', default: 'Conference', index: true},
-		stakeholder: {type: Types.Relationship, ref: 'Stakeholder', index: true, many: true},
-		country: {type: Types.Relationship, ref: 'Country', index: true},
+		name: {type: String, initial: true, required: true},
+		name_lower: {type: String, index: true, hidden: true},
+		category: {type: Types.Relationship, ref: 'InitiativeCategory'},
+		organizer: {type: String},
+		country: {type: Types.Relationship, ref: 'Country'},
 		url: {type: Types.Url},
 		date: {type: Types.Date},
 		state: {type: Types.Select, options: 'draft, published, archived', default: 'draft', required: true},
-		createdAt: { type: Date, default: Date.now, hidden: true }
+		createdAt: { type: Date, default: Date.now, noedit: true}
 	});
 
-	Initiative.defaultColumns = 'title,type,state';
+	//Converts the name of the initiative to lower case. 
+	//This field will assist in searching for an initiative.
+	Initiative.schema.pre('save', function(next){
+		this.name_lower = this.name.toLowerCase();
+		next();
+	});
+
+	Initiative.defaultColumns = 'name,type,state';
 	Initiative.register();
 })();

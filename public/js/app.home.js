@@ -10,6 +10,17 @@ $(document).ready(function(){
 			formData.name = $('#name').val();
 		}
 	});
+	//TODO - To make the function better by sending an email
+	//to the email address supplied. 
+	$('#email').focusout(function(){
+		if($('#email').val().length < 3){
+			$(this).parent().removeClass('has-success').addClass('has-error');
+			$(this).focus();
+		}else{
+			$(this).parent().removeClass('has-error').addClass('has-success');
+			formData.email = $('#email').val();
+		}
+	});
 
 	$('#url').focusout(function(){
 		if($('#url').val().length < 3){
@@ -25,11 +36,15 @@ $(document).ready(function(){
 			pristine();
 	});
 
-	$('#register').click(function(){		
-		if(formData.name === "" || formData.country === "" || formData.industry === "" || formData.url === ""){
+	$('#submit').click(function(){		
+		if(formData.name === "" || 
+			formData.country === "" || 
+				formData.category === "" || 
+					 formData.email === "" || formData.functionalArea === "" ){
 			$('#message').show();
 		}else{
 			$('#message').hide();
+			formData.description = $('#description').val();
 			submitForm(formData);
 			formData = {}
 		}
@@ -42,7 +57,8 @@ $(document).ready(function(){
     		type: 'POST',
     		success: function(data){
                    pristine();
-                   $('#register').modal('hide'); 					         
+                   $('#register').modal('hide'); 
+                   $('#success').modal('show');					         
     		},
     		error: function(){
     			// $('#message').show();
@@ -53,24 +69,38 @@ $(document).ready(function(){
 	$('#country').change(function(){
 		if(validateSelect($(this), $('#country option:selected').val())){
 			formData.country = $('#country option:selected').val();
+			console.log(formData.country);
 		}else{
 			$(this).focus();
 		}
 	});
 
-	$('#industry').change(function(){
-		if(validateSelect($(this), $('#industry option:selected').val())){
-			formData.industry = $('#industry option:selected').val();
+	$('#category').change(function(){
+		if(validateSelect($(this), $('#category option:selected').val())){
+			formData.category = $('#category option:selected').val();
+			console.log(formData.category);
+		}else{
+			$(this).focus();
+		}	
+	});
+
+	$('#functional_area').change(function(){
+		if(validateSelect($(this), $('#functional_area option:selected').val())){
+			formData.functionalArea = $('#functional_area option:selected').val();
+			console.log(formData.functionalArea);
 		}else{
 			$(this).focus();
 		}	
 	});
 
 	var pristine = function(){
+		$('#email').val('').parent().removeClass('has-error').removeClass('has-success');
+		$('#description').val('').parent().removeClass('has-error').removeClass('has-success');
 		$('#name').val('').parent().removeClass('has-error').removeClass('has-success');
 		$('#url').val('').parent().removeClass('has-error').removeClass('has-success');
-		$('#industry').prop('selectedIndex',0).parent().removeClass('has-error').removeClass('has-success');
+		$('#category').prop('selectedIndex',0).parent().removeClass('has-error').removeClass('has-success');
 		$('#country').prop('selectedIndex',0).parent().removeClass('has-error').removeClass('has-success');
+		$('#functional_area').prop('selectedIndex',0).parent().removeClass('has-error').removeClass('has-success');
 	}
 
 	var validateSelect = function(element, value){
@@ -82,7 +112,5 @@ $(document).ready(function(){
 			element.parent().removeClass('has-error').addClass('has-success');
 		}	
 	 return isValid;	
-	}
-
-	
+	}	
 });
