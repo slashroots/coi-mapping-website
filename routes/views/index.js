@@ -8,6 +8,7 @@
 
 		var view = new keystone.View(req, res),
 			locals = res.locals;
+			locals.data = {};
 		//Get the countries from the database to populate dropdown menu on registration form
 		view.on('init', function(next) {
 			Country.model.find().where("state", "published").exec(function (err, countries) {
