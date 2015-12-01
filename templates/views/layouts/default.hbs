@@ -12,9 +12,29 @@
 	    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 	    <link rel="stylesheet" href="/dist/css/AdminLTE.min.css">
    	    <link rel="stylesheet" href="/dist/css/skins/skin-blue-light.min.css">	 
-   	    <link rel="stylesheet" type="text/css" href="/styles/main.css">   
-	 	{{!-- This file provides the default styling for the KeystoneJS Content Editor
-			- only renders when user is logged in and admin--}}
+   	    <link rel="stylesheet" type="text/css" href="/styles/main.css">
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+
+        <link type="text/css" rel="stylesheet" media="all" href="http://caribbeanopeninstitute.org/sites/default/files/css/css_1b256d43852e9eb6b22ee96e11947884.css" />
+
+        <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+        <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+
+        <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+        <link rel="stylesheet" href="css/L.Control.Sidebar.css" />
+
+        <link rel="stylesheet" href="css/L.Control.Sidebar.scss" />
+
+        <script src="/js/L.Control.Sidebar.js"></script>
+
+        <script src="/js/map-ctrl.js"></script>
+
+		{{!-- This file provides the default styling for the KeystoneJS Content Editor
+            - only renders when user is logged in and admin--}}
 		{{{isAdminEditorCSS user}}}
 		{{{getMapCSS view}}}
 		{{{getLeafletJS view}}}
@@ -28,8 +48,7 @@
 		<!--[if lt IE 9]>
 			<script src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js"></script>
 			<script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
-
+        <![endif]-->
 	</head>
 	<body class="hold-transition skin-blue-light layout-top-nav">
 		
@@ -75,13 +94,15 @@
 			//- and the KeystoneJS Content Editor. If you are not targeting IE8,
 			//- you can upgrade to 2.1.4 (also bundled) for better performance.
 		--}}
-		<script src="/js/jquery/jquery-1.11.3.min.js"></script>
 		{{!--
 			//- Customise which Bootstrap javascript files are served by including
 			//- them specifically here, instead of bootstrap-3.3.5.min.js
 		--}}
-		<script src="/js/bootstrap/bootstrap-3.3.5.min.js"></script>
+
+
+        <script src="/js/bootstrap/bootstrap-3.3.5.min.js"></script>
 		<script src="/dist/js/app.min.js"></script>
+        <!--<script src="/js/mapview.js"></script>-->
 		{{{isAdminEditorJS user}}}
 		{{{getAppJS view}}}
 		{{{getMapJS view}}}
