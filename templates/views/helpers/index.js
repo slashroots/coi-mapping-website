@@ -199,7 +199,7 @@ module.exports = function() {
 		var output = '';
 		if(typeof(view) !== 'undefined' && view === 'map'){
 			output = scriptTemplate({
-				src: 'https://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js'
+				src: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js'
 			});
 		}
 		return new hbs.SafeString(output);
@@ -220,7 +220,7 @@ module.exports = function() {
 		var output = '';
 		if (typeof(view) !== 'undefined' && view === 'map') {
 			output = cssLinkTemplate({
-				href: "https://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css"
+				href: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css"
 			});
 		}
 		return new hbs.SafeString(output);
