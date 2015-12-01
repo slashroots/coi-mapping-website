@@ -1,946 +1,948 @@
 var marker = null;
 
-        var bankArray = Array(0);
+var bankArray = Array(0);
 
-        var govArray = Array(0);
+var govArray = Array(0);
 
-        var eduArray = Array(0);
+var eduArray = Array(0);
 
-        var ngoArray = Array(0);
+var ngoArray = Array(0);
 
-        var ictArray = Array(0);
+var ictArray = Array(0);
 
-        var mnoArray = Array(0);
+var mnoArray = Array(0);
 
-        var mediaArray = Array(0);
+var mediaArray = Array(0);
 
-        //alert(bankArray[1]);
+//alert(bankArray[1]);
 
-        var iconShade = "http://www.argentmac.com/devca/icons/Aliz.jpg";
+var iconShade = "http://www.argentmac.com/devca/icons/Aliz.jpg";
 
-        var preContent = "";
+var preContent = "";
 
-        function getEverything () {
+function getEverything () {
+	
+	//alert("Getting everything!");
 
-            var countries = [];
+	var countries = [];
 
-            $.ajax({
+	$.ajax({
 
-                type: "GET",
+		type: "GET",
 
-                url: "stakeholders",
+		url: "http://localhost:3000/stakeholders",
 
-                dataType : "json",
+		dataType : "json",
 
-                success : function (data) {
+		success : function (data) {
 
-                    for(i = 0;i<data.length;i++){
+			for(i = 0;i<data.length;i++){
 
-                        var size = 0;
+				var size = 0;
 
-                        country = data[i].country.name;
+				country = data[i].country.name;
 
-                        name = data[i].name;
+				name = data[i].name;
 
-                        type = data[i].industry.name;
+				type = data[i].category.name;
 
-                        url = data[i].url;
+				url = data[i].url;
 
-                        //size = data.results[i].size;
+				//size = data.results[i].size;
 
-                        /*for (j = 0;j<data.results[i].initiatives.length;j++) {
+				/*for (j = 0;j<data.results[i].initiatives.length;j++) {
 
-                            switch (data.results[i].initiatives[j].pivot.type) {
+				 switch (data.results[i].initiatives[j].pivot.type) {
 
-                                case 'Leader' : size = size + 3;
+				 case 'Leader' : size = size + 3;
 
-                                    break;
+				 break;
 
-                                case 'Partner' : size = size + 2;
+				 case 'Partner' : size = size + 2;
 
-                                    break;
+				 break;
 
-                                case 'Sponsor' : size = size + 1;
+				 case 'Sponsor' : size = size + 1;
 
-                                    break;
+				 break;
 
-                            }
+				 }
 
-                        }*/
+				 }*/
 
-                        functional_area = data[i].functional_area;
-						
-						latitude = data[i].country.latitude;
+				functional_area = data[i].functionalArea.name;
 
-                        longitude = data[i].country.longitude;
+				latitude = data[i].country.latitude;
 
-                        id = data[i].id;
+				longitude = data[i].country.longitude;
 
-                        //alert(countries[i]);
+				id = data[i].id;
 
-                        plotCountry(id, country, name, type, url, functional_area, size, latitude, longitude);
-						
-						//alert(country);
+				//alert(countries[i]);
 
-                    }
+				plotCountry(id, country, name, type, url, functional_area, size, latitude, longitude);
 
-                }
+				//alert(country);
 
-            });
+			}
 
-            //alert(countries[4]);
+		}
 
-        }
+	});
 
-        function plotCountry (id, country, name, type, url, functional_area, size, latitude, longitude) {
+	//alert(countries[4]);
 
+}
 
-                    //for(i = 0;i<5;i++){
+function plotCountry (id, country, name, type, url, functional_area, size, latitude, longitude) {
 
-                    //alert("Country : " + country + ", Latitude :" + latitude + ", Longitude :" + longitude);
 
-                    //}
+	//for(i = 0;i<5;i++){
 
-                    //var marker = L.marker([latitude, longitude]).addTo(map);
+	//alert("Country : " + country + ", Latitude :" + latitude + ", Longitude :" + longitude);
 
-                    iconShade = "http://www.argentmac.com/devca/icons/Aliz.png";
+	//}
 
-                    if (type == "Bank/Investment/Consulting") iconShade = "http://www.argentmac.com/devca/icons/Emerald.png";
+	//var marker = L.marker([latitude, longitude]).addTo(map);
 
-                    if (type == "Government") iconShade = "http://www.argentmac.com/devca/icons/cloud.png";
+	iconShade = "http://www.argentmac.com/devca/icons/Aliz.png";
 
-                    if (type == "Education/Research") iconShade = "http://www.argentmac.com/devca/icons/wetasphalt.png";
+	if (type == "Bank/Investment/Consulting") iconShade = "http://www.argentmac.com/devca/icons/Emerald.png";
 
-                    if (type == "NGO") iconShade = "http://www.argentmac.com/devca/icons/sunflower.png";
+	if (type == "Government") iconShade = "http://www.argentmac.com/devca/icons/cloud.png";
 
-                    if (type == "ICT Services") iconShade = "http://www.argentmac.com/devca/icons/Silver.png";
+	if (type == "Education/Research") iconShade = "http://www.argentmac.com/devca/icons/wetasphalt.png";
 
-                    if (type == "MNO/Telecommunications") iconShade = "http://www.argentmac.com/devca/icons/Pongrante.png";
+	if (type == "NGO") iconShade = "http://www.argentmac.com/devca/icons/sunflower.png";
 
-                    if (type == "Media/Marketing") iconShade = "http://www.argentmac.com/devca/icons/Ametheyst.png";
+	if (type == "ICT Services") iconShade = "http://www.argentmac.com/devca/icons/Silver.png";
 
+	if (type == "MNO/Telecommunications") iconShade = "http://www.argentmac.com/devca/icons/Pongrante.png";
 
+	if (type == "Media/Marketing") iconShade = "http://www.argentmac.com/devca/icons/Ametheyst.png";
 
-                    switch (country) {
 
-                        case "Jamaica" : marker = L.marker(new L.LatLng(latitude, longitude), {
-                            icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})
-                            //title: title
-                        });
 
-                            marker.bindPopup("Name : " + name + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+	switch (country) {
 
-                            jamaicanPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+		case "Jamaica" : marker = L.marker(new L.LatLng(latitude, longitude), {
+			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})
+			//title: title
+		});
 
-                            marker.on('click', function () {
+			marker.bindPopup("Name : " + name + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
-                                preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
+			jamaicanPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
 
-                                $.ajax({
+			marker.on('click', function () {
 
-                                    type: "GET",
+				preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
 
-                                    url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),//sends stakeholder id
+				$.ajax({
 
-                                    dataType : "json",
+					type: "GET",
 
-                                    success : function (data) {
+					url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),//sends stakeholder id
 
-                                        for(i = 0;i<data.results.length;i++){
+					dataType : "json",
 
-                                            eventname = data.results[i].name;
+					success : function (data) {
 
-                                            preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
+						for(i = 0;i<data.results.length;i++){
 
-                                        }
+							eventname = data.results[i].name;
 
-                                        sidebar.show();
+							preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
 
-                                        $("#sidebar").html(preContent);
+						}
 
-                                    }
+						sidebar.show();
 
-                                });
+						$("#sidebar").html(preContent);
 
+					}
 
-                            });
+				});
 
-                            jamaica.addLayer(marker);
 
-                            break;
+			});
 
-                        case "Barbados" : marker = L.marker(new L.LatLng(latitude, longitude), {
-                            icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})           								//title: title
-                        });
+			jamaica.addLayer(marker);
+
+			break;
+
+		case "Barbados" : marker = L.marker(new L.LatLng(latitude, longitude), {
+			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})           								//title: title
+		});
 
 //marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
-                            barbadosPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+			barbadosPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
 
-                            marker.on('click', function () {
+			marker.on('click', function () {
 
-                                preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
+				preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
 
-                                $.ajax({
+				$.ajax({
 
-                                    type: "GET",
+					type: "GET",
 
-                                    url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
+					url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
 
-                                    dataType : "json",
+					dataType : "json",
 
-                                    success : function (data) {
+					success : function (data) {
 
-                                        for(i = 0;i<data.results.length;i++){
+						for(i = 0;i<data.results.length;i++){
 
-                                            eventname = data.results[i].name;
+							eventname = data.results[i].name;
 
-                                            preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
+							preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
 
-                                        }
+						}
 
-                                        sidebar.show();
+						sidebar.show();
 
-                                        $("#sidebar").html(preContent);
+						$("#sidebar").html(preContent);
 
-                                    }
+					}
 
-                                });
-
-
-                            });
+				});
 
 
-                            barbados.addLayer(marker);
-
-                            break;
-
-                        case "Bahamas" : marker = L.marker(new L.LatLng(latitude, longitude), {
-                            icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
-
-//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
-
-                            bahamasPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
-
-                            marker.on('click', function () {
-
-                                preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
-
-                                $.ajax({
-
-                                    type: "GET",
-
-                                    url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
-
-                                    dataType : "json",
-
-                                    success : function (data) {
-
-                                        for(i = 0;i<data.results.length;i++){
-
-                                            eventname = data.results[i].name;
-
-                                            preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
-
-                                        }
-
-                                        sidebar.show();
-
-                                        $("#sidebar").html(preContent);
-
-                                    }
-
-                                });
+			});
 
 
-                            });
+			barbados.addLayer(marker);
 
-                            bahamas.addLayer(marker);
+			break;
 
-                            break;
-
-                        case "Cuba" : marker = L.marker(new L.LatLng(latitude, longitude), {
-                            icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+		case "Bahamas" : marker = L.marker(new L.LatLng(latitude, longitude), {
+			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
 
 //marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
-                            cubaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+			bahamasPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
 
-                            marker.on('click', function () {
+			marker.on('click', function () {
 
-                                preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
+				preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
 
-                                $.ajax({
+				$.ajax({
 
-                                    type: "GET",
+					type: "GET",
 
-                                    url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
+					url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
 
-                                    dataType : "json",
+					dataType : "json",
 
-                                    success : function (data) {
+					success : function (data) {
 
-                                        for(i = 0;i<data.results.length;i++){
+						for(i = 0;i<data.results.length;i++){
 
-                                            eventname = data.results[i].name;
+							eventname = data.results[i].name;
 
-                                            preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
+							preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
 
-                                        }
+						}
 
-                                        sidebar.show();
+						sidebar.show();
 
-                                        $("#sidebar").html(preContent);
+						$("#sidebar").html(preContent);
 
-                                    }
+					}
 
-                                });
-
-
-                            });
+				});
 
 
-                            cuba.addLayer(marker);
+			});
 
-                            break;
+			bahamas.addLayer(marker);
 
-                        case "Haiti" : marker = L.marker(new L.LatLng(latitude, longitude), {
-                            icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+			break;
 
-//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
-
-                            haitiPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
-
-                            marker.on('click', function () {
-
-                                preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
-
-                                $.ajax({
-
-                                    type: "GET",
-
-                                    url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
-
-                                    dataType : "json",
-
-                                    success : function (data) {
-
-                                        for(i = 0;i<data.results.length;i++){
-
-                                            eventname = data.results[i].name;
-
-                                            preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
-
-                                        }
-
-                                        sidebar.show();
-
-                                        $("#sidebar").html(preContent);
-
-                                    }
-
-                                });
-
-
-                            });
-
-                            haiti.addLayer(marker);
-
-                            break;
-
-                        case "Anguilla" : marker = L.marker(new L.LatLng(latitude, longitude), {
-                            icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+		case "Cuba" : marker = L.marker(new L.LatLng(latitude, longitude), {
+			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
 
 //marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
-                            anguillaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+			cubaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
 
-                            marker.on('click', function () {
+			marker.on('click', function () {
 
-                                preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
+				preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
 
-                                $.ajax({
+				$.ajax({
 
-                                    type: "GET",
+					type: "GET",
 
-                                    url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
+					url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
 
-                                    dataType : "json",
+					dataType : "json",
 
-                                    success : function (data) {
+					success : function (data) {
 
-                                        for(i = 0;i<data.results.length;i++){
+						for(i = 0;i<data.results.length;i++){
 
-                                            eventname = data.results[i].name;
+							eventname = data.results[i].name;
 
-                                            preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
+							preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
 
-                                        }
+						}
 
-                                        sidebar.show();
+						sidebar.show();
 
-                                        $("#sidebar").html(preContent);
+						$("#sidebar").html(preContent);
 
-                                    }
+					}
 
-                                });
-
-
-                            });
-
-                            anguilla.addLayer(marker);
-
-                            break;
-
-                        case "Grenada" : marker = L.marker(new L.LatLng(latitude, longitude), {
-                            icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
-
-//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
-
-                            grenadaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
-
-                            marker.on('click', function () {
-
-                                preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
-
-                                $.ajax({
-
-                                    type: "GET",
-
-                                    url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
-
-                                    dataType : "json",
-
-                                    success : function (data) {
-
-                                        for(i = 0;i<data.results.length;i++){
-
-                                            eventname = data.results[i].name;
-
-                                            preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
-
-                                        }
-
-                                        sidebar.show();
-
-                                        $("#sidebar").html(preContent);
-
-                                    }
-
-                                });
+				});
 
 
-                            });
+			});
 
-                            grenada.addLayer(marker);
 
-                            break;
+			cuba.addLayer(marker);
 
-                        case "Montserrat" : marker = L.marker(new L.LatLng(latitude, longitude), {
-                            icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+			break;
+
+		case "Haiti" : marker = L.marker(new L.LatLng(latitude, longitude), {
+			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
 
 //marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
-                            montserratPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+			haitiPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
 
-                            marker.on('click', function () {
+			marker.on('click', function () {
 
-                                preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
+				preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
 
-                                $.ajax({
+				$.ajax({
 
-                                    type: "GET",
+					type: "GET",
 
-                                    url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
+					url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
 
-                                    dataType : "json",
+					dataType : "json",
 
-                                    success : function (data) {
+					success : function (data) {
 
-                                        for(i = 0;i<data.results.length;i++){
+						for(i = 0;i<data.results.length;i++){
 
-                                            eventname = data.results[i].name;
+							eventname = data.results[i].name;
 
-                                            preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
+							preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
 
-                                        }
+						}
 
-                                        sidebar.show();
+						sidebar.show();
 
-                                        $("#sidebar").html(preContent);
+						$("#sidebar").html(preContent);
 
-                                    }
+					}
 
-                                });
-
-
-                            });
-
-                            montserrat.addLayer(marker);
-
-                            break;
-
-                        case "Saint Lucia" : marker = L.marker(new L.LatLng(latitude, longitude), {
-                            icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
-
-//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
-
-                            saintluciaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
-
-                            marker.on('click', function () {
-
-                                preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
-
-                                $.ajax({
-
-                                    type: "GET",
-
-                                    url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
-
-                                    dataType : "json",
-
-                                    success : function (data) {
-
-                                        for(i = 0;i<data.results.length;i++){
-
-                                            eventname = data.results[i].name;
-
-                                            preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
-
-                                        }
-
-                                        sidebar.show();
-
-                                        $("#sidebar").html(preContent);
-
-                                    }
-
-                                });
+				});
 
 
-                            });
+			});
 
-                            saintlucia.addLayer(marker);
+			haiti.addLayer(marker);
 
-                            break;
+			break;
 
-                        case "Saint Vincent" : marker = L.marker(new L.LatLng(latitude, longitude), {
-                            icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+		case "Anguilla" : marker = L.marker(new L.LatLng(latitude, longitude), {
+			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
 
 //marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
-                            saintvincentPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+			anguillaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
 
-                            marker.on('click', function () {
+			marker.on('click', function () {
 
-                                preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
+				preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
 
-                                $.ajax({
+				$.ajax({
 
-                                    type: "GET",
+					type: "GET",
 
-                                    url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
+					url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
 
-                                    dataType : "json",
+					dataType : "json",
 
-                                    success : function (data) {
+					success : function (data) {
 
-                                        for(i = 0;i<data.results.length;i++){
+						for(i = 0;i<data.results.length;i++){
 
-                                            eventname = data.results[i].name;
+							eventname = data.results[i].name;
 
-                                            preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
+							preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
 
-                                        }
+						}
 
-                                        sidebar.show();
+						sidebar.show();
 
-                                        $("#sidebar").html(preContent);
+						$("#sidebar").html(preContent);
 
-                                    }
+					}
 
-                                });
-
-
-                            });
-
-                            saintvincent.addLayer(marker);
-
-                            break;
-
-                        case "Dominica" : marker = L.marker(new L.LatLng(latitude, longitude), {
-                            icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
-
-//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
-
-                            dominicaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
-
-                            marker.on('click', function () {
-
-                                preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
-
-                                $.ajax({
-
-                                    type: "GET",
-
-                                    url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
-
-                                    dataType : "json",
-
-                                    success : function (data) {
-
-                                        for(i = 0;i<data.results.length;i++){
-
-                                            eventname = data.results[i].name;
-
-                                            preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
-
-                                        }
-
-                                        sidebar.show();
-
-                                        $("#sidebar").html(preContent);
-
-                                    }
-
-                                });
+				});
 
 
-                            });
+			});
 
-                            dominica.addLayer(marker);
+			anguilla.addLayer(marker);
 
-                            break;
+			break;
 
-                        case "Antigua and Barbuda" : marker = L.marker(new L.LatLng(latitude, longitude), {
-                            icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+		case "Grenada" : marker = L.marker(new L.LatLng(latitude, longitude), {
+			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
 
 //marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
-                            antiguaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+			grenadaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
 
-                            marker.on('click', function () {
+			marker.on('click', function () {
 
-                                preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
+				preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
 
-                                $.ajax({
+				$.ajax({
 
-                                    type: "GET",
+					type: "GET",
 
-                                    url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
+					url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
 
-                                    dataType : "json",
+					dataType : "json",
 
-                                    success : function (data) {
+					success : function (data) {
 
-                                        for(i = 0;i<data.results.length;i++){
+						for(i = 0;i<data.results.length;i++){
 
-                                            eventname = data.results[i].name;
+							eventname = data.results[i].name;
 
-                                            preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
+							preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
 
-                                        }
+						}
 
-                                        sidebar.show();
+						sidebar.show();
 
-                                        $("#sidebar").html(preContent);
+						$("#sidebar").html(preContent);
 
-                                    }
+					}
 
-                                });
-
-
-                            });
-
-                            antigua.addLayer(marker);
-
-                            break;
-
-                        case "Trinidad and Tobago" : marker = L.marker(new L.LatLng(latitude, longitude), {
-                            icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
-
-//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
-
-                            trinidadPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
-
-                            marker.on('click', function () {
-
-                                preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
-
-                                $.ajax({
-
-                                    type: "GET",
-
-                                    url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
-
-                                    dataType : "json",
-
-                                    success : function (data) {
-
-                                        for(i = 0;i<data.results.length;i++){
-
-                                            eventname = data.results[i].name;
-
-                                            preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
-
-                                        }
-
-                                        sidebar.show();
-
-                                        $("#sidebar").html(preContent);
-
-                                    }
-
-                                });
+				});
 
 
-                            });
+			});
 
-                            trinidad.addLayer(marker);
+			grenada.addLayer(marker);
 
-                            break;
+			break;
 
-                        case "Saint Kitts" : marker = L.marker(new L.LatLng(latitude, longitude), {
-                            icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+		case "Montserrat" : marker = L.marker(new L.LatLng(latitude, longitude), {
+			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
 
 //marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
-                            saintkittsPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+			montserratPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
 
-                            marker.on('click', function () {
+			marker.on('click', function () {
 
-                                preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
+				preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
 
-                                $.ajax({
+				$.ajax({
 
-                                    type: "GET",
+					type: "GET",
 
-                                    url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
+					url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
 
-                                    dataType : "json",
+					dataType : "json",
 
-                                    success : function (data) {
+					success : function (data) {
 
-                                        for(i = 0;i<data.results.length;i++){
+						for(i = 0;i<data.results.length;i++){
 
-                                            eventname = data.results[i].name;
+							eventname = data.results[i].name;
 
-                                            preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
+							preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
 
-                                        }
+						}
 
-                                        sidebar.show();
+						sidebar.show();
 
-                                        $("#sidebar").html(preContent);
+						$("#sidebar").html(preContent);
 
-                                    }
+					}
 
-                                });
-
-
-                            });
-
-                            saintkitts.addLayer(marker);
-
-                            break;
-
-                        case "Belize" : marker = L.marker(new L.LatLng(latitude, longitude), {
-                            icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
-
-//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
-
-                            belizePopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
-
-                            marker.on('click', function () {
-
-                                preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
-
-                                $.ajax({
-
-                                    type: "GET",
-
-                                    url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
-
-                                    dataType : "json",
-
-                                    success : function (data) {
-
-                                        for(i = 0;i<data.results.length;i++){
-
-                                            eventname = data.results[i].name;
-
-                                            preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
-
-                                        }
-
-                                        sidebar.show();
-
-                                        $("#sidebar").html(preContent);
-
-                                    }
-
-                                });
+				});
 
 
-                            });
+			});
 
-                            belize.addLayer(marker);
+			montserrat.addLayer(marker);
 
-                            break;
+			break;
 
-                        case "Guyana" : marker = L.marker(new L.LatLng(latitude, longitude), {
-                            icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+		case "Saint Lucia" : marker = L.marker(new L.LatLng(latitude, longitude), {
+			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
 
 //marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
-                            guyanaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+			saintluciaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
 
-                            marker.on('click', function () {
+			marker.on('click', function () {
 
-                                preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
+				preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
 
-                                $.ajax({
+				$.ajax({
 
-                                    type: "GET",
+					type: "GET",
 
-                                    url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
+					url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
 
-                                    dataType : "json",
+					dataType : "json",
 
-                                    success : function (data) {
+					success : function (data) {
 
-                                        for(i = 0;i<data.results.length;i++){
+						for(i = 0;i<data.results.length;i++){
 
-                                            eventname = data.results[i].name;
+							eventname = data.results[i].name;
 
-                                            preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
+							preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
 
-                                        }
+						}
 
-                                        sidebar.show();
+						sidebar.show();
 
-                                        $("#sidebar").html(preContent);
+						$("#sidebar").html(preContent);
 
-                                    }
+					}
 
-                                });
-
-
-                            });
-
-                            guyana.addLayer(marker);
-
-                            break;
-
-                        case "Suriname" : marker = L.marker(new L.LatLng(latitude, longitude), {
-                            icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
-
-//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
-
-                            surinamePopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
-
-                            marker.on('click', function () {
-
-                                preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
-
-                                $.ajax({
-
-                                    type: "GET",
-
-                                    url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
-
-                                    dataType : "json",
-
-                                    success : function (data) {
-
-                                        for(i = 0;i<data.results.length;i++){
-
-                                            eventname = data.results[i].name;
-
-                                            preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
-
-                                        }
-
-                                        sidebar.show();
-
-                                        $("#sidebar").html(preContent);
-
-                                    }
-
-                                });
+				});
 
 
-                            });
+			});
 
-                            suriname.addLayer(marker);
+			saintlucia.addLayer(marker);
 
-                            break;
+			break;
 
-                        case "Grenada" : marker = L.marker(new L.LatLng(latitude, longitude), {
-                            icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+		case "Saint Vincent" : marker = L.marker(new L.LatLng(latitude, longitude), {
+			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
 
 //marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
-                            grenadaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+			saintvincentPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
 
-                            marker.on('click', function () {
+			marker.on('click', function () {
 
-                                preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
+				preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
 
-                                $.ajax({
+				$.ajax({
 
-                                    type: "GET",
+					type: "GET",
 
-                                    url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
+					url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
 
-                                    dataType : "json",
+					dataType : "json",
 
-                                    success : function (data) {
+					success : function (data) {
 
-                                        for(i = 0;i<data.results.length;i++){
+						for(i = 0;i<data.results.length;i++){
 
-                                            eventname = data.results[i].name;
+							eventname = data.results[i].name;
 
-                                            preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
+							preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
 
-                                        }
+						}
 
-                                        sidebar.show();
+						sidebar.show();
 
-                                        $("#sidebar").html(preContent);
+						$("#sidebar").html(preContent);
 
-                                    }
+					}
 
-                                });
-
-
-                            });
-
-                            grenada.addLayer(marker);
-
-                            break;
+				});
 
 
-                    }
+			});
 
-                    if (type == "Bank/Investment/Consulting") bankArray[bankArray.length] = marker;
+			saintvincent.addLayer(marker);
 
-                    if (type == "Government") govArray[govArray.length] = marker;
+			break;
 
-                    if (type == "Education/Research") eduArray[eduArray.length] = marker;
+		case "Dominica" : marker = L.marker(new L.LatLng(latitude, longitude), {
+			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
 
-                    if (type == "NGO") ngoArray[ngoArray.length] = marker;
+//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
-                    if (type == "ICT Services") ictArray[ictArray.length] = marker;
+			dominicaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
 
-                    if (type == "MNO/Telecommunications") mnoArray[mnoArray.length] = marker;
+			marker.on('click', function () {
 
-                    if (type == "Media/Marketing") mediaArray[mediaArray.length] = marker;
+				preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
 
-                    //
+				$.ajax({
 
-                    //var markers = new L.MarkerClusterGroup();
+					type: "GET",
+
+					url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
+
+					dataType : "json",
+
+					success : function (data) {
+
+						for(i = 0;i<data.results.length;i++){
+
+							eventname = data.results[i].name;
+
+							preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
+
+						}
+
+						sidebar.show();
+
+						$("#sidebar").html(preContent);
+
+					}
+
+				});
+
+
+			});
+
+			dominica.addLayer(marker);
+
+			break;
+
+		case "Antigua and Barbuda" : marker = L.marker(new L.LatLng(latitude, longitude), {
+			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+
+//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+
+			antiguaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+
+			marker.on('click', function () {
+
+				preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
+
+				$.ajax({
+
+					type: "GET",
+
+					url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
+
+					dataType : "json",
+
+					success : function (data) {
+
+						for(i = 0;i<data.results.length;i++){
+
+							eventname = data.results[i].name;
+
+							preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
+
+						}
+
+						sidebar.show();
+
+						$("#sidebar").html(preContent);
+
+					}
+
+				});
+
+
+			});
+
+			antigua.addLayer(marker);
+
+			break;
+
+		case "Trinidad and Tobago" : marker = L.marker(new L.LatLng(latitude, longitude), {
+			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+
+//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+
+			trinidadPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+
+			marker.on('click', function () {
+
+				preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
+
+				$.ajax({
+
+					type: "GET",
+
+					url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
+
+					dataType : "json",
+
+					success : function (data) {
+
+						for(i = 0;i<data.results.length;i++){
+
+							eventname = data.results[i].name;
+
+							preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
+
+						}
+
+						sidebar.show();
+
+						$("#sidebar").html(preContent);
+
+					}
+
+				});
+
+
+			});
+
+			trinidad.addLayer(marker);
+
+			break;
+
+		case "Saint Kitts" : marker = L.marker(new L.LatLng(latitude, longitude), {
+			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+
+//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+
+			saintkittsPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+
+			marker.on('click', function () {
+
+				preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
+
+				$.ajax({
+
+					type: "GET",
+
+					url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
+
+					dataType : "json",
+
+					success : function (data) {
+
+						for(i = 0;i<data.results.length;i++){
+
+							eventname = data.results[i].name;
+
+							preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
+
+						}
+
+						sidebar.show();
+
+						$("#sidebar").html(preContent);
+
+					}
+
+				});
+
+
+			});
+
+			saintkitts.addLayer(marker);
+
+			break;
+
+		case "Belize" : marker = L.marker(new L.LatLng(latitude, longitude), {
+			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+
+//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+
+			belizePopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+
+			marker.on('click', function () {
+
+				preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
+
+				$.ajax({
+
+					type: "GET",
+
+					url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
+
+					dataType : "json",
+
+					success : function (data) {
+
+						for(i = 0;i<data.results.length;i++){
+
+							eventname = data.results[i].name;
+
+							preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
+
+						}
+
+						sidebar.show();
+
+						$("#sidebar").html(preContent);
+
+					}
+
+				});
+
+
+			});
+
+			belize.addLayer(marker);
+
+			break;
+
+		case "Guyana" : marker = L.marker(new L.LatLng(latitude, longitude), {
+			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+
+//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+
+			guyanaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+
+			marker.on('click', function () {
+
+				preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
+
+				$.ajax({
+
+					type: "GET",
+
+					url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
+
+					dataType : "json",
+
+					success : function (data) {
+
+						for(i = 0;i<data.results.length;i++){
+
+							eventname = data.results[i].name;
+
+							preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
+
+						}
+
+						sidebar.show();
+
+						$("#sidebar").html(preContent);
+
+					}
+
+				});
+
+
+			});
+
+			guyana.addLayer(marker);
+
+			break;
+
+		case "Suriname" : marker = L.marker(new L.LatLng(latitude, longitude), {
+			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+
+//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+
+			surinamePopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+
+			marker.on('click', function () {
+
+				preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
+
+				$.ajax({
+
+					type: "GET",
+
+					url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
+
+					dataType : "json",
+
+					success : function (data) {
+
+						for(i = 0;i<data.results.length;i++){
+
+							eventname = data.results[i].name;
+
+							preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
+
+						}
+
+						sidebar.show();
+
+						$("#sidebar").html(preContent);
+
+					}
+
+				});
+
+
+			});
+
+			suriname.addLayer(marker);
+
+			break;
+
+		case "Grenada" : marker = L.marker(new L.LatLng(latitude, longitude), {
+			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+
+//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+
+			grenadaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+
+			marker.on('click', function () {
+
+				preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
+
+				$.ajax({
+
+					type: "GET",
+
+					url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),
+
+					dataType : "json",
+
+					success : function (data) {
+
+						for(i = 0;i<data.results.length;i++){
+
+							eventname = data.results[i].name;
+
+							preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
+
+						}
+
+						sidebar.show();
+
+						$("#sidebar").html(preContent);
+
+					}
+
+				});
+
+
+			});
+
+			grenada.addLayer(marker);
+
+			break;
+
+
+	}
+
+	if (type == "Bank/Investment/Consulting") bankArray[bankArray.length] = marker;
+
+	if (type == "Government") govArray[govArray.length] = marker;
+
+	if (type == "Education/Research") eduArray[eduArray.length] = marker;
+
+	if (type == "NGO") ngoArray[ngoArray.length] = marker;
+
+	if (type == "ICT Services") ictArray[ictArray.length] = marker;
+
+	if (type == "MNO/Telecommunications") mnoArray[mnoArray.length] = marker;
+
+	if (type == "Media/Marketing") mediaArray[mediaArray.length] = marker;
+
+	//
+
+	//var markers = new L.MarkerClusterGroup();
 
 
 
-        }
+}

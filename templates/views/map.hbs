@@ -17,7 +17,7 @@
           <ul class="sidebar-menu">
              <li class="treeview">
               <a href="#"><span>Filter By Country :</span> <i class="fa fa-angle-left pull-right"></i></a>
-              <ul class="treeview-menu" id="country-list">
+              <ul class="treeview-menu country-boxes" id="country-list">
               </ul>
             </li>
 
@@ -27,11 +27,11 @@
               </ul>
             </li>
 
-            <li class="treeview">
-              <a href="#"><span>Filter By Region:</span> <i class="fa fa-angle-left pull-right"></i></a>
-              <ul class="treeview-menu">
-              </ul>
-            </li>
+            <!--<li class="treeview">-->
+              <!--<a href="#"><span>Filter By Region:</span> <i class="fa fa-angle-left pull-right"></i></a>-->
+              <!--<ul class="treeview-menu">-->
+              <!--</ul>-->
+            <!--</li>-->
           </ul><!-- /.sidebar-menu -->
         </section>
         <!-- /.sidebar -->
@@ -46,11 +46,20 @@
 
         <!-- Main content -->
         <section class="content">
-        <div id="map"></div>
+
+            <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
+
+            <link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
+
+            <link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
+
+            <div id="map" style="height:1000px"></div>
+
+            <script src="/js/map-js.js"></script>
 
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
-
+	 
       <!-- Main Footer -->
       <footer class="main-footer">
       </footer>
