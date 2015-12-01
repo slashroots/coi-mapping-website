@@ -15,7 +15,7 @@
 			.populate('functionalArea country category')
 			.exec(function(err, stakeholders){				  
 				 if(err) common.handleDBError(err, res); 
-				 res.json(stakeholders);    
+				 res.json({"stakeholders": stakeholders});    
     		});
 		};
 	/**

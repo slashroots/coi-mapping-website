@@ -20,9 +20,13 @@ var iconShade = "http://www.argentmac.com/devca/icons/Aliz.jpg";
 
 var preContent = "";
 
-function getEverything () {
+function getEverything (search) {
 	
-	//alert("Getting everything!");
+	var ajax_url = "placeholder";
+	
+	if (search == '') ajax_url = "http://localhost:3000/stakeholders";
+	
+	else ajax_url = "http://localhost:3000/search?q=" + search;
 
 	var countries = [];
 
@@ -30,59 +34,31 @@ function getEverything () {
 
 		type: "GET",
 
-		url: "http://localhost:3000/stakeholders",
+		url: ajax_url,
 
 		dataType : "json",
 
 		success : function (data) {
 
-			for(i = 0;i<data.length;i++){
+			for(i = 0;i<data.stakeholders.length;i++){
 
-				var size = 0;
+				country = data.stakeholders[i].country.name;
 
-				country = data[i].country.name;
+				name = data.stakeholders[i].name;
 
-				name = data[i].name;
+				type = data.stakeholders[i].category.name;
 
-				type = data[i].category.name;
+				url = data.stakeholders[i].url;
 
-				url = data[i].url;
+				functional_area = data.stakeholders[i].functionalArea.name;
 
-				//size = data.results[i].size;
+				latitude = data.stakeholders[i].country.latitude;
 
-				/*for (j = 0;j<data.results[i].initiatives.length;j++) {
+				longitude = data.stakeholders[i].country.longitude;
 
-				 switch (data.results[i].initiatives[j].pivot.type) {
-
-				 case 'Leader' : size = size + 3;
-
-				 break;
-
-				 case 'Partner' : size = size + 2;
-
-				 break;
-
-				 case 'Sponsor' : size = size + 1;
-
-				 break;
-
-				 }
-
-				 }*/
-
-				functional_area = data[i].functionalArea.name;
-
-				latitude = data[i].country.latitude;
-
-				longitude = data[i].country.longitude;
-
-				id = data[i].id;
-
-				//alert(countries[i]);
+				id = data.stakeholders[i].id;
 
 				plotCountry(id, country, name, type, url, functional_area, size, latitude, longitude);
-
-				//alert(country);
 
 			}
 
@@ -96,37 +72,26 @@ function getEverything () {
 
 function plotCountry (id, country, name, type, url, functional_area, size, latitude, longitude) {
 
+	iconShade = "http://www.clker.com/cliparts/k/Q/V/D/z/u/map-marker-small-md.png";
 
-	//for(i = 0;i<5;i++){
+	if (type == "Bank/Investment/Consulting") iconShade = "http://www.clker.com/cliparts/k/Q/V/D/z/u/map-marker-small-md.png";
 
-	//alert("Country : " + country + ", Latitude :" + latitude + ", Longitude :" + longitude);
+	if (type == "Government") iconShade = "http://www.clker.com/cliparts/k/Q/V/D/z/u/map-marker-small-md.png";
 
-	//}
+	if (type == "Education/Research") iconShade = "http://www.clker.com/cliparts/k/Q/V/D/z/u/map-marker-small-md.png";
 
-	//var marker = L.marker([latitude, longitude]).addTo(map);
+	if (type == "NGO") iconShade = "http://www.clker.com/cliparts/k/Q/V/D/z/u/map-marker-small-md.png";
 
-	iconShade = "http://www.argentmac.com/devca/icons/Aliz.png";
+	if (type == "ICT Services") iconShade = "http://www.clker.com/cliparts/k/Q/V/D/z/u/map-marker-small-md.png";
 
-	if (type == "Bank/Investment/Consulting") iconShade = "http://www.argentmac.com/devca/icons/Emerald.png";
+	if (type == "MNO/Telecommunications") iconShade = "http://www.clker.com/cliparts/k/Q/V/D/z/u/map-marker-small-md.png";
 
-	if (type == "Government") iconShade = "http://www.argentmac.com/devca/icons/cloud.png";
-
-	if (type == "Education/Research") iconShade = "http://www.argentmac.com/devca/icons/wetasphalt.png";
-
-	if (type == "NGO") iconShade = "http://www.argentmac.com/devca/icons/sunflower.png";
-
-	if (type == "ICT Services") iconShade = "http://www.argentmac.com/devca/icons/Silver.png";
-
-	if (type == "MNO/Telecommunications") iconShade = "http://www.argentmac.com/devca/icons/Pongrante.png";
-
-	if (type == "Media/Marketing") iconShade = "http://www.argentmac.com/devca/icons/Ametheyst.png";
-
-
+	if (type == "Media/Marketing") iconShade = "http://www.clker.com/cliparts/k/Q/V/D/z/u/map-marker-small-md.png";
 
 	switch (country) {
 
 		case "Jamaica" : marker = L.marker(new L.LatLng(latitude, longitude), {
-			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})
+			
 			//title: title
 		});
 
@@ -172,10 +137,10 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 			break;
 
 		case "Barbados" : marker = L.marker(new L.LatLng(latitude, longitude), {
-			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})           								//title: title
+			            								//title: title
 		});
 
-//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
 			barbadosPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
 
@@ -218,9 +183,9 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 			break;
 
 		case "Bahamas" : marker = L.marker(new L.LatLng(latitude, longitude), {
-			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+			         										});
 
-//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
 			bahamasPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
 
@@ -262,9 +227,9 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 			break;
 
 		case "Cuba" : marker = L.marker(new L.LatLng(latitude, longitude), {
-			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+			         										});
 
-//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
 			cubaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
 
@@ -307,9 +272,9 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 			break;
 
 		case "Haiti" : marker = L.marker(new L.LatLng(latitude, longitude), {
-			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+			         										});
 
-//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
 			haitiPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
 
@@ -351,9 +316,9 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 			break;
 
 		case "Anguilla" : marker = L.marker(new L.LatLng(latitude, longitude), {
-			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+			         										});
 
-//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
 			anguillaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
 
@@ -395,9 +360,9 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 			break;
 
 		case "Grenada" : marker = L.marker(new L.LatLng(latitude, longitude), {
-			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+			         										});
 
-//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
 			grenadaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
 
@@ -439,9 +404,9 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 			break;
 
 		case "Montserrat" : marker = L.marker(new L.LatLng(latitude, longitude), {
-			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+			         										});
 
-//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
 			montserratPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
 
@@ -483,9 +448,9 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 			break;
 
 		case "Saint Lucia" : marker = L.marker(new L.LatLng(latitude, longitude), {
-			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+			         										});
 
-//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
 			saintluciaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
 
@@ -527,9 +492,9 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 			break;
 
 		case "Saint Vincent" : marker = L.marker(new L.LatLng(latitude, longitude), {
-			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+			         										});
 
-//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
 			saintvincentPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
 
@@ -571,9 +536,9 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 			break;
 
 		case "Dominica" : marker = L.marker(new L.LatLng(latitude, longitude), {
-			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+			         										});
 
-//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
 			dominicaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
 
@@ -615,9 +580,9 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 			break;
 
 		case "Antigua and Barbuda" : marker = L.marker(new L.LatLng(latitude, longitude), {
-			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+			         										});
 
-//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
 			antiguaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
 
@@ -659,9 +624,9 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 			break;
 
 		case "Trinidad and Tobago" : marker = L.marker(new L.LatLng(latitude, longitude), {
-			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+			         										});
 
-//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
 			trinidadPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
 
@@ -703,9 +668,9 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 			break;
 
 		case "Saint Kitts" : marker = L.marker(new L.LatLng(latitude, longitude), {
-			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+			         										});
 
-//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
 			saintkittsPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
 
@@ -747,9 +712,9 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 			break;
 
 		case "Belize" : marker = L.marker(new L.LatLng(latitude, longitude), {
-			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+			         										});
 
-//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
 			belizePopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
 
@@ -791,9 +756,9 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 			break;
 
 		case "Guyana" : marker = L.marker(new L.LatLng(latitude, longitude), {
-			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+			         										});
 
-//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
 			guyanaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
 
@@ -835,9 +800,9 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 			break;
 
 		case "Suriname" : marker = L.marker(new L.LatLng(latitude, longitude), {
-			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+			         										});
 
-//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
 			surinamePopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
 
@@ -879,9 +844,9 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 			break;
 
 		case "Grenada" : marker = L.marker(new L.LatLng(latitude, longitude), {
-			icon:	new L.NumberedDivIcon({number: size, iconUrl : iconShade})        										});
+			         										});
 
-//marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
 			grenadaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
 
@@ -943,6 +908,6 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 
 	//var markers = new L.MarkerClusterGroup();
 
-
+putLayersOnMap();
 
 }
