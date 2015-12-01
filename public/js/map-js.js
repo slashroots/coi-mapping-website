@@ -5,7 +5,8 @@ $.ajax({
 
 	type: "GET",
 
-	url: encodeURI("http://localhost:3000/countries"),
+	//url: encodeURI("http://localhost:3000/countries"),
+	url: "/countries",
 
 	dataType: "json",
 

@@ -30,7 +30,9 @@ function getEverything () {
 
 		type: "GET",
 
-		url: "http://localhost:3000/stakeholders",
+		//url: "http://localhost:3000/stakeholders",
+
+		url: "/stakeholders",
 
 		dataType : "json",
 
