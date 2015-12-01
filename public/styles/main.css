@@ -58,11 +58,10 @@ body{
 }
 
 .call-to-action{
-	background-image: url(/images/banner.png);
+	background-image: url(/images/banners.png);
 	background-size: cover;
 	height: 475px; 
-	width:100%; 
-
+	width:100%;
 }
 
 .inner-content{
@@ -75,12 +74,14 @@ body{
 	font-weight: 300;
 	font-size: 48px;
 	line-height: 50px;
+	text-shadow: 1px 0.5px #CCCCCC;
 }
 
 .inner-content > p{
 	font-size: 18px;
 	line-height: 28px;
 	font-weight: normal;
+	text-shadow: 1px 0.5px #CCCCCC;
 }
 
 .inner-content > .btn{
@@ -93,10 +94,10 @@ body{
 	width: 400px;
 }
 
-.share-btns{
-	background-color: red;
-	margin: 40px 0px 40px 0px;
-}
+/*.share-btns{*/
+	/*background-color: red;*/
+	/*margin: 40px 0px 40px 0px;*/
+/*}*/
 
 .share-container{
 	margin: 40px 0px 40px 0px;
