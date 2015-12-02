@@ -601,6 +601,15 @@ function infoSlideDown (element) {
 
 }
 
+var options = {
+	callback: handleSearchInput,
+	wait: 750,
+	highlight: true,
+	captureLength: 2
+}
+
+$("#search-box").typeWatch( options );
+
 document.getElementById('search-box').onkeypress = function(e){
 	if (!e) e = window.event;
 	var keyCode = e.keyCode || e.which;
