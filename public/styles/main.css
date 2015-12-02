@@ -58,7 +58,7 @@ body{
 }
 
 .call-to-action{
-	background-image: url(/images/banners.png);
+	background-image: url(/images/banner.png);
 	background-size: cover;
 	height: 475px; 
 	width:100%;
@@ -68,7 +68,7 @@ body{
 	background-color: rgba(255, 255, 255, 0.6);
 	height: 475px; 
 	width:100%; 
-	padding-top: 120px;
+	padding-top: 100px;
 }
 .inner-content > h2{
 	font-weight: 300;
@@ -161,7 +161,8 @@ body{
 }
 
 .logos img:nth-child(1){
-	margin-left: 10px;
+	margin-left: 30px;
+	margin-top: 15px;
 }
 .logos img:nth-child(3){
 	margin-top: 30px;
@@ -172,7 +173,7 @@ body{
 }
 
 .logos img:nth-child(5){
-	margin-top: -15px;
+	margin-top: 15px;
 }
 
 /**
