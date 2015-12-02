@@ -24,9 +24,9 @@ function getEverything (search) {
 	
 	var ajax_url = "placeholder";
 	
-	if (search == '') ajax_url = "http://localhost:3000/stakeholders";
+	if (search == '') ajax_url = "/stakeholders";
 	
-	else ajax_url = "http://localhost:3000/search?q=" + search;
+	else ajax_url = "/search?q=" + search;
 
 	var countries = [];
 
