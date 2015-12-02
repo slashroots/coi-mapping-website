@@ -628,6 +628,21 @@ function resetSearchBox () {
 	
 }
 
+function resetCountryFilters () {
+	
+	$(".country-boxes").each(function(){
+		
+		if (!$(this).prop("checked")) {
+			
+			if ($(this).prop("id") != 'country-list') map.addLayer(window[$(this).prop("id")]);
+
+			$(this).prop('checked', true);
+			
+		}
+	});
+
+}
+
 function handleSearchInput () {
 
 	map.removeLayer(jamaica);
