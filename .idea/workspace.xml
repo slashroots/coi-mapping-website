@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68d5f6b6-15a5-4954-bc44-8e4f574007c0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/map-ctrl.js" afterPath="$PROJECT_DIR$/public/js/map-ctrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/views/map.hbs" afterPath="$PROJECT_DIR$/templates/views/map.hbs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="coi-mapping.iws" />
@@ -24,10 +24,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="map-ctrl.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="map-ctrl.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/map-ctrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.1578946">
+            <state vertical-scroll-proportion="0.0">
               <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
               <folding>
                 <marker date="1449016913253" expanded="true" signature="2553:2566" placeholder="..." />
@@ -75,11 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="map.hbs" pinned="false" current-in-tab="false">
+      <file leaf-file-name="map.hbs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/views/map.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.3333334">
-              <caret line="3" column="34" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.31079137">
+              <caret line="25" column="64" selection-start-line="25" selection-start-column="64" selection-end-line="25" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -110,8 +110,8 @@
         <option value="$PROJECT_DIR$/public/styles/main.css" />
         <option value="$PROJECT_DIR$/templates/views/index.hbs" />
         <option value="$PROJECT_DIR$/templates/views/partials/top.hbs" />
-        <option value="$PROJECT_DIR$/templates/views/map.hbs" />
         <option value="$PROJECT_DIR$/public/js/map-ctrl.js" />
+        <option value="$PROJECT_DIR$/templates/views/map.hbs" />
       </list>
     </option>
   </component>
@@ -450,17 +450,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/views/map.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3333334">
-          <caret line="3" column="34" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/map-ctrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.1578946">
+        <state vertical-scroll-proportion="0.0">
           <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
           <folding>
             <marker date="1449016913253" expanded="true" signature="2553:2566" placeholder="..." />
@@ -482,6 +474,14 @@
             <marker date="1449016913253" expanded="true" signature="25328:25341" placeholder="..." />
             <marker date="1449016913253" expanded="true" signature="26746:26759" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/views/map.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31079137">
+          <caret line="25" column="64" selection-start-line="25" selection-start-column="64" selection-end-line="25" selection-end-column="64" />
+          <folding />
         </state>
       </provider>
     </entry>
