@@ -64,24 +64,33 @@ body{
 	width:100%;
 }
 
-.inner-content{
+.image-filter{
 	background-color: rgba(255, 255, 255, 0.6);
-	height: 475px; 
-	width:100%; 
-	padding-top: 100px;
+	height: 475px;
+	width: 100%;
+}
+.inner-content{
+	/*background-color: rgba(255, 255, 255, 0.6);*/
+	/*height: 475px;*/
+	/*width:100%; */
+	margin : 0 auto;
+	width: 800px;
+	padding-top: 60px;
 }
 .inner-content > h2{
 	font-weight: 300;
 	font-size: 48px;
 	line-height: 50px;
-	text-shadow: 1px 0.5px #CCCCCC;
+	text-shadow: 0.5px 0.5px #CCCCCC;
 }
 
 .inner-content > p{
-	font-size: 18px;
-	line-height: 28px;
+	font-size: 22px;
+	line-height: 32px;
 	font-weight: normal;
 	text-shadow: 1px 0.5px #CCCCCC;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
 .inner-content > .btn{
