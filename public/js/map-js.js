@@ -620,6 +620,14 @@ document.getElementById('search-box').onkeypress = function(e){
 	}
 }
 
+function resetSearchBox () {
+
+	document.getElementById('search-box').value = '';
+	
+	handleSearchInput();
+	
+}
+
 function handleSearchInput () {
 
 	map.removeLayer(jamaica);
