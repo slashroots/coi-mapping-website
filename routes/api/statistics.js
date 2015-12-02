@@ -20,18 +20,13 @@
 				if(err) common.handleDBError(err, res); 
 
 				Country.model.find().where('state', 'published').count().exec(function(err, countries){
-						if(err) common.handleDBError(err, res); 
-
-					Industry.model.find().where('state', 'published').count().exec(function(err, industries){
-						if(err) common.handleDBError(err, res); 
+						if(err) common.handleDBError(err, res); 					
 
 						var stats = { 'stakeholders' : stakeholders,
-									  'industries' : industries,
 									  'initiatives' : initiatives,
-									  'industries' : industries
+									  'countries' : countries
 									};
 						res.json(stats);
-					});
 				});
 			});
 		});
