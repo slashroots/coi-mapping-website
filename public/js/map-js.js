@@ -649,13 +649,16 @@ var options = {
 $("#search-box").typeWatch( options );
 
 document.getElementById('search-box').onkeypress = function(e){
-	if (!e) e = window.event;
+	/*if (!e) e = window.event;
 	var keyCode = e.keyCode || e.which;
 	if (keyCode == '13'){
 		// Enter pressed
 		handleSearchInput();
 		return false;
-	}
+	}*/
+	
+	return false;
+	
 }
 
 function resetSearchBox () {
