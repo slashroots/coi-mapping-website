@@ -1,0 +1,119 @@
+<div class="modal fade" id="initiative" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Submit an initiative</h4>
+			</div>
+			<div class="modal-body">				
+				<form>									
+					<div class="form-group">
+						<label for="name">Initiative Name</label>
+						<input type="text" class="form-control" id="name_initiative" placeholder="CARIB Coding Challenge">
+					</div>
+					
+					<div class="form-group">
+						<label for="description">Description <span>(400 characters or less)</span></label>
+						<textarea class="form-control" rows="4" id="description_initiative" maxlength="400"></textarea>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="organizer">Organizer</label>
+								<input class="form-control" id="organizer" placeholder="Carib App Dev Consortium">
+							</div>							
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<div class="btn-wrapper">
+									<button class="btn btn-default" id="add-organizer">Add</button>
+								</div>								
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-8">
+							<div class="form-group">
+								<table class="table table-striped" id="organizers">
+									<thead>
+									<td>Organizer Name</td>
+									<td></td>
+									</thead>
+								</table>
+							</div>
+						</div>
+					</div>
+					
+					
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="category">Category</label>
+								<select class="form-control" id="category_initiative">
+									<option val="" selected="selected">Select Category</option>
+									{{#each data.cats_initiatives}}
+										<option value="{{id}}">{{name}}</option>
+									{{/each}}
+								</select>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="country">Country</label>
+								<select class="form-control" id="country_initiative">
+									<option val="" selected="selected">Select Country</option>
+									{{#each data.countries}}
+										<option value="{{id}}">{{name}}</option>
+									{{/each}}
+								</select>
+							</div>
+						</div>
+					</div>					
+					
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="url">Initiative's URL</label>
+								<input type="text" class="form-control" id="url_initiative" placeholder="www.mediumdevinc.com">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="year">Year</label>
+								<select class="form-control" id="year">
+									<option val="" selected="selected">Select Year</option>
+									<option value="2016">2017</option>
+									<option value="2016">2016</option>
+									<option value="2015">2015</option>
+									<option value="2014">2014</option>
+									<option value="2013">2013</option>
+									<option value="2012">2012</option>
+									<option value="2011">2011</option>
+									<option value="2010">2010</option>
+									<option value="2009">2009</option>
+									<option value="2009">2008</option>
+									<option value="2009">2007</option>
+									<option value="2009">2006</option>
+									<option value="2009">2005</option>
+									<option value="2009">2004</option>
+									<option value="2009">2003</option>
+									<option value="2009">2002</option>
+									<option value="2009">2001</option>
+									<option value="2009">2000</option>								
+								</select>
+							</div>
+						</div>
+					</div>	
+					
+				</form>		
+				
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal" id="close">Cancel</button>
+				<button type="button" class="btn btn-primary" id="submit_initiative">Submit</button>
+			</div>
+		</div>
+	</div>
+</div>

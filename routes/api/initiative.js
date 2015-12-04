@@ -10,11 +10,25 @@
 	 */
 	exports.index = function(req, res){
 		Initiative.model
-			.find()
+			.find('state', 'published')
 			.populate('category')
 			.exec(function(err, initiatives){
 			 	if(err) common.handleDBError(err, res);
 			 	res.json(initiatives);
 			});
+	};
+	/**
+	 * Creates an initiative from the request body.
+	 * @param req
+	 * @param res
+	 */
+	exports.create = function(req, res){
+		Initiative.model(req.body).save(function(err){
+			if(err){
+				common.handleDBError(err, res);
+			}else{
+				common.handleDBSuccess({'http_code': 200, 'name': 'Initiaitve'}, res);
+			}
+		});
 	};
 })();

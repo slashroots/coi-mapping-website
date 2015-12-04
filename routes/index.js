@@ -34,5 +34,10 @@ exports = module.exports = function(app) {
 	app.get('/search', routes.api.search.search);
 
 	app.get('/stats', routes.api.stats.index);
+	
+	app.post('/initiatives', routes.api.initiative.create);
+	app.get('/initiatives', routes.api.initiative.index);
+	
+	app.post('/organizers', routes.api.organizer.create);
 
 };
