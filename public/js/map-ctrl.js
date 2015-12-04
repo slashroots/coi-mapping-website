@@ -890,19 +890,19 @@ marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website 
 
 	}
 
-	if (type == "Bank/Investment/Consulting") bankArray[bankArray.length] = marker;
+	if (type === "Bank\\Investment\\Consulting") bankArray[bankArray.length] = marker;
 
-	if (type == "Government") govArray[govArray.length] = marker;
+	if (type === "Government") govArray[govArray.length] = marker;
 
-	if (type == "Education/Research") eduArray[eduArray.length] = marker;
+	if (type === "Education\\Research") eduArray[eduArray.length] = marker;
 
-	if (type == "NGO") ngoArray[ngoArray.length] = marker;
+	if (type === "NGO") ngoArray[ngoArray.length] = marker;
 
-	if (type == "ICT Services") ictArray[ictArray.length] = marker;
+	if (type === "ICT Services") ictArray[ictArray.length] = marker;
 
-	if (type == "MNO/Telecommunications") mnoArray[mnoArray.length] = marker;
+	if (type === "MNO\\Telecommunications") mnoArray[mnoArray.length] = marker;
 
-	if (type == "Media/Marketing") mediaArray[mediaArray.length] = marker;
+	if (type === "Media\\Marketing") mediaArray[mediaArray.length] = marker;
 
 	//
 

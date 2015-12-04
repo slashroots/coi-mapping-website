@@ -549,8 +549,6 @@ $(document).ready(function(){
 	});
 
 	$(".country-boxes").click(function (event) {
-		
-		//alert("Country box click");
 
 		if (!$("#" + event.target.id).prop("checked")) map.removeLayer(window[event.target.id]);
 
@@ -560,13 +558,49 @@ $(document).ready(function(){
 
 	$(".type-boxes").click(function (event) {
 
+		var typeArrayName = null;
+
+		switch (event.target.id) {
+
+			case 'Bank\\Investment\\Consulting' : typeArrayName = 'bankArray';
+
+				break;
+
+			case 'Education\\Research' : typeArrayName = 'eduArray';
+
+				break;
+
+			case 'ICT Vendor' : typeArrayName = 'ictArray';
+
+				break;
+
+			case 'Media\\Marketing' : typeArrayName = 'mediaArray';
+
+				break;
+
+			case 'MNO\\Telecommunications' : typeArrayName = 'mnoArray';
+
+				break;
+
+			case 'NGO' : typeArrayName = 'ngoArray';
+
+				break;
+
+		}
+
 		if (!$("#" + event.target.id).prop("checked")) {
 
-			for (var x = 0;x < (window[event.target.id]).length;x++) {
+			for (var x = 0;x < (window[typeArrayName]).length;x++) {
 
-				jamaica.removeLayer((window[event.target.id])[x]);
+				removeAllCountries();
 
-				//cuba.removeLayer((window[event.target.id])[x]);
+				belize.removeLayer((window[typeArrayName])[x]);
+
+				jamaica.removeLayer((window[typeArrayName])[x]);
+
+				cuba.removeLayer((window[typeArrayName])[x]);
+
+				putLayersOnMap();
 
 			}
 
@@ -574,11 +608,15 @@ $(document).ready(function(){
 
 		else {
 
-			for (var x = 0;x < (window[event.target.id]).length;x++) {
+			for (var x = 0;x < (window[typeArrayName]).length;x++) {
 
-				jamaica.addLayer((window[event.target.id])[x]);
+				removeAllCountries();
 
-				//cuba.addLayer((window[event.target.id])[x]);
+				jamaica.addLayer((window[typeArrayName])[x]);
+
+				belize.addLayer((window[typeArrayName])[x]);
+
+				putLayersOnMap();
 
 			}
 
@@ -625,10 +663,6 @@ function resetSearchBox () {
 	document.getElementById('search-box').value = '';
 	
 	handleSearchInput();
-	
-}
-
-function resetCountryFilters () {
 	
 	$(".country-boxes").each(function(){
 		
@@ -688,3 +722,22 @@ function putLayersOnMap () {
 
 }
 
+function removeAllCountries () {
+
+	map.removeLayer(jamaica);
+
+	map.removeLayer(bahamas);
+
+	map.removeLayer(belize);
+
+	map.removeLayer(barbados);
+
+	map.removeLayer(cuba);map.removeLayer(anguilla);map.removeLayer(haiti);map.removeLayer(grenada);
+
+	map.removeLayer(montserrat);map.removeLayer(saintlucia);map.removeLayer(saintvincent);map.removeLayer(trinidad);
+
+	map.removeLayer(dominica);map.removeLayer(antigua);map.removeLayer(saintkitts);map.removeLayer(belize);
+
+	map.removeLayer(guyana);map.removeLayer(suriname);map.removeLayer(grenada);
+	
+}
