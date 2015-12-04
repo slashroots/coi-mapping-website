@@ -54,7 +54,7 @@
                     <a href="/" class="btn btn-default btn-lg action-btns">Email Us</a>
                 </div> --}}
                 <div class="col-md-6">
-                  <a href="/" class="btn btn-default btn-lg action-btns">Submit an Initiative</a>
+                  <a href="#initiative" data-toggle="modal" data-target="#initiative" class="btn btn-default btn-lg action-btns">Submit an Initiative</a>
                 </div>
               </div>
             </div>
@@ -63,7 +63,7 @@
             <div class="row share-container">
               <div class="col-md-4"></div>
               <div class="col-md-4">
-                <div class="row share-icons text-center">
+                <div class="row share-icons text-center">					
                 <h4>Share</h4>
                     <img src="/images/logos/social/twitter.png">
                     <img src="/images/logos/social/facebook.png">
@@ -108,8 +108,7 @@
               help make the map a truly comprehensive regional view of the Caribbean Tech Ecosystem.</p>
             </div>
 
-           
-              <div class="row logos">
+	           <div class="row logos">
                 <img src="/images/logos/bcsi.png">
 				<img src="/images/logos/tmil.png">
 			     <img src="/images/logos/startup-sc.png">
@@ -135,5 +134,7 @@
         </div><!-- /.container -->
       </footer>
     </div><!-- ./wrapper -->
-    {{> form}}
+    {{> reg_form_stakeholder}}
+	{{> reg_form_initiative}}
     {{> dialog_success}}
+	{{> dialog_success_init}}
