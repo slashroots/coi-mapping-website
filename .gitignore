@@ -31,6 +31,4 @@ node_modules
 .DS_Store
 
 # Webstorm IDE
-.idea
-*.iml
-*.xml
+.idea/

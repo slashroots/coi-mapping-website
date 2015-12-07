@@ -13,21 +13,31 @@
 	 */
 	exports.index = function(req, res){
 		var stats = [];
-		Stakeholder.model.find().where('state','published').count().exec(function(err, stakeholders){
-			if(err) common.handleDBError(err, res); 
+		/**
+		 * Get all stakeholders and count distinct countries
+		 */
+		Stakeholder.model.find()
+						.where('state','published')
+						.distinct('country')
+						.exec(function(err, countries){
+							if(err) common.handleDBError(err, res); 
 
-			Initiative.model.find().where('state','published').count().exec(function(err, initiatives){
-				if(err) common.handleDBError(err, res); 
-
-				Country.model.find().where('state', 'published').count().exec(function(err, countries){
-						if(err) common.handleDBError(err, res); 					
-
-						var stats = { 'stakeholders' : stakeholders,
-									  'initiatives' : initiatives,
-									  'countries' : countries
-									};
-						res.json(stats);
-				});
+						Initiative.model.find()
+							.where('state','published')
+							.count()
+							.exec(function(err, initiatives){
+								if(err) common.handleDBError(err, res); 
+			
+								Stakeholder.model.find()
+												.where('state','published')
+												.count()
+												.exec(function(err, stakeholders){
+													var stats = { 'stakeholders' : stakeholders,
+														 			'initiatives' : initiatives,
+														 			'countries' : countries
+																};
+																res.json(stats);
+				});				
 			});
 		});
 	};
