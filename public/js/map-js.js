@@ -539,8 +539,6 @@ sidebar.show();*/
 
 //
 
-
-
 $(document).ready(function(){
 
 	$( ".accordion" ).accordion({
@@ -560,33 +558,91 @@ $(document).ready(function(){
 
 	$(".type-boxes").click(function (event) {
 
-		if (!$("#" + event.target.id).prop("checked")) {
+			switch (event.target.id) {
 
-			for (var x = 0;x < (window[event.target.id]).length;x++) {
+				case 'Bank\\Investment\\Consulting' : bankToggle = !bankToggle;
 
-				jamaica.removeLayer((window[event.target.id])[x]);
+					break;
 
-				//cuba.removeLayer((window[event.target.id])[x]);
+				case 'Education\\Research' : eduToggle = !eduToggle;
+
+					break;
+
+				case 'ICT Vendor' : ictToggle = !ictToggle;
+
+				break;
+
+				case 'ICT Services' : ictToggle2 = !ictToggle2;
+
+					break;
+
+				case 'Government' : govToggle = !govToggle;
+
+					break;
+
+				case 'Media\\Marketing' : mediaToggle = !mediaToggle;
+
+					break;
+
+				case 'MNO\\Telecommunications' : mnoToggle = !mnoToggle;
+
+					break;
+
+				case 'NGO' : ngoToggle = !ngoToggle;
+
+					break;
 
 			}
-
-		}
-
-		else {
-
-			for (var x = 0;x < (window[event.target.id]).length;x++) {
-
-				jamaica.addLayer((window[event.target.id])[x]);
-
-				//cuba.addLayer((window[event.target.id])[x]);
-
-			}
-
-		}
+		
+		handleSearchInput();
 
 	});
 
 });
+
+
+function shouldTypeBeDrawn (marker_type) { //this function will return true if a marker should be drawn on the map based on its type or false otherwise
+
+	switch (marker_type) {
+
+		case 'Bank\\Investment\\Consulting' : return bankToggle;
+
+			break;
+
+		case 'Education\\Research' : return eduToggle;
+
+			break;
+
+		case 'ICT Vendor' :  return ictToggle;
+
+			break;
+		
+		case 'ICT Services' : return ictToggle2;
+
+		break;
+
+		case 'Government' : return govToggle;
+
+			break;
+
+		case 'Media\\Marketing' : return mediaToggle;
+
+			break;
+
+		case 'MNO\\Telecommunications' : return mnoToggle;
+
+			break;
+
+		case 'NGO' : return ngoToggle;
+
+			break;
+
+	}
+	
+	return true;
+	
+}
+
 
 
 /*for (var x = 0;x < eduArray.length;x++) {
@@ -641,6 +697,21 @@ function resetCountryFilters () {
 
 			$(this).prop('checked', true);
 			
+		}
+	});
+
+}
+
+function resetTypeFilters () {
+
+	bankToggle = eduToggle = ictToggle = ictToggle2 = govToggle = mediaToggle = mnoToggle = ngoToggle = true;
+
+	$(".type-boxes").each(function(){
+
+		if (!$(this).prop("checked")) {
+
+			$(this).prop('checked', true);
+
 		}
 	});
 
