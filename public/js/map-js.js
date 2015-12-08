@@ -702,6 +702,21 @@ function resetCountryFilters () {
 
 }
 
+function resetTypeFilters () {
+
+	bankToggle = eduToggle = ictToggle = ictToggle2 = govToggle = mediaToggle = mnoToggle = ngoToggle = true;
+
+	$(".type-boxes").each(function(){
+
+		if (!$(this).prop("checked")) {
+
+			$(this).prop('checked', true);
+
+		}
+	});
+
+}
+
 function handleSearchInput () {
 
 	map.removeLayer(jamaica);
