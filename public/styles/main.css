@@ -255,3 +255,9 @@ ul#organizer-list > a{
 	border-top:none !important;
 	
 }
+
+.filterReset {
+
+	cursor: pointer;
+	
+}
