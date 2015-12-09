@@ -243,3 +243,9 @@ ul#organizer-list{
 ul#organizer-list > a{
 	padding-left: 40px;
 }
+
+.organization-content {
+	
+	word-wrap:break-word;
+	
+}

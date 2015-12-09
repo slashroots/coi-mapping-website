@@ -97,13 +97,13 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 			//title: title
 		});
 
-			marker.bindPopup("Name : " + name + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+			marker.bindPopup("Name : " + name + "Type : " + type + "<br>Website : " + url + "<br>Functional Area : " + functional_area);
 
-			if (shouldTypeBeDrawn(type)) jamaicanPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+			if (shouldTypeBeDrawn(type)) jamaicanPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 			marker.on('click', function () {
 
-				preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
+				preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br>Type : " + type + "<br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><b>Initiatives</b><br>";
 
 				$.ajax({
 
@@ -144,7 +144,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 
 marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
-			if (shouldTypeBeDrawn(type)) barbadosPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+			if (shouldTypeBeDrawn(type)) barbadosPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 			marker.on('click', function () {
 
@@ -189,7 +189,7 @@ marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website 
 
 marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
-			if (shouldTypeBeDrawn(type)) bahamasPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+			if (shouldTypeBeDrawn(type)) bahamasPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 			marker.on('click', function () {
 
@@ -233,7 +233,7 @@ marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website 
 
 marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
-			if (shouldTypeBeDrawn(type)) cubaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+			if (shouldTypeBeDrawn(type)) cubaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 			marker.on('click', function () {
 
@@ -278,7 +278,7 @@ marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website 
 
 marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
-			if (shouldTypeBeDrawn(type)) haitiPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+			if (shouldTypeBeDrawn(type)) haitiPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 			marker.on('click', function () {
 
@@ -322,7 +322,7 @@ marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website 
 
 marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
-			if (shouldTypeBeDrawn(type)) anguillaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+			if (shouldTypeBeDrawn(type)) anguillaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 			marker.on('click', function () {
 
@@ -366,7 +366,7 @@ marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website 
 
 marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
-			if (shouldTypeBeDrawn(type)) grenadaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+			if (shouldTypeBeDrawn(type)) grenadaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 			marker.on('click', function () {
 
@@ -410,7 +410,7 @@ marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website 
 
 marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
-			if (shouldTypeBeDrawn(type)) montserratPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+			if (shouldTypeBeDrawn(type)) montserratPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 			marker.on('click', function () {
 
@@ -454,7 +454,7 @@ marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website 
 
 marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
-			if (shouldTypeBeDrawn(type)) saintluciaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+			if (shouldTypeBeDrawn(type)) saintluciaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 			marker.on('click', function () {
 
@@ -498,7 +498,7 @@ marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website 
 
 marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
-			if (shouldTypeBeDrawn(type)) saintvincentPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+			if (shouldTypeBeDrawn(type)) saintvincentPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 			marker.on('click', function () {
 
@@ -542,7 +542,7 @@ marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website 
 
 marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
-			if (shouldTypeBeDrawn(type)) dominicaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+			if (shouldTypeBeDrawn(type)) dominicaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 			marker.on('click', function () {
 
@@ -586,7 +586,7 @@ marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website 
 
 marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
-			if (shouldTypeBeDrawn(type)) antiguaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+			if (shouldTypeBeDrawn(type)) antiguaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 			marker.on('click', function () {
 
@@ -630,7 +630,7 @@ marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website 
 
 marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
-			if (shouldTypeBeDrawn(type)) trinidadPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+			if (shouldTypeBeDrawn(type)) trinidadPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 			marker.on('click', function () {
 
@@ -674,7 +674,7 @@ marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website 
 
 marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
-			if (shouldTypeBeDrawn(type)) saintkittsPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+			if (shouldTypeBeDrawn(type)) saintkittsPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 			marker.on('click', function () {
 
@@ -718,7 +718,7 @@ marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website 
 
 marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
-			if (shouldTypeBeDrawn(type)) belizePopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+			if (shouldTypeBeDrawn(type)) belizePopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 			marker.on('click', function () {
 
@@ -762,7 +762,7 @@ marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website 
 
 marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
-			if (shouldTypeBeDrawn(type)) guyanaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+			if (shouldTypeBeDrawn(type)) guyanaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 			marker.on('click', function () {
 
@@ -806,7 +806,7 @@ marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website 
 
 marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
-			if (shouldTypeBeDrawn(type)) surinamePopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+			if (shouldTypeBeDrawn(type)) surinamePopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 			marker.on('click', function () {
 
@@ -850,7 +850,7 @@ marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website 
 
 marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
 
-			if (shouldTypeBeDrawn(type)) grenadaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><b>" + name + "</b></a><p style='display:none;' class='organization-content'>" + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "</p></div><br>";
+			if (shouldTypeBeDrawn(type)) grenadaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 			marker.on('click', function () {
 

@@ -37,11 +37,11 @@ function geoCode (countryname) {
 
 var jamaica, barbados, bahamas, cuba, haiti, anguilla, grenada, montserrat, saintlucia, saintvincent, trinidad, dominica, antigua, saintkitts, belize, guyana, suriname = null;
 
-var jamaicanPopupText = barbadosPopupText = bahamasPopupText = cubaPopupText = antiguaPopupText = haitiPopupText = anguillaPopupText = grenadaPopupText = montserratPopupText = saintluciaPopupText = saintvincentPopupText = trinidadPopupText = dominicaPopupText = saintkittsPopupText = belizePopupText = guyanaPopupText = surinamePopupText = grenadaPopupText = "<b>Organizations</b><br><br>";
+var jamaicanPopupText = barbadosPopupText = bahamasPopupText = cubaPopupText = antiguaPopupText = haitiPopupText = anguillaPopupText = grenadaPopupText = montserratPopupText = saintluciaPopupText = saintvincentPopupText = trinidadPopupText = dominicaPopupText = saintkittsPopupText = belizePopupText = guyanaPopupText = surinamePopupText = grenadaPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;'>Organizations</p></b>";
 
 function loadCountries () {
 
-	jamaicanPopupText = barbadosPopupText = bahamasPopupText = cubaPopupText = antiguaPopupText = haitiPopupText = anguillaPopupText = grenadaPopupText = montserratPopupText = saintluciaPopupText = saintvincentPopupText = trinidadPopupText = dominicaPopupText = saintkittsPopupText = belizePopupText = guyanaPopupText = surinamePopupText = grenadaPopupText = "<b>Organizations</b><br><br>";
+	jamaicanPopupText = barbadosPopupText = bahamasPopupText = cubaPopupText = antiguaPopupText = haitiPopupText = anguillaPopupText = grenadaPopupText = montserratPopupText = saintluciaPopupText = saintvincentPopupText = trinidadPopupText = dominicaPopupText = saintkittsPopupText = belizePopupText = guyanaPopupText = surinamePopupText = grenadaPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;''>Organizations</p></b>";
 	
 	jamaica = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
@@ -654,6 +654,10 @@ function shouldTypeBeDrawn (marker_type) { //this function will return true if a
 function infoSlideDown (element) {
 
 	var subElement = $(element).next().slideToggle("fast");
+	
+	if(element.childNodes[0].childNodes[0].innerHTML == "+") element.childNodes[0].childNodes[0].innerHTML = '-';
+	
+	else if(element.childNodes[0].childNodes[0].innerHTML == "-") element.childNodes[0].childNodes[0].innerHTML = '+';
 
 }
 
