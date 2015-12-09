@@ -1,4 +1,4 @@
-{{> header}}
+{{> map-header}}
  <div class="wrapper">
       <!-- Left side column. contains the logo and sidebar -->
       <aside class="main-sidebar">
@@ -8,33 +8,43 @@
 
            <!-- search form (Optional) -->
           <form class="sidebar-form">
-            <input type="text" class="form-control" id="search-box" placeholder="Search..." id="q">
+            <input type="text" class="form-control" id="search-box" placeholder="Search stakeholders"
+					onkeyup="updateStats(this.value);">
           </form>
 			
           <!-- /.search form -->
-          <ul class="stats" id="stats">
-          </ul>
-	        <p style="font-size:12pt;padding-left:15px;text-decoration: underline !important;"><p class="filterReset sidebar-highlight" style="padding:10px;text-decoration: none;font-weight:bold;background-color:#3366cc;color:white;font-size:12pt;" onclick="resetSearchBox();resetCountryFilters();resetTypeFilters();">Reset Filters</p></p>
-          <!-- Sidebar Menu -->
+			<div class="stats-div">
+				<ul class="stats" id="stats">
+					<li>Countries :<span id="countries"></span></li>
+					<li>Stakeholders :<span id="stakeholders"></span></li>
+				</ul>
+			</div>      
+			
+	        
           <ul class="sidebar-menu">
-
-              <li style="margin-bottom:10px;" class="treeview">
-                  <a class="sidebar-highlight" style="font-weight:bold;background-color:#3366cc;color:white;" href="#"><span>Filter By Entity:</span> <i class="fa fa-angle-left pull-right"></i></a>
+	          <li class="treeview">
+		          <a  href="#clear" onclick="resetSearchBox();resetCountryFilters();resetTypeFilters();">
+			          <span>Clear Filters</span>			          
+		          </a>		        
+	          </li>
+			  
+              <li class="treeview">
+                  <a  href="#filterentity">
+					  <span>Filter By Entity:</span> 
+					  <i class="fa fa-angle-left pull-right"></i>
+				  </a>
                   <ul class="treeview-menu type-boxes" id="entity-list">
                   </ul>
               </li>
 			  
              <li class="treeview">
-              <a class="sidebar-highlight" style="font-weight:bold;background-color:#3366cc;color:white;" href="#"><span>Filter By Country :</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <a href="#filtercountry">
+				  <span>Filter By Country :</span> 
+				  <i class="fa fa-angle-left pull-right"></i>
+			  </a>
               <ul class="treeview-menu country-boxes" id="country-list">
               </ul>
             </li>
-
-            <!--<li class="treeview">-->
-              <!--<a href="#"><span>Filter By Region:</span> <i class="fa fa-angle-left pull-right"></i></a>-->
-              <!--<ul class="treeview-menu">-->
-              <!--</ul>-->
-            <!--</li>-->
           </ul><!-- /.sidebar-menu -->
         </section>
         <!-- /.sidebar -->

@@ -117,7 +117,7 @@ body{
 	float: left;
 	margin-right: -20px;
 }
-.share-icons > img{
+.share-icons > a > img{
 	height: 42px;
 	width: 42px;
 	margin: 0px 10px 0px 10px;
@@ -137,7 +137,7 @@ body{
 	margin-bottom: 30px;
 	line-height: 150%;
 }
-.map-desc p, ul > li{
+.map-desc p,{
 	font-size: 17px;
 	font-weight: 300;
 	text-align: left;
@@ -197,20 +197,35 @@ body{
 	padding: 10px 10px;
 }
 
-.stats > li{
+.stats > ul li{
 	text-align: left;
+	font-size: 16px;
+	font-weight: normal;
 }
 
 ul.sidebar-menu > li.treeview > a{
 	font-weight: normal;
 	font-size: 16px;
 	padding-left: 10px;
+	background-color: #3c8dbc;
+	color: #ffffff;
+	margin-bottom: 5px;
+}
+
+ul.sidebar-menu > li.treeview:hover > a{
+	background-color: #3c8dbc;
+	color: #ffffff;
 }
 
 ul.treeview-menu > li{
 	font-weight: normal;
 	font-size: 16px;
 	padding: 5px 0px 5px 10px;
+}
+
+.skin-blue-light .sidebar-menu>li.active>a{
+	color: #ffffff;
+	background-color: #3c8dbc;
 }
 
 .content{
@@ -242,6 +257,12 @@ ul#organizer-list{
 
 ul#organizer-list > a{
 	padding-left: 40px;
+}
+
+.clear-filter{
+	margin-left: 1px; 
+	margin-bottom: 10px;
+	text-align:left;	
 }
 
 .organization-content {

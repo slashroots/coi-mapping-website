@@ -1,3 +1,6 @@
+/**
+ * Created by Tremaine Buchanan (tremaine@slashroots.org)
+ */
 $(document).ready(function(){
 	//TODO Refract code to handle better handle validation
 	$('#message').hide();
