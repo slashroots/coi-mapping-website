@@ -35,13 +35,67 @@ function geoCode (countryname) {
 
 }
 
-var jamaica, barbados, bahamas, cuba, haiti, anguilla, grenada, montserrat, saintlucia, saintvincent, trinidad, dominica, antigua, saintkitts, belize, guyana, suriname = null;
+var jamaica, regional, global, barbados, bahamas, cuba, haiti, anguilla, grenada, montserrat, saintlucia, saintvincent, trinidad, dominica, antigua, saintkitts, belize, guyana, suriname = null;
 
+<<<<<<< HEAD
 var jamaicanPopupText = barbadosPopupText = bahamasPopupText = cubaPopupText = antiguaPopupText = haitiPopupText = anguillaPopupText = grenadaPopupText = montserratPopupText = saintluciaPopupText = saintvincentPopupText = trinidadPopupText = dominicaPopupText = saintkittsPopupText = belizePopupText = guyanaPopupText = surinamePopupText = grenadaPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;'>Organizations</p></b>";
 
 function loadCountries () {
 
 	jamaicanPopupText = barbadosPopupText = bahamasPopupText = cubaPopupText = antiguaPopupText = haitiPopupText = anguillaPopupText = grenadaPopupText = montserratPopupText = saintluciaPopupText = saintvincentPopupText = trinidadPopupText = dominicaPopupText = saintkittsPopupText = belizePopupText = guyanaPopupText = surinamePopupText = grenadaPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;''>Organizations</p></b>";
+=======
+var jamaicanPopupText = globalPopupText = regionalPopupText = barbadosPopupText = bahamasPopupText = cubaPopupText = antiguaPopupText = haitiPopupText = anguillaPopupText = grenadaPopupText = montserratPopupText = saintluciaPopupText = saintvincentPopupText = trinidadPopupText = dominicaPopupText = saintkittsPopupText = belizePopupText = guyanaPopupText = surinamePopupText = grenadaPopupText = "<b>Organizations</b><br><br>";
+
+function loadCountries () {
+
+	jamaicanPopupText = globalPopupText = regionalPopupText = barbadosPopupText = bahamasPopupText = cubaPopupText = antiguaPopupText = haitiPopupText = anguillaPopupText = grenadaPopupText = montserratPopupText = saintluciaPopupText = saintvincentPopupText = trinidadPopupText = dominicaPopupText = saintkittsPopupText = belizePopupText = guyanaPopupText = surinamePopupText = grenadaPopupText = "<b>Organizations</b><br><br>";
+
+	global = new L.MarkerClusterGroup({
+		maxClusterRadius: 60,
+		iconCreateFunction: null,
+		spiderfyOnMaxZoom: true,
+		showCoverageOnHover: true,
+		zoomToBoundsOnClick: false
+	});
+
+	global.on('clusterclick', function (a) {
+		//a.layer.spiderfy();
+		//set up a standalone popup (use a popup as a layer)
+		var popup = L.popup(
+			{
+
+				maxHeight: 300,
+
+			}
+		)
+			.setLatLng([geoCode("Global").split(",")[0], geoCode("Global").split(",")[1]])
+			.setContent(globalPopupText)
+			.openOn(map);
+	});
+
+	regional = new L.MarkerClusterGroup({
+		maxClusterRadius: 60,
+		iconCreateFunction: null,
+		spiderfyOnMaxZoom: true,
+		showCoverageOnHover: true,
+		zoomToBoundsOnClick: false
+	});
+
+	regional.on('clusterclick', function (a) {
+		//a.layer.spiderfy();
+		//set up a standalone popup (use a popup as a layer)
+		var popup = L.popup(
+			{
+
+				maxHeight: 300,
+
+			}
+		)
+			.setLatLng([geoCode("Regional").split(",")[0], geoCode("Regional").split(",")[1]])
+			.setContent(regionalPopupText)
+			.openOn(map);
+	});
+>>>>>>> global-regional-impl
 	
 	jamaica = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
@@ -725,6 +779,10 @@ function handleSearchInput () {
 
 	map.removeLayer(jamaica);
 
+	map.removeLayer(global);
+
+	map.removeLayer(regional);
+	
 	map.removeLayer(bahamas);
 
 	map.removeLayer(belize);
@@ -748,6 +806,10 @@ function handleSearchInput () {
 function putLayersOnMap () {
 
 	map.addLayer(jamaica);
+
+	map.addLayer(global);
+
+	map.addLayer(regional);
 
 	map.addLayer(bahamas);
 
