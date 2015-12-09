@@ -620,11 +620,15 @@ $(document).ready(function(){
 
 	$(".country-boxes").click(function (event) {
 		
-		//alert("Country box click");
+		var layerToRemove = event.target.id;
+		
+		if (layerToRemove.split(" ")[0] == 'saint') layerToRemove = layerToRemove.split(" ")[0]+layerToRemove.split(" ")[1];
 
-		if (!$("#" + event.target.id).prop("checked")) map.removeLayer(window[event.target.id]);
+		else if (layerToRemove.split(" ")[1] == 'and') layerToRemove = layerToRemove.split(" ")[0];
 
-		else map.addLayer(window[event.target.id]);
+		if (!$("[id='" + event.target.id + "']").prop("checked")) map.removeLayer(window[layerToRemove]);
+
+		else map.addLayer(window[layerToRemove]);
 
 	});
 
