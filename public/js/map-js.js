@@ -541,6 +541,19 @@ sidebar.show();*/
 
 $(document).ready(function(){
 
+	$('.sidebar-highlight').mouseenter(function (event) {
+
+		$(this).animate({backgroundColor: '#e68a00'}, 'medium');
+		
+	});
+	
+	$('.sidebar-highlight').mouseleave(function () {
+
+		$(this).animate({backgroundColor: '#3366cc'}, 'medium');
+
+	});
+
+
 	$( ".accordion" ).accordion({
 		collapsible: true,
 		active: 2
