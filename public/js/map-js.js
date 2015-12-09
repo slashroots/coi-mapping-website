@@ -41,7 +41,11 @@ var jamaicanPopupText = barbadosPopupText = bahamasPopupText = cubaPopupText = a
 
 function loadCountries () {
 
-	jamaicanPopupText = globalPopupText = regionalPopupText = barbadosPopupText = bahamasPopupText = cubaPopupText = antiguaPopupText = haitiPopupText = anguillaPopupText = grenadaPopupText = montserratPopupText = saintluciaPopupText = saintvincentPopupText = trinidadPopupText = dominicaPopupText = saintkittsPopupText = belizePopupText = guyanaPopupText = surinamePopupText = grenadaPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;''>Organizations</p></b>";
+	jamaicanPopupText = barbadosPopupText = bahamasPopupText = cubaPopupText = antiguaPopupText = haitiPopupText = anguillaPopupText = grenadaPopupText = montserratPopupText = saintluciaPopupText = saintvincentPopupText = trinidadPopupText = dominicaPopupText = saintkittsPopupText = belizePopupText = guyanaPopupText = surinamePopupText = grenadaPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;''>Organizations</p></b>";
+
+	globalPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;''>Global Organizations</p></b>";
+
+	regionalPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;''>Regional Organizations</p></b>";
 
 	global = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
@@ -600,19 +604,6 @@ sidebar.show();*/
 
 $(document).ready(function(){
 
-	$('.sidebar-highlight').mouseenter(function (event) {
-
-		$(this).animate({backgroundColor: '#e68a00'}, 'medium');
-		
-	});
-	
-	$('.sidebar-highlight').mouseleave(function () {
-
-		$(this).animate({backgroundColor: '#3366cc'}, 'medium');
-
-	});
-
-
 	$( ".accordion" ).accordion({
 		collapsible: true,
 		active: 2
@@ -822,11 +813,7 @@ function handleSearchInput () {
 }
 
 function putLayersOnMap () {
-
-	L.marker([geoCode("Regional").split(",")[0], geoCode("Regional").split(",")[1]], { opacity: 0.01 }).bindPopup(L.popup({closeButton:false,}).setContent("<b>Regional</b>")).addTo(map).openPopup();
-
-	L.marker([geoCode("Global").split(",")[0], geoCode("Global").split(",")[1]], { opacity: 0.01 }).bindPopup(L.popup({closeButton:false,}).setContent("<b>Global</b>")).addTo(map).openPopup();
-
+	
 	map.addLayer(jamaica);
 
 	map.addLayer(global);
