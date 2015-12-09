@@ -37,10 +37,16 @@
 
 									var results = {};
 									results.stakeholder_count = stakeholders.length;
-									if(stakeholders.length > 0) results.stakeholders = stakeholders;
-									if(countries_count.length >= 0) results.countries = countries_count.length;
-									if(initiatives.length > 0) results.initiatives = initiatives;
-									
+									if(stakeholders.length > 0){
+										results.stakeholders = stakeholders;
+									}else{
+										results.stakeholders = 0;
+									}
+									if(countries_count.length >= 0){
+										results.countries = countries_count.length;
+									}else{
+										results.countries = 0;
+									} 																
 									res.json(results);
 								});										
 					 	});

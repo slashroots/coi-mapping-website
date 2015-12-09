@@ -1,43 +1,63 @@
-var keystone = require('keystone');
-var middleware = require('./middleware');
-var importRoutes = keystone.importer(__dirname);
+(function(){
+	var keystone = require('keystone'),
+		middleware = require('./middleware'),
+		importRoutes = keystone.importer(__dirname);
 
 // Common Middleware
-keystone.pre('routes', middleware.initLocals);
-keystone.pre('render', middleware.flashMessages);
+	keystone.pre('routes', middleware.initLocals);
+	keystone.pre('render', middleware.flashMessages);
 
 // Import Route Controllers
-var routes = {
-	views: importRoutes('./views'),
-	api: importRoutes('./api')
-};
+	var routes = {
+		views: importRoutes('./views'),
+		api: importRoutes('./api')
+	};
+	exports = module.exports = function(app) {
+		/**
+		 * Views
+		 */
+		app.get('/', routes.views.index);
+		/**
+		 * Renders map
+		 */
+		app.get('/map', routes.views.map);
+		/**
+		 * API Endpoints
+		 */
+		/**
+		 * Stakeholders
+		 */
+		app.get('/stakeholders', routes.api.stakeholder.index);
+		app.post('/stakeholders', routes.api.stakeholder.create);
+		/**
+		 * Countries
+		 */
+		app.get('/countries', routes.api.country.index);
+		/**
+		 * Stakeholder Registration
+		 */
+		app.get('/register', routes.views.register);
+		/**
+		 * Categories
+		 */
+		app.get('/categories', routes.api.category.index);
+		/**
+		 * Search
+		 */
+		app.get('/search', routes.api.search.search);
+		/**
+		 * Statistics
+		 */
+		app.get('/stats', routes.api.stats.index);
+		/**
+		 * Initiatives
+		 */
+		app.post('/initiatives', routes.api.initiative.create);
+		app.get('/initiatives', routes.api.initiative.index);
+		/**
+		 * Organizers
+		 */
+		app.post('/organizers', routes.api.organizer.create);
+	};
+})();
 
-// Setup Route Bindings
-exports = module.exports = function(app) {
-	
-	// Views
-	app.get('/', routes.views.index);
-	app.all('/contact', routes.views.contact);
-	//API Endpoints
-	 //Stakeholder
-	app.get('/stakeholders', routes.api.stakeholder.index); 
-	app.post('/stakeholders', routes.api.stakeholder.create);	
-	//Country
-	app.get('/countries', routes.api.country.index);
-
-	app.get('/register', routes.views.register);
-
-	app.get('/map', routes.views.map);
-
-	app.get('/categories', routes.api.category.index);
-
-	app.get('/search', routes.api.search.search);
-
-	app.get('/stats', routes.api.stats.index);
-	
-	app.post('/initiatives', routes.api.initiative.create);
-	app.get('/initiatives', routes.api.initiative.index);
-	
-	app.post('/organizers', routes.api.organizer.create);
-
-};
