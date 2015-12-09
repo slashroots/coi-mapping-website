@@ -602,13 +602,13 @@ $(document).ready(function(){
 
 	$('.sidebar-highlight').mouseenter(function (event) {
 
-		$(this).animate({backgroundColor: '#e68a00'}, 'medium');
+		$(this).animate({backgroundColor: '#e68a00'}, 'fast');
 		
 	});
 	
 	$('.sidebar-highlight').mouseleave(function () {
 
-		$(this).animate({backgroundColor: '#3366cc'}, 'medium');
+		$(this).animate({backgroundColor: '#3366cc'}, 'fast');
 
 	});
 
@@ -823,9 +823,9 @@ function handleSearchInput () {
 
 function putLayersOnMap () {
 
-	L.marker([geoCode("Regional").split(",")[0], geoCode("Regional").split(",")[1]], { opacity: 0.01 }).bindPopup(L.popup({closeButton:false,}).setContent("<b>Regional</b>")).addTo(map).openPopup();
+	L.marker([geoCode("Regional").split(",")[0], geoCode("Regional").split(",")[1]], { opacity: 0.01 }).bindPopup(L.popup({closeButton:false, className:'region-global'}).setContent("<center><b>Regional</b></center>")).addTo(map).openPopup();
 
-	L.marker([geoCode("Global").split(",")[0], geoCode("Global").split(",")[1]], { opacity: 0.01 }).bindPopup(L.popup({closeButton:false,}).setContent("<b>Global</b>")).addTo(map).openPopup();
+	L.marker([geoCode("Global").split(",")[0], geoCode("Global").split(",")[1]], { opacity: 0.01 }).bindPopup(L.popup({closeButton:false, className:'region-global'}).setContent("<center><b>Global</b></center>")).addTo(map).openPopup();
 
 	map.addLayer(jamaica);
 

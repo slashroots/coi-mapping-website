@@ -261,3 +261,23 @@ ul#organizer-list > a{
 	cursor: pointer;
 	
 }
+
+.region-global div {
+	
+	background: #5555A7;
+	color: white;
+	
+}
+
+.leaflet-popup {
+	
+	background:none !important;
+	
+}
+
+
+.leaflet-popup-tip-container {
+
+	background:none !important;
+
+}
