@@ -63,6 +63,8 @@ function getEverything (search) {
 				plotCountry(id, country, name, type, url, functional_area, size, latitude, longitude);
 
 			}
+			
+			putLayersOnMap();
 
 		}
 
@@ -1001,7 +1003,5 @@ marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website 
 	//
 
 	//var markers = new L.MarkerClusterGroup();
-
-putLayersOnMap();
 
 }

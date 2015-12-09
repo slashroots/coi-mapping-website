@@ -3,7 +3,7 @@ var geocodesData = null;
 
 var size = 0;
 
-$.ajax({
+	$.ajax({
 
 	type: "GET",
 
@@ -64,6 +64,7 @@ function loadCountries () {
 			.setLatLng([geoCode("Global").split(",")[0], geoCode("Global").split(",")[1]])
 			.setContent(globalPopupText)
 			.openOn(map);
+		
 	});
 
 	regional = new L.MarkerClusterGroup({
@@ -548,13 +549,25 @@ L.NumberedDivIcon = L.Icon.extend({
 
 
 
+/***  little hack starts here ***/
+L.Map = L.Map.extend({
+	openPopup: function(popup) {
+		//        this.closePopup();  // just comment this
+		this._popup = popup;
 
-var map = L.map('map').setView([15.96, -71.09], 5);
+		return this.addLayer(popup).fire('popupopen', {
+			popup: this._popup
+		});
+	}
+}); /***  end of hack ***/
+
+var map = L.map('map',
+		{closePopupOnClick : false}).setView([17.96, -71.09], 5);
 //https://a.tiles.mapbox.com/v4/nickjwill.lcnch31p/page.html?access_token=pk.eyJ1Ijoibmlja2p3aWxsIiwiYSI6Im4xQWFQeTQifQ.bwI5KQmy7z7kS9woXzbplw#6/31.625/40.463
 L.tileLayer('http://{s}.tiles.mapbox.com/v4/nickjwill.lcnc6kpo/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoibmlja2p3aWxsIiwiYSI6Im4xQWFQeTQifQ.bwI5KQmy7z7kS9woXzbplw', {
 	attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
 	maxZoom: 8,
-	minZoom: 5
+	minZoom: 5,
 }).addTo(map);
 
 getEverything('');
@@ -792,10 +805,14 @@ function handleSearchInput () {
 	loadCountries();
 
 	getEverything(document.getElementById('search-box').value);
-	//alert('Changed!')
+	
 }
 
 function putLayersOnMap () {
+
+	L.marker([geoCode("Regional").split(",")[0], geoCode("Regional").split(",")[1]], { opacity: 0.01 }).bindPopup(L.popup({closeButton:false,}).setContent("<b>Regional</b>")).addTo(map).openPopup();
+
+	L.marker([geoCode("Global").split(",")[0], geoCode("Global").split(",")[1]], { opacity: 0.01 }).bindPopup(L.popup({closeButton:false,}).setContent("<b>Global</b>")).addTo(map).openPopup();
 
 	map.addLayer(jamaica);
 
@@ -816,7 +833,6 @@ function putLayersOnMap () {
 	map.addLayer(dominica);map.addLayer(antigua);map.addLayer(saintkitts);map.addLayer(belize);
 
 	map.addLayer(guyana);map.addLayer(suriname);map.addLayer(grenada);
-
-
+	
 }
 
