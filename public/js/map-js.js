@@ -3,7 +3,7 @@ var geocodesData = null;
 
 var size = 0;
 
-$.ajax({
+	$.ajax({
 
 	type: "GET",
 
@@ -35,13 +35,60 @@ function geoCode (countryname) {
 
 }
 
-var jamaica, barbados, bahamas, cuba, haiti, anguilla, grenada, montserrat, saintlucia, saintvincent, trinidad, dominica, antigua, saintkitts, belize, guyana, suriname = null;
+var jamaica, regional, global, barbados, bahamas, cuba, haiti, anguilla, grenada, montserrat, saintlucia, saintvincent, trinidad, dominica, antigua, saintkitts, belize, guyana, suriname = null;
 
 var jamaicanPopupText = barbadosPopupText = bahamasPopupText = cubaPopupText = antiguaPopupText = haitiPopupText = anguillaPopupText = grenadaPopupText = montserratPopupText = saintluciaPopupText = saintvincentPopupText = trinidadPopupText = dominicaPopupText = saintkittsPopupText = belizePopupText = guyanaPopupText = surinamePopupText = grenadaPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;'>Organizations</p></b>";
 
 function loadCountries () {
 
-	jamaicanPopupText = barbadosPopupText = bahamasPopupText = cubaPopupText = antiguaPopupText = haitiPopupText = anguillaPopupText = grenadaPopupText = montserratPopupText = saintluciaPopupText = saintvincentPopupText = trinidadPopupText = dominicaPopupText = saintkittsPopupText = belizePopupText = guyanaPopupText = surinamePopupText = grenadaPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;''>Organizations</p></b>";
+	jamaicanPopupText = globalPopupText = regionalPopupText = barbadosPopupText = bahamasPopupText = cubaPopupText = antiguaPopupText = haitiPopupText = anguillaPopupText = grenadaPopupText = montserratPopupText = saintluciaPopupText = saintvincentPopupText = trinidadPopupText = dominicaPopupText = saintkittsPopupText = belizePopupText = guyanaPopupText = surinamePopupText = grenadaPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;''>Organizations</p></b>";
+
+	global = new L.MarkerClusterGroup({
+		maxClusterRadius: 60,
+		iconCreateFunction: null,
+		spiderfyOnMaxZoom: true,
+		showCoverageOnHover: true,
+		zoomToBoundsOnClick: false
+	});
+
+	global.on('clusterclick', function (a) {
+		//a.layer.spiderfy();
+		//set up a standalone popup (use a popup as a layer)
+		var popup = L.popup(
+			{
+
+				maxHeight: 300,
+
+			}
+		)
+			.setLatLng([geoCode("Global").split(",")[0], geoCode("Global").split(",")[1]])
+			.setContent(globalPopupText)
+			.openOn(map);
+		
+	});
+
+	regional = new L.MarkerClusterGroup({
+		maxClusterRadius: 60,
+		iconCreateFunction: null,
+		spiderfyOnMaxZoom: true,
+		showCoverageOnHover: true,
+		zoomToBoundsOnClick: false
+	});
+
+	regional.on('clusterclick', function (a) {
+		//a.layer.spiderfy();
+		//set up a standalone popup (use a popup as a layer)
+		var popup = L.popup(
+			{
+
+				maxHeight: 300,
+
+			}
+		)
+			.setLatLng([geoCode("Regional").split(",")[0], geoCode("Regional").split(",")[1]])
+			.setContent(regionalPopupText)
+			.openOn(map);
+	});
 	
 	jamaica = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
@@ -502,13 +549,25 @@ L.NumberedDivIcon = L.Icon.extend({
 
 
 
+/***  little hack starts here ***/
+L.Map = L.Map.extend({
+	openPopup: function(popup) {
+		//        this.closePopup();  // just comment this
+		this._popup = popup;
 
-var map = L.map('map').setView([15.96, -71.09], 5);
+		return this.addLayer(popup).fire('popupopen', {
+			popup: this._popup
+		});
+	}
+}); /***  end of hack ***/
+
+var map = L.map('map',
+		{closePopupOnClick : false}).setView([17.96, -71.09], 5);
 //https://a.tiles.mapbox.com/v4/nickjwill.lcnch31p/page.html?access_token=pk.eyJ1Ijoibmlja2p3aWxsIiwiYSI6Im4xQWFQeTQifQ.bwI5KQmy7z7kS9woXzbplw#6/31.625/40.463
 L.tileLayer('http://{s}.tiles.mapbox.com/v4/nickjwill.lcnc6kpo/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoibmlja2p3aWxsIiwiYSI6Im4xQWFQeTQifQ.bwI5KQmy7z7kS9woXzbplw', {
 	attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
 	maxZoom: 8,
-	minZoom: 5
+	minZoom: 5,
 }).addTo(map);
 
 getEverything('');
@@ -725,6 +784,10 @@ function handleSearchInput () {
 
 	map.removeLayer(jamaica);
 
+	map.removeLayer(global);
+
+	map.removeLayer(regional);
+	
 	map.removeLayer(bahamas);
 
 	map.removeLayer(belize);
@@ -742,12 +805,20 @@ function handleSearchInput () {
 	loadCountries();
 
 	getEverything(document.getElementById('search-box').value);
-	//alert('Changed!')
+	
 }
 
 function putLayersOnMap () {
 
+	L.marker([geoCode("Regional").split(",")[0], geoCode("Regional").split(",")[1]], { opacity: 0.01 }).bindPopup(L.popup({closeButton:false,}).setContent("<b>Regional</b>")).addTo(map).openPopup();
+
+	L.marker([geoCode("Global").split(",")[0], geoCode("Global").split(",")[1]], { opacity: 0.01 }).bindPopup(L.popup({closeButton:false,}).setContent("<b>Global</b>")).addTo(map).openPopup();
+
 	map.addLayer(jamaica);
+
+	map.addLayer(global);
+
+	map.addLayer(regional);
 
 	map.addLayer(bahamas);
 
@@ -762,7 +833,6 @@ function putLayersOnMap () {
 	map.addLayer(dominica);map.addLayer(antigua);map.addLayer(saintkitts);map.addLayer(belize);
 
 	map.addLayer(guyana);map.addLayer(suriname);map.addLayer(grenada);
-
-
+	
 }
 

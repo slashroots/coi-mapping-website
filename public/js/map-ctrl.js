@@ -63,6 +63,8 @@ function getEverything (search) {
 				plotCountry(id, country, name, type, url, functional_area, size, latitude, longitude);
 
 			}
+			
+			putLayersOnMap();
 
 		}
 
@@ -889,6 +891,98 @@ marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website 
 
 			break;
 
+		case "Global" : marker = L.marker(new L.LatLng(latitude, longitude), {
+
+			//title: title
+		});
+
+			marker.bindPopup("Name : " + name + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+
+			if (shouldTypeBeDrawn(type)) globalPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
+
+			marker.on('click', function () {
+
+				preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
+
+				$.ajax({
+
+					type: "GET",
+
+					url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),//sends stakeholder id
+
+					dataType : "json",
+
+					success : function (data) {
+
+						for(i = 0;i<data.results.length;i++){
+
+							eventname = data.results[i].name;
+
+							preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
+
+						}
+
+						sidebar.show();
+
+						$("#sidebar").html(preContent);
+
+					}
+
+				});
+
+
+			});
+
+			if (shouldTypeBeDrawn(type)) global.addLayer(marker);
+
+			break;
+
+		case "Regional" : marker = L.marker(new L.LatLng(latitude, longitude), {
+
+			//title: title
+		});
+
+			marker.bindPopup("Name : " + name + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+
+			if (shouldTypeBeDrawn(type)) regionalPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
+
+			marker.on('click', function () {
+
+				preContent = "<b>Stakeholder</b><br><br>Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area + "<br><br><b>Initiatives</b><br>";
+
+				$.ajax({
+
+					type: "GET",
+
+					url: encodeURI("http://localhost/stakeholdermap/public/initiativesJSON/" + id),//sends stakeholder id
+
+					dataType : "json",
+
+					success : function (data) {
+
+						for(i = 0;i<data.results.length;i++){
+
+							eventname = data.results[i].name;
+
+							preContent = "" + preContent + "<br><b>" + (i + 1) + ".</b> " + eventname + " (" + data.results[i].pivot.type + ")<br><br>Year : " + data.results[i].date + "<br><br>Url : " + data.results[i].initiative_url + "<br>";
+
+						}
+
+						sidebar.show();
+
+						$("#sidebar").html(preContent);
+
+					}
+
+				});
+
+
+			});
+
+			if (shouldTypeBeDrawn(type)) regional.addLayer(marker);
+
+			break;
+
 
 	}
 
@@ -909,7 +1003,5 @@ marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website 
 	//
 
 	//var markers = new L.MarkerClusterGroup();
-
-putLayersOnMap();
 
 }
