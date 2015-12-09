@@ -249,3 +249,9 @@ ul#organizer-list > a{
 	word-wrap:break-word;
 	
 }
+
+.leaflet-popup-content {
+	
+	border-top:none !important;
+	
+}
