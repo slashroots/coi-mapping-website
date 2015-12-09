@@ -3,6 +3,59 @@ var marker = null;
 var bankToggle = eduToggle = ictToggle = ictToggle2 = govToggle = mediaToggle = mnoToggle = ngoToggle = true;
 
 var preContent = "";
+/**
+ * Get statistics from database
+ */
+var getStats = function(search){
+	$.ajax({
+		url: '/stats',
+		type: 'GET',
+		success: function(data){
+			displayStats(data, search);
+		},
+		error: function(){
+			console.log('Error');
+		}
+	});
+};
+/**
+ * Function call
+ */
+getStats(false);
+/**
+ * Updates the map statistics upon keypress.
+ */
+var updateStats = function(q){
+	if(q === "" || q.length <= 1){
+		getStats(false);
+	}else{		
+		$.ajax({
+			type: 'GET',
+			url: '/search?q=' + q,
+			success: function(data){
+				displayStats(data, true);
+			},error: function(){
+    			
+			},complete: function(){
+				q = "";
+			}
+		});
+	}
+};
+/**
+ * Displays the statistics of the map.
+ * @param stats - Object containing the statistics of the map
+ * @param search - Indicates whether a search operation was done.
+ */
+var displayStats = function(stats, search){
+	if(!search){
+		$('#countries').text(stats.Countries);
+		$('#stakeholders').text(stats.Stakeholders);
+	}else{
+		$('#countries').text(stats.countries);
+		$('#stakeholders').text(stats.stakeholder_count);
+	}	
+};
 
 function getEverything (search) {
 	
@@ -22,8 +75,8 @@ function getEverything (search) {
 
 		dataType : "json",
 
-		success : function (data) {
-
+		success : function (data) {		
+			
 			for(i = 0;i<data.stakeholders.length;i++){
 
 				country = data.stakeholders[i].country.name;
