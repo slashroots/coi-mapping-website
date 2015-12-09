@@ -599,20 +599,7 @@ sidebar.show();*/
 //
 
 $(document).ready(function(){
-
-	$('.sidebar-highlight').mouseenter(function (event) {
-
-		$(this).animate({backgroundColor: '#e68a00'}, 'fast');
-		
-	});
 	
-	$('.sidebar-highlight').mouseleave(function () {
-
-		$(this).animate({backgroundColor: '#3366cc'}, 'fast');
-
-	});
-
-
 	$( ".accordion" ).accordion({
 		collapsible: true,
 		active: 2
@@ -826,11 +813,7 @@ function handleSearchInput () {
 }
 
 function putLayersOnMap () {
-
-	L.marker([geoCode("Regional").split(",")[0], geoCode("Regional").split(",")[1]], { opacity: 0.01 }).bindPopup(L.popup({closeButton:false, className:'region-global'}).setContent("<center><b>Regional</b></center>")).addTo(map).openPopup();
-
-	L.marker([geoCode("Global").split(",")[0], geoCode("Global").split(",")[1]], { opacity: 0.01 }).bindPopup(L.popup({closeButton:false, className:'region-global'}).setContent("<center><b>Global</b></center>")).addTo(map).openPopup();
-
+	
 	map.addLayer(jamaica);
 
 	map.addLayer(global);
