@@ -1,50 +1,60 @@
-{{> header}}
- <div class="wrapper">
-      <!-- Left side column. contains the logo and sidebar -->
-      <aside class="main-sidebar">
+{{> map-header}}
+<div class="wrapper">
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
 
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
 
-           <!-- search form (Optional) -->
-          <form class="sidebar-form">
-            <input type="text" class="form-control" id="search-box" placeholder="Search..." id="q">
-          </form>
-			
-          <!-- /.search form -->
-          <ul class="stats" id="stats">
-          </ul>
-	        <p style="font-size:12pt;padding-left:15px;text-decoration: underline !important;"><p class="filterReset sidebar-highlight" style="padding:10px;text-decoration: none;font-weight:bold;background-color:#3366cc;color:white;font-size:12pt;" onclick="resetSearchBox();resetCountryFilters();resetTypeFilters();">Reset Filters</p></p>
-          <!-- Sidebar Menu -->
-          <ul class="sidebar-menu">
+            <!-- search form (Optional) -->
+            <form class="sidebar-form">
+                <input type="text" class="form-control" id="search-box" placeholder="Search stakeholders"
+                       onkeyup="updateStats(this.value);">
+            </form>
 
-              <li style="margin-bottom:10px;" class="treeview">
-                  <a class="sidebar-highlight" style="font-weight:bold;background-color:#3366cc;color:white;" href="#"><span>Filter By Entity:</span> <i class="fa fa-angle-left pull-right"></i></a>
-                  <ul class="treeview-menu type-boxes" id="entity-list">
-                  </ul>
-              </li>
-			  
-             <li class="treeview">
-              <a class="sidebar-highlight" style="font-weight:bold;background-color:#3366cc;color:white;" href="#"><span>Filter By Country :</span> <i class="fa fa-angle-left pull-right"></i></a>
-              <ul style="height:250px;overflow:hidden; overflow-y:scroll;" class="treeview-menu country-boxes" id="country-list">
-              </ul>
-            </li>
+            <!-- /.search form -->
+            <div class="stats-div">
+                <ul class="stats" id="stats">
+                    <li>Countries :<span id="countries"></span></li>
+                    <li>Stakeholders :<span id="stakeholders"></span></li>
+                </ul>
+            </div>
 
-            <!--<li class="treeview">-->
-              <!--<a href="#"><span>Filter By Region:</span> <i class="fa fa-angle-left pull-right"></i></a>-->
-              <!--<ul class="treeview-menu">-->
-              <!--</ul>-->
-            <!--</li>-->
-          </ul><!-- /.sidebar-menu -->
+
+            <ul class="sidebar-menu">
+                <li class="treeview">
+                    <a  href="#clear" onclick="resetSearchBox();resetCountryFilters();resetTypeFilters();">
+                        <span>Clear Filters</span>
+                    </a>
+                </li>
+
+                <li class="treeview">
+                    <a  href="#filterentity">
+                        <span>Filter By Entity:</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu type-boxes" id="entity-list">
+                    </ul>
+                </li>
+
+                <li class="treeview">
+                    <a href="#filtercountry">
+                        <span>Filter By Country :</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul style="height:250px;overflow:hidden; overflow-y:scroll;"  class="treeview-menu country-boxes" id="country-list">
+                    </ul>
+                </li>
+            </ul><!-- /.sidebar-menu -->
         </section>
         <!-- /.sidebar -->
-      </aside>
+    </aside>
 
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-         
+
         </section>
 
         <!-- Main content -->
@@ -63,11 +73,11 @@
             <script src="/js/map-js.js"></script>
 
         </section><!-- /.content -->
-      </div><!-- /.content-wrapper -->
-	 
-      <!-- Main Footer -->
-      <footer class="main-footer">
-      </footer>
-      <div class="control-sidebar-bg"></div>
-    </div><!-- ./wrapper -->
+    </div><!-- /.content-wrapper -->
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+    </footer>
+    <div class="control-sidebar-bg"></div>
+</div><!-- ./wrapper -->
 
