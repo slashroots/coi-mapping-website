@@ -3,7 +3,7 @@ var geocodesData = null;
 
 var size = 0;
 
-$.ajax({
+	$.ajax({
 
 	type: "GET",
 
@@ -35,13 +35,64 @@ function geoCode (countryname) {
 
 }
 
-var jamaica, barbados, bahamas, cuba, haiti, anguilla, grenada, montserrat, saintlucia, saintvincent, trinidad, dominica, antigua, saintkitts, belize, guyana, suriname = null;
+var jamaica, regional, global, barbados, bahamas, cuba, haiti, anguilla, grenada, montserrat, saintlucia, saintvincent, trinidad, dominica, antigua, saintkitts, belize, guyana, suriname = null;
 
-var jamaicanPopupText = barbadosPopupText = bahamasPopupText = cubaPopupText = antiguaPopupText = haitiPopupText = anguillaPopupText = grenadaPopupText = montserratPopupText = saintluciaPopupText = saintvincentPopupText = trinidadPopupText = dominicaPopupText = saintkittsPopupText = belizePopupText = guyanaPopupText = surinamePopupText = grenadaPopupText = "<b>Organizations</b><br><br>";
+var jamaicanPopupText = barbadosPopupText = bahamasPopupText = cubaPopupText = antiguaPopupText = haitiPopupText = anguillaPopupText = grenadaPopupText = montserratPopupText = saintluciaPopupText = saintvincentPopupText = trinidadPopupText = dominicaPopupText = saintkittsPopupText = belizePopupText = guyanaPopupText = surinamePopupText = grenadaPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;'>Organizations</p></b>";
 
 function loadCountries () {
 
-	jamaicanPopupText = barbadosPopupText = bahamasPopupText = cubaPopupText = antiguaPopupText = haitiPopupText = anguillaPopupText = grenadaPopupText = montserratPopupText = saintluciaPopupText = saintvincentPopupText = trinidadPopupText = dominicaPopupText = saintkittsPopupText = belizePopupText = guyanaPopupText = surinamePopupText = grenadaPopupText = "<b>Organizations</b><br><br>";
+	jamaicanPopupText = barbadosPopupText = bahamasPopupText = cubaPopupText = antiguaPopupText = haitiPopupText = anguillaPopupText = grenadaPopupText = montserratPopupText = saintluciaPopupText = saintvincentPopupText = trinidadPopupText = dominicaPopupText = saintkittsPopupText = belizePopupText = guyanaPopupText = surinamePopupText = grenadaPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;''>Organizations</p></b>";
+
+	globalPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;''>Global Organizations</p></b>";
+
+	regionalPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;''>Regional Organizations</p></b>";
+
+	global = new L.MarkerClusterGroup({
+		maxClusterRadius: 60,
+		iconCreateFunction: null,
+		spiderfyOnMaxZoom: true,
+		showCoverageOnHover: true,
+		zoomToBoundsOnClick: false
+	});
+
+	global.on('clusterclick', function (a) {
+		//a.layer.spiderfy();
+		//set up a standalone popup (use a popup as a layer)
+		var popup = L.popup(
+			{
+
+				maxHeight: 300,
+
+			}
+		)
+			.setLatLng([geoCode("Global").split(",")[0], geoCode("Global").split(",")[1]])
+			.setContent(globalPopupText)
+			.openOn(map);
+		
+	});
+
+	regional = new L.MarkerClusterGroup({
+		maxClusterRadius: 60,
+		iconCreateFunction: null,
+		spiderfyOnMaxZoom: true,
+		showCoverageOnHover: true,
+		zoomToBoundsOnClick: false
+	});
+
+	regional.on('clusterclick', function (a) {
+		//a.layer.spiderfy();
+		//set up a standalone popup (use a popup as a layer)
+		var popup = L.popup(
+			{
+
+				maxHeight: 300,
+
+			}
+		)
+			.setLatLng([geoCode("Regional").split(",")[0], geoCode("Regional").split(",")[1]])
+			.setContent(regionalPopupText)
+			.openOn(map);
+	});
 	
 	jamaica = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
@@ -502,13 +553,25 @@ L.NumberedDivIcon = L.Icon.extend({
 
 
 
+/***  little hack starts here ***/
+L.Map = L.Map.extend({
+	openPopup: function(popup) {
+		//        this.closePopup();  // just comment this
+		this._popup = popup;
 
-var map = L.map('map').setView([15.96, -71.09], 5);
+		return this.addLayer(popup).fire('popupopen', {
+			popup: this._popup
+		});
+	}
+}); /***  end of hack ***/
+
+var map = L.map('map',
+		{closePopupOnClick : false}).setView([17.96, -71.09], 5);
 //https://a.tiles.mapbox.com/v4/nickjwill.lcnch31p/page.html?access_token=pk.eyJ1Ijoibmlja2p3aWxsIiwiYSI6Im4xQWFQeTQifQ.bwI5KQmy7z7kS9woXzbplw#6/31.625/40.463
 L.tileLayer('http://{s}.tiles.mapbox.com/v4/nickjwill.lcnc6kpo/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoibmlja2p3aWxsIiwiYSI6Im4xQWFQeTQifQ.bwI5KQmy7z7kS9woXzbplw', {
 	attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
 	maxZoom: 8,
-	minZoom: 5
+	minZoom: 5,
 }).addTo(map);
 
 getEverything('');
@@ -539,10 +602,8 @@ sidebar.show();*/
 
 //
 
-
-
 $(document).ready(function(){
-
+	
 	$( ".accordion" ).accordion({
 		collapsible: true,
 		active: 2
@@ -550,43 +611,105 @@ $(document).ready(function(){
 
 	$(".country-boxes").click(function (event) {
 		
-		//alert("Country box click");
+		var layerToRemove = event.target.id;
+		
+		if (layerToRemove.split(" ")[0] == 'saint') layerToRemove = layerToRemove.split(" ")[0]+layerToRemove.split(" ")[1];
 
-		if (!$("#" + event.target.id).prop("checked")) map.removeLayer(window[event.target.id]);
+		else if (layerToRemove.split(" ")[1] == 'and') layerToRemove = layerToRemove.split(" ")[0];
 
-		else map.addLayer(window[event.target.id]);
+		if (!$("[id='" + event.target.id + "']").prop("checked")) map.removeLayer(window[layerToRemove]);
+
+		else map.addLayer(window[layerToRemove]);
 
 	});
 
 	$(".type-boxes").click(function (event) {
 
-		if (!$("#" + event.target.id).prop("checked")) {
+			switch (event.target.id) {
 
-			for (var x = 0;x < (window[event.target.id]).length;x++) {
+				case 'Bank\\Investment\\Consulting' : bankToggle = !bankToggle;
 
-				jamaica.removeLayer((window[event.target.id])[x]);
+					break;
 
-				//cuba.removeLayer((window[event.target.id])[x]);
+				case 'Education\\Research' : eduToggle = !eduToggle;
+
+					break;
+
+				case 'ICT Vendor' : ictToggle = !ictToggle;
+
+				break;
+
+				case 'ICT Services' : ictToggle2 = !ictToggle2;
+
+					break;
+
+				case 'Government' : govToggle = !govToggle;
+
+					break;
+
+				case 'Media\\Marketing' : mediaToggle = !mediaToggle;
+
+					break;
+
+				case 'MNO\\Telecommunications' : mnoToggle = !mnoToggle;
+
+					break;
+
+				case 'NGO' : ngoToggle = !ngoToggle;
+
+					break;
 
 			}
-
-		}
-
-		else {
-
-			for (var x = 0;x < (window[event.target.id]).length;x++) {
-
-				jamaica.addLayer((window[event.target.id])[x]);
-
-				//cuba.addLayer((window[event.target.id])[x]);
-
-			}
-
-		}
+		
+		handleSearchInput();
 
 	});
 
 });
+
+
+function shouldTypeBeDrawn (marker_type) { //this function will return true if a marker should be drawn on the map based on its type or false otherwise
+
+	switch (marker_type) {
+
+		case 'Bank\\Investment\\Consulting' : return bankToggle;
+
+			break;
+
+		case 'Education\\Research' : return eduToggle;
+
+			break;
+
+		case 'ICT Vendor' :  return ictToggle;
+
+			break;
+		
+		case 'ICT Services' : return ictToggle2;
+
+		break;
+
+		case 'Government' : return govToggle;
+
+			break;
+
+		case 'Media\\Marketing' : return mediaToggle;
+
+			break;
+
+		case 'MNO\\Telecommunications' : return mnoToggle;
+
+			break;
+
+		case 'NGO' : return ngoToggle;
+
+			break;
+
+	}
+	
+	return true;
+	
+}
+
 
 
 /*for (var x = 0;x < eduArray.length;x++) {
@@ -598,6 +721,10 @@ $(document).ready(function(){
 function infoSlideDown (element) {
 
 	var subElement = $(element).next().slideToggle("fast");
+	
+	if(element.childNodes[0].childNodes[0].innerHTML == "+") element.childNodes[0].childNodes[0].innerHTML = '-';
+	
+	else if(element.childNodes[0].childNodes[0].innerHTML == "-") element.childNodes[0].childNodes[0].innerHTML = '+';
 
 }
 
@@ -646,10 +773,29 @@ function resetCountryFilters () {
 
 }
 
+function resetTypeFilters () {
+
+	bankToggle = eduToggle = ictToggle = ictToggle2 = govToggle = mediaToggle = mnoToggle = ngoToggle = true;
+
+	$(".type-boxes").each(function(){
+
+		if (!$(this).prop("checked")) {
+
+			$(this).prop('checked', true);
+
+		}
+	});
+
+}
+
 function handleSearchInput () {
 
 	map.removeLayer(jamaica);
 
+	map.removeLayer(global);
+
+	map.removeLayer(regional);
+	
 	map.removeLayer(bahamas);
 
 	map.removeLayer(belize);
@@ -667,12 +813,16 @@ function handleSearchInput () {
 	loadCountries();
 
 	getEverything(document.getElementById('search-box').value);
-	//alert('Changed!')
+	
 }
 
 function putLayersOnMap () {
-
+	
 	map.addLayer(jamaica);
+
+	map.addLayer(global);
+
+	map.addLayer(regional);
 
 	map.addLayer(bahamas);
 
@@ -687,7 +837,6 @@ function putLayersOnMap () {
 	map.addLayer(dominica);map.addLayer(antigua);map.addLayer(saintkitts);map.addLayer(belize);
 
 	map.addLayer(guyana);map.addLayer(suriname);map.addLayer(grenada);
-
-
+	
 }
 
