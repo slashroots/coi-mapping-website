@@ -55,23 +55,7 @@ function getEverything (search) {
 }
 
 function plotCountry (id, country, name, type, url, functional_area, size, latitude, longitude) {
-
-	iconShade = "http://www.clker.com/cliparts/k/Q/V/D/z/u/map-marker-small-md.png";
-
-	if (type == "Bank/Investment/Consulting") iconShade = "http://www.clker.com/cliparts/k/Q/V/D/z/u/map-marker-small-md.png";
-
-	if (type == "Government") iconShade = "http://www.clker.com/cliparts/k/Q/V/D/z/u/map-marker-small-md.png";
-
-	if (type == "Education/Research") iconShade = "http://www.clker.com/cliparts/k/Q/V/D/z/u/map-marker-small-md.png";
-
-	if (type == "NGO") iconShade = "http://www.clker.com/cliparts/k/Q/V/D/z/u/map-marker-small-md.png";
-
-	if (type == "ICT Services") iconShade = "http://www.clker.com/cliparts/k/Q/V/D/z/u/map-marker-small-md.png";
-
-	if (type == "MNO/Telecommunications") iconShade = "http://www.clker.com/cliparts/k/Q/V/D/z/u/map-marker-small-md.png";
-
-	if (type == "Media/Marketing") iconShade = "http://www.clker.com/cliparts/k/Q/V/D/z/u/map-marker-small-md.png";
-
+	
 	switch (country) {
 
 		case "Jamaica" : marker = L.marker(new L.LatLng(latitude, longitude), {
@@ -365,8 +349,7 @@ marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website 
 			}
 
 			break;
-
-
+		
 	}
 	
 }
