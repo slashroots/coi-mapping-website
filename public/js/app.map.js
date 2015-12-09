@@ -46,7 +46,7 @@ $(document).ready(function(){
 			len = countries.length;
 		
 		for (;i<len;i++){
-			country_list.append('<li><input checked type="checkbox" class="country-boxes" id="' + (countries[i].name).toLowerCase() + '">' + countries[i].name + '</li>');
+			country_list.append('<li style="white-space: normal;"><input checked type="checkbox" class="country-boxes" id="' + (countries[i].name).toLowerCase() + '">' + countries[i].name + '</li>');
 		}
 	}
 
