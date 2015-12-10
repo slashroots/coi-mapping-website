@@ -2,6 +2,9 @@
 logs
 *.log
 
+#Tilde Files
+*~
+
 # Runtime data
 pids
 *.pid
