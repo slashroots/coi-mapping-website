@@ -159,7 +159,8 @@ body{
 /*.logos div{
 	float: left;
 }*/
-.logos-top, .logos-bottom{
+.logos-bottom{
+	margin-top: 20px;
 	margin-bottom: 40px;
 }
 .logos-top{
@@ -175,25 +176,26 @@ body{
 	/*margin-left: 80px;*/
 }
 
+.logos-top img:nth-child(2),
+.logos-top img:nth-child(3),
+.logos-top img:nth-child(4){
+	margin-left: 90px;
+}
 .logos-top img:nth-child(1){
 	margin-left: 100px;
 	margin-top: 15px;
 }
 .logos-top img:nth-child(2){
-	margin-left: 80px;
-	/*margin-top: 15px;*/
+	margin-top: 10px;
 }
 
 .logos-top img:nth-child(3){
 	margin-top: 30px;
 }
 
-.logos-top img:nth-child(4){
-	margin-top: 20px;
+.logos-top img:nth-child(4){	
+	margin-top: 35px;
 }
-
-
-
 /**
  * Map Page
  */
