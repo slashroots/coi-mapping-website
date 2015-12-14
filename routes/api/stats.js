@@ -1,34 +1,33 @@
+/**
+ * Created by tremaine on 12/11/15.
+ */
 (function(){
 	var keystone = require('keystone'),
-		Stakeholder = keystone.list('Stakeholder'),
 		Country = keystone.list('Country'),
-		Initiative = keystone.list('Initiative'),
-		common = require('../common/common');
-	/**
-	 * Count and return published stakeholders, initiatives and countries.
-	 * @param  {[type]} req [description]
-	 * @param  {[type]} res [description]
-	 * @return {[type]}     [description]
-	 */
+		Stakeholder = keystone.list('Stakeholder'),
+		common = require('../common/common'),
+		ObjectId = require('mongoose').Types.ObjectId;
+		
+	
 	exports.index = function(req, res){
-		var query = {'state': 'published'};
-		Country.model.find(query).count().exec(function(err, country){
-			if(err || !country) common.handleDBError(err, res);
-
-			Stakeholder.model.find(query).count().exec(function(err, stakeholder){
-				if(err || !stakeholder) common.handleDBError(err, res);
+		//Country.model.findOne()
+		//	.where('name', 'Global')
+		//	.exec(function(err, country){
+		//		if(err) common.handleDBError(err, res);
+		//	
+		//		console.log(country);
+			Stakeholder.model.find({country: "565b59aa7631649209bc2058"})
+				//.where('country', country.id) Returns a string representing the ObjectId
+				//.where('country', country._id) //Returns an object of type ObjectId
+				//.where('country.name', 'Global')
+				.populate('country')
+				.exec(function(err, stake){
 				
-				Initiative.model.find(query).count().exec(function(err, initiative){
-					if(err || !initiative) common.handleDBError(err, res);
-					
-					var stats = {};
-					if(country > 0) stats.Countries = country;
-					if(stakeholder > 0) stats.Stakeholders = stakeholder;
-					if(initiative > 0) stats.Initiatives = initiative;
-
-					res.json(stats);
-				});
-			});
-		});
-	}
+				if(err) common.handleDBError(err, res);
+    
+				res.json(stake);
+			});			
+		//});		
+	};
 })();
+
