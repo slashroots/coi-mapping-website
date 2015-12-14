@@ -670,6 +670,8 @@ $(document).ready(function(){
 
 function shouldTypeBeDrawn (marker_type) { //this function will return true if a marker should be drawn on the map based on its type or false otherwise
 
+	if (!bankToggle && !eduToggle && !ictToggle && !ictToggle2 && !govToggle && !mediaToggle && !mnoToggle && !ngoToggle) return true;
+	
 	switch (marker_type) {
 
 		case 'Bank\\Investment\\Consulting' : return bankToggle;

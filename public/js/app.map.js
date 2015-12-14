@@ -29,7 +29,7 @@ $(document).ready(function(){
 	var displayStakeholderCategoryList = function(categories){
 		var stakeholder_type_list = $('#entity-list'), i = 0, len = categories.length;
 		for(;i<len;i++){
-			stakeholder_type_list.append('<li><input checked type="checkbox" id="' + categories[i].name + '" class="type-boxes"><span>' + categories[i].name + '</span></li>');
+			stakeholder_type_list.append('<li><input type="checkbox" id="' + categories[i].name + '" class="type-boxes"><span>' + categories[i].name + '</span></li>');
 		}
 	};
 
