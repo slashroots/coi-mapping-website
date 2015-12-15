@@ -69,6 +69,14 @@ var displayStats = function(stats, search){
 	}
 };
 
+function fixUrl (url) {
+	
+	if (url.indexOf('www') == 0) url = 'http://' + url;;
+	
+	return url;
+	
+}
+
 function getEverything (search) {
 
 	var ajax_url = "placeholder";
@@ -144,7 +152,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 			//title: title
 		});
 
-			marker.bindPopup("Name : " + name + "Type : " + type + "<br>Website : " + url + "<br>Functional Area : " + functional_area);
+			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -152,7 +160,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 
 				stakeholderCount++;
 
-				jamaicanPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
+				jamaicanPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 				jamaica.addLayer(marker);
 
@@ -164,7 +172,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 			//title: title
 		});
 
-			marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -172,7 +180,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 
 				stakeholderCount++;
 
-				barbadosPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
+				barbadosPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 				barbados.addLayer(marker);
 
@@ -183,7 +191,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Bahamas" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -191,7 +199,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 				
 				stakeholderCount++;
 
-				bahamasPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
+				bahamasPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 				bahamas.addLayer(marker);
 
@@ -202,7 +210,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Cuba" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -210,7 +218,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 
 				stakeholderCount++;
 
-				cubaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
+				cubaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 				cuba.addLayer(marker);
 
@@ -221,7 +229,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Haiti" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -229,7 +237,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 
 				stakeholderCount++;
 
-				haitiPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
+				haitiPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 				haiti.addLayer(marker);
 
@@ -240,7 +248,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Anguilla" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -248,7 +256,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 
 				stakeholderCount++;
 
-				anguillaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
+				anguillaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 				anguilla.addLayer(marker);
 
@@ -259,7 +267,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Montserrat" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -267,7 +275,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 
 				stakeholderCount++;
 
-				montserratPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
+				montserratPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 				montserrat.addLayer(marker);
 
@@ -278,7 +286,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Saint Lucia" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -286,7 +294,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 
 				stakeholderCount++;
 
-				saintluciaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
+				saintluciaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 				saintlucia.addLayer(marker);
 
@@ -297,7 +305,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Saint Vincent" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -305,7 +313,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 
 				stakeholderCount++;
 
-				saintvincentPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
+				saintvincentPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 				saintvincent.addLayer(marker);
 
@@ -316,7 +324,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Dominica" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -324,7 +332,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 
 				stakeholderCount++;
 
-				dominicaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
+				dominicaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 				dominica.addLayer(marker);
 
@@ -335,7 +343,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Antigua and Barbuda" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -343,7 +351,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 
 				stakeholderCount++;
 
-				antiguaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
+				antiguaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 				antigua.addLayer(marker);
 
@@ -354,7 +362,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Trinidad and Tobago" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -362,7 +370,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 
 				stakeholderCount++;
 
-				trinidadPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
+				trinidadPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 				trinidad.addLayer(marker);
 
@@ -373,7 +381,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Saint Kitts" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -381,7 +389,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 
 				stakeholderCount++;
 
-				saintkittsPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
+				saintkittsPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 				saintkitts.addLayer(marker);
 
@@ -392,7 +400,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Belize" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -400,7 +408,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 
 				stakeholderCount++;
 
-				belizePopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
+				belizePopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 				belize.addLayer(marker);
 
@@ -411,7 +419,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Guyana" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -419,7 +427,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 
 				stakeholderCount++;
 
-				guyanaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
+				guyanaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 				guyana.addLayer(marker);
 
@@ -430,7 +438,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Suriname" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -438,7 +446,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 
 				stakeholderCount++;
 
-				surinamePopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
+				surinamePopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 				suriname.addLayer(marker);
 
@@ -449,7 +457,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Grenada" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("Name : " + name + "<br><br>Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -457,7 +465,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 
 				stakeholderCount++;
 
-				grenadaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
+				grenadaPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 				grenada.addLayer(marker);
 
@@ -470,13 +478,13 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 			//title: title
 		});
 
-			marker.bindPopup("Name : " + name + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
 				globalCount++;
 
-				globalPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
+				globalPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 				global.addLayer(marker);
 
@@ -489,13 +497,13 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 			//title: title
 		});
 
-			marker.bindPopup("Name : " + name + "Type : " + type + "<br><br>Website : " + url + "<br><br>Functional Area : " + functional_area);
+			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
 				regionalCount++;
 
-				regionalPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + url + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
+				regionalPopupText += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 				regional.addLayer(marker);
 
