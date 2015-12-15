@@ -28,5 +28,6 @@
 	 */
 	exports.handleDBSuccess = function(object, res){
 		res.json({message: object.name + ' has been successfully created', HTTPStatus: object.http_code});
-	}
+	};
+			
 })();
