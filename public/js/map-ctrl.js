@@ -152,7 +152,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 			//title: title
 		});
 
-			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
+			marker.bindPopup("<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;margin-bottom:5px;'>Organization Details</p></b><b><span style='color:#0078A8'>" + name + "</span></b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -172,7 +172,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 			//title: title
 		});
 
-			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
+			marker.bindPopup("<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;margin-bottom:5px;'>Organization Details</p></b><b><span style='color:#0078A8'>" + name + "</span></b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -191,7 +191,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Bahamas" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
+			marker.bindPopup("<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;margin-bottom:5px;'>Organization Details</p></b><b><span style='color:#0078A8'>" + name + "</span></b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -210,7 +210,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Cuba" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
+			marker.bindPopup("<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;margin-bottom:5px;'>Organization Details</p></b><b><span style='color:#0078A8'>" + name + "</span></b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -229,7 +229,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Haiti" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
+			marker.bindPopup("<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;margin-bottom:5px;'>Organization Details</p></b><b><span style='color:#0078A8'>" + name + "</span></b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -248,7 +248,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Anguilla" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
+			marker.bindPopup("<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;margin-bottom:5px;'>Organization Details</p></b><b><span style='color:#0078A8'>" + name + "</span></b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -267,7 +267,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Montserrat" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
+			marker.bindPopup("<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;margin-bottom:5px;'>Organization Details</p></b><b><span style='color:#0078A8'>" + name + "</span></b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -286,7 +286,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Saint Lucia" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
+			marker.bindPopup("<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;margin-bottom:5px;'>Organization Details</p></b><b><span style='color:#0078A8'>" + name + "</span></b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -305,7 +305,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Saint Vincent" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
+			marker.bindPopup("<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;margin-bottom:5px;'>Organization Details</p></b><b><span style='color:#0078A8'>" + name + "</span></b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -324,7 +324,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Dominica" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
+			marker.bindPopup("<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;margin-bottom:5px;'>Organization Details</p></b><b><span style='color:#0078A8'>" + name + "</span></b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -343,7 +343,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Antigua and Barbuda" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
+			marker.bindPopup("<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;margin-bottom:5px;'>Organization Details</p></b><b><span style='color:#0078A8'>" + name + "</span></b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -362,7 +362,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Trinidad and Tobago" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
+			marker.bindPopup("<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;margin-bottom:5px;'>Organization Details</p></b><b><span style='color:#0078A8'>" + name + "</span></b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -381,7 +381,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Saint Kitts" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
+			marker.bindPopup("<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;margin-bottom:5px;'>Organization Details</p></b><b><span style='color:#0078A8'>" + name + "</span></b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -400,7 +400,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Belize" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
+			marker.bindPopup("<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;margin-bottom:5px;'>Organization Details</p></b><b><span style='color:#0078A8'>" + name + "</span></b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -419,7 +419,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Guyana" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
+			marker.bindPopup("<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;margin-bottom:5px;'>Organization Details</p></b><b><span style='color:#0078A8'>" + name + "</span></b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -438,7 +438,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Suriname" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
+			marker.bindPopup("<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;margin-bottom:5px;'>Organization Details</p></b><b><span style='color:#0078A8'>" + name + "</span></b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -457,7 +457,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		case "Grenada" : marker = L.marker(new L.LatLng(latitude, longitude), {
 		});
 
-			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
+			marker.bindPopup("<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;margin-bottom:5px;'>Organization Details</p></b><b><span style='color:#0078A8'>" + name + "</span></b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -478,7 +478,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 			//title: title
 		});
 
-			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
+			marker.bindPopup("<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;margin-bottom:5px;'>Organization Details</p></b><b><span style='color:#0078A8'>" + name + "</span></b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
@@ -497,7 +497,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 			//title: title
 		});
 
-			marker.bindPopup("<b>" + name + "</b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
+			marker.bindPopup("<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;margin-bottom:5px;'>Organization Details</p></b><b><span style='color:#0078A8'>" + name + "</span></b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(country)) {
 
