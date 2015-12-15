@@ -59,8 +59,10 @@ var updateStats = function(q){
  */
 var displayStats = function(stats, search){
 	if(!search){
-		$('#countries').text(stats.Countries);
-		$('#stakeholders').text(stats.Stakeholders);
+		$('#countries').text(stats.country);
+		$('#national').text(stats.national);
+		$('#regional').text(stats.regional);
+		$('#global').text(stats.global);
 	}else{
 		$('#countries').text(stats.countries);
 		$('#stakeholders').text(stats.stakeholder_count);

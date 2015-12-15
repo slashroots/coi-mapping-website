@@ -159,32 +159,43 @@ body{
 /*.logos div{
 	float: left;
 }*/
-.logos img{
+.logos-bottom{
+	margin-top: 20px;
+	margin-bottom: 40px;
+}
+.logos-top{
+	margin: 0 auto;
+}
+.logos-top img{
 	height: auto;
 	width: auto;
 	display: block;
 	max-width: 194px;
 	max-height: 183px;
 	float: left;
-	margin-left: 60px;
+	/*margin-left: 80px;*/
 }
 
-.logos img:nth-child(1){
-	margin-left: 30px;
+.logos-top img:nth-child(2),
+.logos-top img:nth-child(3),
+.logos-top img:nth-child(4){
+	margin-left: 90px;
+}
+.logos-top img:nth-child(1){
+	margin-left: 100px;
 	margin-top: 15px;
 }
-.logos img:nth-child(3){
+.logos-top img:nth-child(2){
+	margin-top: 10px;
+}
+
+.logos-top img:nth-child(3){
 	margin-top: 30px;
 }
 
-.logos img:nth-child(4){
-	margin-top: 20px;
+.logos-top img:nth-child(4){	
+	margin-top: 35px;
 }
-
-.logos img:nth-child(5){
-	margin-top: 15px;
-}
-
 /**
  * Map Page
  */
@@ -237,6 +248,22 @@ ul.treeview-menu > li{
 	max-height:550px;
 	height:550px;
 	margin-left:220px;
+}
+
+.creative-commons{
+	margin-top: 50px;
+	font-size: 11px;
+	padding: 15px;
+}
+
+.creative-commons img{
+	height:25px;
+	width:75px;
+}
+
+.creative-commons a{
+	text-decoration: underline;
+	color: #008cba;
 }
 
 /* Initiative Form */
