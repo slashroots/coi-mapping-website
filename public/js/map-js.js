@@ -52,6 +52,7 @@ function loadCountries () {
 		iconCreateFunction: null,
 		spiderfyOnMaxZoom: true,
 		showCoverageOnHover: true,
+		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
 	});
 
@@ -76,6 +77,7 @@ function loadCountries () {
 		iconCreateFunction: null,
 		spiderfyOnMaxZoom: true,
 		showCoverageOnHover: true,
+		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
 	});
 
@@ -99,6 +101,7 @@ function loadCountries () {
 		iconCreateFunction: null,
 		spiderfyOnMaxZoom: true,
 		showCoverageOnHover: true,
+		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
 	});
 
@@ -122,6 +125,7 @@ function loadCountries () {
 		iconCreateFunction: null,
 		spiderfyOnMaxZoom: true,
 		showCoverageOnHover: true,
+		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
 	});
 
@@ -145,6 +149,7 @@ function loadCountries () {
 		iconCreateFunction: null,
 		spiderfyOnMaxZoom: true,
 		showCoverageOnHover: true,
+		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
 	});
 
@@ -168,6 +173,7 @@ function loadCountries () {
 		iconCreateFunction: null,
 		spiderfyOnMaxZoom: true,
 		showCoverageOnHover: true,
+		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
 	});
 
@@ -191,6 +197,7 @@ function loadCountries () {
 		iconCreateFunction: null,
 		spiderfyOnMaxZoom: true,
 		showCoverageOnHover: true,
+		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
 	});
 
@@ -214,6 +221,7 @@ function loadCountries () {
 		iconCreateFunction: null,
 		spiderfyOnMaxZoom: true,
 		showCoverageOnHover: true,
+		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
 	});
 
@@ -238,6 +246,7 @@ function loadCountries () {
 		iconCreateFunction: null,
 		spiderfyOnMaxZoom: true,
 		showCoverageOnHover: true,
+		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
 	});
 
@@ -261,6 +270,7 @@ function loadCountries () {
 		iconCreateFunction: null,
 		spiderfyOnMaxZoom: true,
 		showCoverageOnHover: true,
+		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
 	});
 
@@ -284,6 +294,7 @@ function loadCountries () {
 		iconCreateFunction: null,
 		spiderfyOnMaxZoom: true,
 		showCoverageOnHover: true,
+		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
 	});
 
@@ -307,6 +318,7 @@ function loadCountries () {
 		iconCreateFunction: null,
 		spiderfyOnMaxZoom: true,
 		showCoverageOnHover: true,
+		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
 	});
 
@@ -330,6 +342,7 @@ function loadCountries () {
 		iconCreateFunction: null,
 		spiderfyOnMaxZoom: true,
 		showCoverageOnHover: true,
+		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
 	});
 
@@ -353,6 +366,7 @@ function loadCountries () {
 		iconCreateFunction: null,
 		spiderfyOnMaxZoom: true,
 		showCoverageOnHover: true,
+		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
 	});
 
@@ -376,6 +390,7 @@ function loadCountries () {
 		iconCreateFunction: null,
 		spiderfyOnMaxZoom: true,
 		showCoverageOnHover: true,
+		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
 	});
 
@@ -399,6 +414,7 @@ function loadCountries () {
 		iconCreateFunction: null,
 		spiderfyOnMaxZoom: true,
 		showCoverageOnHover: true,
+		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
 	});
 
@@ -422,6 +438,7 @@ function loadCountries () {
 		iconCreateFunction: null,
 		spiderfyOnMaxZoom: true,
 		showCoverageOnHover: true,
+		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
 	});
 
@@ -445,6 +462,7 @@ function loadCountries () {
 		iconCreateFunction: null,
 		spiderfyOnMaxZoom: true,
 		showCoverageOnHover: true,
+		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
 	});
 
@@ -468,6 +486,7 @@ function loadCountries () {
 		iconCreateFunction: null,
 		spiderfyOnMaxZoom: true,
 		showCoverageOnHover: true,
+		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
 	});
 
@@ -491,6 +510,7 @@ function loadCountries () {
 		iconCreateFunction: null,
 		spiderfyOnMaxZoom: true,
 		showCoverageOnHover: true,
+		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
 	});
 
