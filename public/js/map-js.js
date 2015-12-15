@@ -3,7 +3,7 @@ var geocodesData = null;
 
 var size = 0;
 
-	$.ajax({
+$.ajax({
 
 	type: "GET",
 
@@ -68,7 +68,7 @@ function loadCountries () {
 			.setLatLng([geoCode("Global").split(",")[0], geoCode("Global").split(",")[1]])
 			.setContent(globalPopupText)
 			.openOn(map);
-		
+
 	});
 
 	regional = new L.MarkerClusterGroup({
@@ -93,7 +93,7 @@ function loadCountries () {
 			.setContent(regionalPopupText)
 			.openOn(map);
 	});
-	
+
 	jamaica = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
@@ -593,74 +593,74 @@ map.addLayer(dominica);map.addLayer(antigua);map.addLayer(saintkitts);map.addLay
 map.addLayer(guyana);map.addLayer(suriname);map.addLayer(grenada);
 
 /*var sidebar = L.control.sidebar('sidebar', {
-	position: 'left'
-});
+ position: 'left'
+ });
 
-map.addControl(sidebar);
+ map.addControl(sidebar);
 
-sidebar.show();*/
+ sidebar.show();*/
 
 //
 
 $(document).ready(function(){
-	
+
 	$( ".accordion" ).accordion({
 		collapsible: true,
 		active: 2
 	});
 
 	$(".country-boxes").click(function (event) {
-		
+
 		var layerToRemove = event.target.id;
-		
+
 		if (layerToRemove.split(" ")[0] == 'saint') layerToRemove = layerToRemove.split(" ")[0]+layerToRemove.split(" ")[1];
 
 		else if (layerToRemove.split(" ")[1] == 'and') layerToRemove = layerToRemove.split(" ")[0];
 
-		if (!$("[id='" + event.target.id + "']").prop("checked")) map.removeLayer(window[layerToRemove]);
+		window[layerToRemove + 'Toggle'] = !window[layerToRemove + 'Toggle'];
 
-		else map.addLayer(window[layerToRemove]);
+		handleSearchInput();
 
 	});
 
 	$(".type-boxes").click(function (event) {
 
-			switch (event.target.id) {
+		switch (event.target.id) {
 
-				case 'Bank\\Investment\\Consulting' : bankToggle = !bankToggle;
-
-					break;
-
-				case 'Education\\Research' : eduToggle = !eduToggle;
-
-					break;
-
-				case 'ICT Vendor' : ictToggle = !ictToggle;
+			case 'Bank\\Investment\\Consulting' : bankToggle = !bankToggle;
 
 				break;
 
-				case 'ICT Services' : ictToggle2 = !ictToggle2;
+			case 'Education\\Research' : eduToggle = !eduToggle;
 
-					break;
+				break;
 
-				case 'Government' : govToggle = !govToggle;
+			case 'ICT Vendor' : ictToggle = !ictToggle;
 
-					break;
+				break;
 
-				case 'Media\\Marketing' : mediaToggle = !mediaToggle;
+			case 'ICT Services' : ictToggle2 = !ictToggle2;
 
-					break;
+				break;
 
-				case 'MNO\\Telecommunications' : mnoToggle = !mnoToggle;
+			case 'Government' : govToggle = !govToggle;
 
-					break;
+				break;
 
-				case 'NGO' : ngoToggle = !ngoToggle;
+			case 'Media\\Marketing' : mediaToggle = !mediaToggle;
 
-					break;
+				break;
 
-			}
-		
+			case 'MNO\\Telecommunications' : mnoToggle = !mnoToggle;
+
+				break;
+
+			case 'NGO' : ngoToggle = !ngoToggle;
+
+				break;
+
+		}
+
 		handleSearchInput();
 
 	});
@@ -671,7 +671,7 @@ $(document).ready(function(){
 function shouldTypeBeDrawn (marker_type) { //this function will return true if a marker should be drawn on the map based on its type or false otherwise
 
 	if (!bankToggle && !eduToggle && !ictToggle && !ictToggle2 && !govToggle && !mediaToggle && !mnoToggle && !ngoToggle) return true;
-	
+
 	switch (marker_type) {
 
 		case 'Bank\\Investment\\Consulting' : return bankToggle;
@@ -685,10 +685,10 @@ function shouldTypeBeDrawn (marker_type) { //this function will return true if a
 		case 'ICT Vendor' :  return ictToggle;
 
 			break;
-		
+
 		case 'ICT Services' : return ictToggle2;
 
-		break;
+			break;
 
 		case 'Government' : return govToggle;
 
@@ -707,10 +707,23 @@ function shouldTypeBeDrawn (marker_type) { //this function will return true if a
 			break;
 
 	}
-	
+
 	return true;
-	
+
 }
+
+
+function shouldCountryBeDrawn (country_name) { //this function will return true if a marker should be drawn on the map based on its type or false otherwise
+
+	if (!jamaicaToggle && !regionalToggle && !globalToggle && !barbadosToggle && !bahamasToggle && !cubaToggle && !haitiToggle && !anguillaToggle && !grenadaToggle && !montserratToggle && !saintluciaToggle && !saintvincentToggle && !trinidadToggle && !dominicaToggle && !antiguaToggle && !saintkittsToggle && !belizeToggle && !guyanaToggle && !surinameToggle) return true;
+
+	var toggleName = country_name.toLowerCase().replace(/\s+/g, '');
+
+	return window[toggleName + 'Toggle'];
+
+}
+
+
 
 
 
@@ -723,9 +736,9 @@ function shouldTypeBeDrawn (marker_type) { //this function will return true if a
 function infoSlideDown (element) {
 
 	var subElement = $(element).next().slideToggle("fast");
-	
+
 	if(element.childNodes[0].childNodes[0].innerHTML == "+") element.childNodes[0].childNodes[0].innerHTML = '-';
-	
+
 	else if(element.childNodes[0].childNodes[0].innerHTML == "-") element.childNodes[0].childNodes[0].innerHTML = '+';
 
 }
@@ -741,12 +754,12 @@ $("#search-box").typeWatch( options );
 
 document.getElementById('search-box').onkeypress = function(e){
 	if (!e) e = window.event;
-	 var keyCode = e.keyCode || e.which;
-	 if (keyCode == '13'){
-	 // Enter pressed
-	 //handleSearchInput();
-	 return false;
-	 }
+	var keyCode = e.keyCode || e.which;
+	if (keyCode == '13'){
+		// Enter pressed
+		//handleSearchInput();
+		return false;
+	}
 
 	//return false;
 
@@ -755,21 +768,21 @@ document.getElementById('search-box').onkeypress = function(e){
 function resetSearchBox () {
 
 	document.getElementById('search-box').value = '';
-	
+
 	handleSearchInput();
-	
+
 }
 
 function resetCountryFilters () {
-	
-	$(".country-boxes").each(function(){
-		
-		if (!$(this).prop("checked")) {
-			
-			if ($(this).prop("id") != 'country-list') map.addLayer(window[$(this).prop("id")]);
 
-			$(this).prop('checked', true);
-			
+	$(".country-boxes").each(function(){
+
+		jamaicaToggle = regionalToggle = globalToggle = barbadosToggle = bahamasToggle = cubaToggle = haitiToggle = anguillaToggle = grenadaToggle = montserratToggle = saintluciaToggle = saintvincentToggle = trinidadToggle = dominicaToggle = antiguaToggle = saintkittsToggle = belizeToggle = guyanaToggle = surinameToggle = false;
+
+		if ($(this).prop("checked")) {
+
+			$(this).prop('checked', false);
+
 		}
 	});
 
@@ -781,9 +794,9 @@ function resetTypeFilters () {
 
 	$(".type-boxes").each(function(){
 
-		if (!$(this).prop("checked")) {
+		if ($(this).prop("checked")) {
 
-			$(this).prop('checked', true);
+			$(this).prop('checked', false);
 
 		}
 	});
@@ -797,7 +810,7 @@ function handleSearchInput () {
 	map.removeLayer(global);
 
 	map.removeLayer(regional);
-	
+
 	map.removeLayer(bahamas);
 
 	map.removeLayer(belize);
@@ -815,11 +828,11 @@ function handleSearchInput () {
 	loadCountries();
 
 	getEverything(document.getElementById('search-box').value);
-	
+
 }
 
 function putLayersOnMap () {
-	
+
 	map.addLayer(jamaica);
 
 	map.addLayer(global);
@@ -839,6 +852,6 @@ function putLayersOnMap () {
 	map.addLayer(dominica);map.addLayer(antigua);map.addLayer(saintkitts);map.addLayer(belize);
 
 	map.addLayer(guyana);map.addLayer(suriname);map.addLayer(grenada);
-	
+
 }
 
