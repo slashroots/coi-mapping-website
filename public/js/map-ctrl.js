@@ -163,7 +163,11 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 
 				countriesDrawnArray[country] = true;
 
-				stakeholderCount++;
+				if (country == 'Regional') regionalCount++;
+				
+				else if (country == 'Global') globalCount++;
+				
+				else stakeholderCount++;
 
 				window[countryNameParse(country.toLowerCase()) + 'PopupText'] += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
