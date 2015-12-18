@@ -35,17 +35,43 @@ function geoCode (countryname) {
 
 }
 
-var jamaica, regional, global, barbados, bahamas, cuba, haiti, anguilla, grenada, montserrat, saintlucia, saintvincent, trinidad, dominica, antigua, saintkitts, belize, guyana, suriname = null;
+var dominican, jamaica, regional, global, barbados, bahamas, cuba, haiti, anguilla, grenada, montserrat, saintlucia, saintvincent, trinidad, dominica, antigua, saintkitts, belize, guyana, suriname = null;
 
-var jamaicaPopupText = barbadosPopupText = bahamasPopupText = cubaPopupText = antiguaPopupText = haitiPopupText = anguillaPopupText = grenadaPopupText = montserratPopupText = saintluciaPopupText = saintvincentPopupText = trinidadPopupText = dominicaPopupText = saintkittsPopupText = belizePopupText = guyanaPopupText = surinamePopupText = grenadaPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;'>Organizations</p></b>";
+var dominicanPopupText = jamaicaPopupText = barbadosPopupText = bahamasPopupText = cubaPopupText = antiguaPopupText = haitiPopupText = anguillaPopupText = grenadaPopupText = montserratPopupText = saintluciaPopupText = saintvincentPopupText = trinidadPopupText = dominicaPopupText = saintkittsPopupText = belizePopupText = guyanaPopupText = surinamePopupText = grenadaPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;'>Organizations</p></b>";
 
 function loadCountries () {
 
-	jamaicaPopupText = barbadosPopupText = bahamasPopupText = cubaPopupText = antiguaPopupText = haitiPopupText = anguillaPopupText = grenadaPopupText = montserratPopupText = saintluciaPopupText = saintvincentPopupText = trinidadPopupText = dominicaPopupText = saintkittsPopupText = belizePopupText = guyanaPopupText = surinamePopupText = grenadaPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;''>Organizations</p></b>";
+	dominicanPopupText = jamaicaPopupText = barbadosPopupText = bahamasPopupText = cubaPopupText = antiguaPopupText = haitiPopupText = anguillaPopupText = grenadaPopupText = montserratPopupText = saintluciaPopupText = saintvincentPopupText = trinidadPopupText = dominicaPopupText = saintkittsPopupText = belizePopupText = guyanaPopupText = surinamePopupText = grenadaPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;''>Organizations</p></b>";
 
 	globalPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;''>Global Organizations</p></b>";
 
 	regionalPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;''>Regional Organizations</p></b>";
+
+	dominican = new L.MarkerClusterGroup({
+		maxClusterRadius: 60,
+		iconCreateFunction: null,
+		spiderfyOnMaxZoom: true,
+		showCoverageOnHover: true,
+		singleMarkerMode: true,
+		zoomToBoundsOnClick: false
+	});
+
+	dominican.on('clusterclick', function (a) {
+		//a.layer.spiderfy();
+		//set up a standalone popup (use a popup as a layer)
+		var popup = L.popup(
+			{
+
+				maxHeight: 300,
+
+			}
+		)
+			.setLatLng([geoCode("Dominican Republic").split(",")[0], geoCode("Dominican Republic").split(",")[1]])
+			.setContent(dominicanPopupText)
+			.openOn(map);
+
+	});
+
 
 	global = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
@@ -596,6 +622,8 @@ L.tileLayer('http://{s}.tiles.mapbox.com/v4/nickjwill.lcnc6kpo/{z}/{x}/{y}.png?a
 
 getEverything('');
 
+map.addLayer(dominican);
+
 map.addLayer(jamaica);
 
 map.addLayer(bahamas);
@@ -636,6 +664,8 @@ $(document).ready(function(){
 		if (layerToRemove.split(" ")[0] == 'saint') layerToRemove = layerToRemove.split(" ")[0]+layerToRemove.split(" ")[1];
 
 		else if (layerToRemove.split(" ")[1] == 'and') layerToRemove = layerToRemove.split(" ")[0];
+		
+		else layerToRemove = layerToRemove.split(" ")[0];
 
 		window[layerToRemove + 'Toggle'] = !window[layerToRemove + 'Toggle'];
 
@@ -735,9 +765,9 @@ function shouldTypeBeDrawn (marker_type) { //this function will return true if a
 
 function shouldCountryBeDrawn (country_name) { //this function will return true if a marker should be drawn on the map based on its type or false otherwise
 
-	if (!jamaicaToggle && !regionalToggle && !globalToggle && !barbadosToggle && !bahamasToggle && !cubaToggle && !haitiToggle && !anguillaToggle && !grenadaToggle && !montserratToggle && !saintluciaToggle && !saintvincentToggle && !trinidadToggle && !dominicaToggle && !antiguaToggle && !saintkittsToggle && !belizeToggle && !guyanaToggle && !surinameToggle) return true;
+	if (!dominicanToggle && !jamaicaToggle && !regionalToggle && !globalToggle && !barbadosToggle && !bahamasToggle && !cubaToggle && !haitiToggle && !anguillaToggle && !grenadaToggle && !montserratToggle && !saintluciaToggle && !saintvincentToggle && !trinidadToggle && !dominicaToggle && !antiguaToggle && !saintkittsToggle && !belizeToggle && !guyanaToggle && !surinameToggle) return true;
 
-	var toggleName = country_name.toLowerCase().replace(/\s+/g, '');
+	var toggleName = countryNameParse (country_name).toLowerCase().replace(/\s+/g, '');
 
 	return window[toggleName + 'Toggle'];
 
@@ -827,6 +857,8 @@ function handleSearchInput () {
 
 	map.removeLayer(jamaica);
 
+	map.removeLayer(dominican);
+
 	map.removeLayer(global);
 
 	map.removeLayer(regional);
@@ -854,6 +886,8 @@ function handleSearchInput () {
 function putLayersOnMap () {
 
 	map.addLayer(jamaica);
+
+	map.addLayer(dominican);
 
 	map.addLayer(global);
 
