@@ -827,7 +827,7 @@ function resetCountryFilters () {
 
 	$(".country-boxes").each(function(){
 
-		jamaicaToggle = regionalToggle = globalToggle = barbadosToggle = bahamasToggle = cubaToggle = haitiToggle = anguillaToggle = grenadaToggle = montserratToggle = saintluciaToggle = saintvincentToggle = trinidadToggle = dominicaToggle = antiguaToggle = saintkittsToggle = belizeToggle = guyanaToggle = surinameToggle = false;
+		jamaicaToggle = regionalToggle = globalToggle = barbadosToggle = bahamasToggle = cubaToggle = haitiToggle = anguillaToggle = grenadaToggle = montserratToggle = saintluciaToggle = saintvincentToggle = trinidadToggle = dominicaToggle = antiguaToggle = saintkittsToggle = belizeToggle = guyanaToggle = surinameToggle = dominicanToggle = false;
 
 		if ($(this).prop("checked")) {
 
