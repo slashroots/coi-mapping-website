@@ -1,5 +1,7 @@
 var marker = null;
 
+var stakeholdersToggle = false; //if false it shows initiatives
+
 var bankToggle = eduToggle = ictToggle = ictToggle2 = govToggle = mediaToggle = mnoToggle = ngoToggle = false;
 
 var jamaicaToggle, regionalToggle, globalToggle, barbadosToggle, bahamasToggle, cubaToggle, haitiToggle, anguillaToggle, grenadaToggle, montserratToggle, saintluciaToggle, saintvincentToggle, trinidadToggle, dominicaToggle, antiguaToggle, saintkittsToggle, belizeToggle, guyanaToggle, surinameToggle, dominicanToggle = false;
@@ -11,6 +13,10 @@ var stakeholderCount = 0;
 var globalCount = 0;
 
 var regionalCount = 0;
+
+var globalInitiativeCount = 0;
+
+var regionalInitiativeCount = 0;
 
 var preContent = "";
 /**
@@ -247,21 +253,23 @@ function plotCountryInitiative (id, country, name, type, url, date, size, latitu
 
 	});
 
-	marker.bindPopup("<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;margin-bottom:5px;'>Organization Details</p></b><b><span style='color:#0078A8'>" + name + "</span></b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Year : </b>" + date);
+	marker.bindPopup("<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;margin-bottom:5px;'>Initiative Details</p></b><b><span style='color:#0078A8'>" + name + "</span></b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Year : </b>" + date);
 
 	if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(countryNameParse(country.toLowerCase()))) {
 
 		countriesDrawnArray[country] = true;
 
-		if (country == 'Regional') regionalCount++;
+		if (country == 'Regional') regionalInitiativeCount++;
 
-		else if (country == 'Global') globalCount++;
+		else if (country == 'Global') globalInitiativeCount++;
 
 		else stakeholderCount++;
 
-		window[countryNameParse(country.toLowerCase()) + 'PopupText'] += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Date : </b>" + date + "</p></div>";
+		window[countryNameParse(country.toLowerCase()) + 'initiativesPopupText'] += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Date : </b>" + date + "</p></div>";
 
-		window[countryNameParse(country.toLowerCase())].addLayer(marker);
+		window[countryNameParse(country.toLowerCase()) + "initiatives"].addLayer(marker);
+		
+		//alert(window[countryNameParse(country.toLowerCase()) + 'initiativesPopupText']);
 
 	}
 
