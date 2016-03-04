@@ -1566,7 +1566,24 @@ $(".mapToggle").click(function(){
 
 	stakeholdersToggle = !stakeholdersToggle;
 	
+	if (stakeholdersToggle) {
+		
+		$("#stakeholders_only").show();
+		
+		document.getElementById("initiatives_only").style.display = "none";
+		
+	}
+
+	else {
+
+		document.getElementById("stakeholders_only").style.display = "none";
+
+		$("#initiatives_only").show();
+
+	}
+	
 	handleSearchInput();
 	
 });
 
+document.getElementById("initiatives_only").style.display = "none";

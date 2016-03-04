@@ -26,10 +26,29 @@ $(document).ready(function(){
 		}
 	});
 
+	$.ajax({
+		url: '/categories?category=initiative',
+		type: 'GET',
+		success: function(data){
+			// console.log(data);
+			displayInitiativeCategoryList(data);
+		},
+		error: function(){
+			console.log('Error');
+		}
+	});
+
 	var displayStakeholderCategoryList = function(categories){
 		var stakeholder_type_list = $('#entity-list'), i = 0, len = categories.length;
 		for(;i<len;i++){
 			stakeholder_type_list.append('<li><input type="checkbox" id="' + categories[i].name + '" class="type-boxes"><span>' + categories[i].name + '</span></li>');
+		}
+	};
+
+	var displayInitiativeCategoryList = function(categories){
+		var initiative_type_list = $('#category-list'), i = 0, len = categories.length;
+		for(;i<len;i++){
+			initiative_type_list.append('<li><input type="checkbox" id="' + categories[i].name + '" class="category-boxes"><span>' + categories[i].name + '</span></li>');
 		}
 	};
 
