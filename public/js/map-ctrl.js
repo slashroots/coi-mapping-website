@@ -107,7 +107,7 @@ function getEverything (search) {
 
 	var countries = [];
 
-	$.ajax({
+	if (stakeholdersToggle) $.ajax({
 
 		type: "GET",
 
@@ -167,7 +167,7 @@ function getEverything (search) {
 
 	else ajax_url = "/search?q=" + search;
 
-	$.ajax({
+	if (!stakeholdersToggle) $.ajax({
 
 		type: "GET",
 
