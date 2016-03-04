@@ -185,7 +185,7 @@ function getEverything (search) {
 
 				url = data.stakeholders[i].url;
 
-				functional_area = data.stakeholders[i].organizer.name;
+				date = data.stakeholders[i].date;
 
 				latitude = data.stakeholders[i].country.latitude;
 
@@ -193,7 +193,7 @@ function getEverything (search) {
 
 				id = data.stakeholders[i].id;
 
-				plotCountry(id, country, name, type, url, functional_area, size, latitude, longitude);
+				plotCountryInitiative(id, country, name, type, url, date, size, latitude, longitude);
 
 			}
 
@@ -236,5 +236,33 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 				window[countryNameParse(country.toLowerCase())].addLayer(marker);
 
 			}
+
+}
+
+function plotCountryInitiative (id, country, name, type, url, date, size, latitude, longitude) {
+	
+	//alert("Init!");
+
+	marker = L.marker(new L.LatLng(latitude, longitude), {
+
+	});
+
+	marker.bindPopup("<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;margin-bottom:5px;'>Organization Details</p></b><b><span style='color:#0078A8'>" + name + "</span></b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Year : </b>" + date);
+
+	if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(countryNameParse(country.toLowerCase()))) {
+
+		countriesDrawnArray[country] = true;
+
+		if (country == 'Regional') regionalCount++;
+
+		else if (country == 'Global') globalCount++;
+
+		else stakeholderCount++;
+
+		window[countryNameParse(country.toLowerCase()) + 'PopupText'] += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Date : </b>" + date + "</p></div>";
+
+		window[countryNameParse(country.toLowerCase())].addLayer(marker);
+
+	}
 
 }
