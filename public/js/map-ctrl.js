@@ -1,6 +1,6 @@
 var marker = null;
 
-var stakeholdersToggle = false; //if false it shows initiatives
+var stakeholdersToggle = true; //if false it shows initiatives
 
 var bankToggle = eduToggle = ictToggle = ictToggle2 = govToggle = mediaToggle = mnoToggle = ngoToggle = false;
 

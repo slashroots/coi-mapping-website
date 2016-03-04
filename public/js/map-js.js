@@ -1454,6 +1454,28 @@ function handleSearchInput () {
 
 	map.removeLayer(guyana);map.removeLayer(suriname);map.removeLayer(grenada);
 
+	map.removeLayer(jamaicainitiatives);
+
+	map.removeLayer(dominicaninitiatives);
+
+	map.removeLayer(globalinitiatives);
+
+	map.removeLayer(regionalinitiatives);
+
+	map.removeLayer(bahamasinitiatives);
+
+	map.removeLayer(belizeinitiatives);
+
+	map.removeLayer(barbadosinitiatives);
+
+	map.removeLayer(cubainitiatives);map.removeLayer(anguillainitiatives);map.removeLayer(haitiinitiatives);map.removeLayer(grenadainitiatives);
+
+	map.removeLayer(montserratinitiatives);map.removeLayer(saintluciainitiatives);map.removeLayer(saintvincentinitiatives);map.removeLayer(trinidadinitiatives);
+
+	map.removeLayer(dominicainitiatives);map.removeLayer(antiguainitiatives);map.removeLayer(saintkittsinitiatives);map.removeLayer(belizeinitiatives);
+
+	map.removeLayer(guyanainitiatives);map.removeLayer(surinameinitiatives);map.removeLayer(grenadainitiatives);
+
 	loadCountries();
 
 	getEverything(document.getElementById('search-box').value);
@@ -1539,4 +1561,12 @@ function putLayersOnMap () {
 	}	
 
 }
+
+$(".mapToggle").click(function(){
+
+	stakeholdersToggle = !stakeholdersToggle;
+	
+	handleSearchInput();
+	
+});
 
