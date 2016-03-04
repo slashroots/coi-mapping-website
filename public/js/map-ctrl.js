@@ -150,6 +150,66 @@ function getEverything (search) {
 		}
 
 	});
+	
+	//initiatives now
+
+	ajax_url = "placeholder";
+
+	if (search == '') ajax_url = "/initiatives";
+
+	else ajax_url = "/search?q=" + search;
+
+	$.ajax({
+
+		type: "GET",
+
+		url: ajax_url,
+
+		dataType : "json",
+
+		success : function (data) {
+
+			countriesDrawnArray = {};
+
+			countriesDrawnArray['test'] = 0;
+
+			stakeholderCount = globalCount = regionalCount = 0;
+
+			for(i = 0;i<data.stakeholders.length;i++){
+
+				country = data.stakeholders[i].country.name;
+
+				name = data.stakeholders[i].name;
+
+				type = data.stakeholders[i].category.name;
+
+				url = data.stakeholders[i].url;
+
+				functional_area = data.stakeholders[i].organizer.name;
+
+				latitude = data.stakeholders[i].country.latitude;
+
+				longitude = data.stakeholders[i].country.longitude;
+
+				id = data.stakeholders[i].id;
+
+				plotCountry(id, country, name, type, url, functional_area, size, latitude, longitude);
+
+			}
+
+			putLayersOnMap();
+
+			$('#stakeholders').text(stakeholderCount);
+
+			$('#regional').text(regionalCount);
+
+			$('#global').text(globalCount);
+
+			$('#countries').text(Object.keys(countriesDrawnArray).length - 1);
+
+		}
+
+	});
 
 }
 
