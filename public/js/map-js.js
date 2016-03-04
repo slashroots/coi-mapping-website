@@ -53,6 +53,10 @@ function loadCountries () {
 
 	regionalPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;''>Regional Organizations</p></b>";
 
+	globalinitiativesPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;''>Global Initiatives</p></b>";
+
+	regionalinitiativesPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;''>Regional Initiatives</p></b>";
+	
 	dominican = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
@@ -1292,6 +1296,44 @@ $(document).ready(function(){
 
 	});
 
+	$(".category-boxes").click(function (event) {
+
+		switch (event.target.id) {
+
+			case 'Competition\\Hackathon' : competitionToggle = !competitionToggle;
+
+				break;
+
+			case 'Conference\\Exhibition' : conferenceToggle = !conferenceToggle;
+
+				break;
+
+			case 'Education\\Capacity Building' :  educationToggle = !educationToggle;
+
+				break;
+
+			case 'Incubator' : incubatorToggle = !incubatorToggle;
+
+				break;
+
+			case 'Infrastructure' : infrastructureToggle = !infrastructureToggle;
+
+				break;
+
+			case 'Mobile App Project' : mobileToggle = !mobileToggle;
+
+				break;
+
+			case 'Venture Capital' : ventureToggle = !ventureToggle;
+
+				break;
+
+		}
+
+		handleSearchInput();
+
+	});
+
 });
 
 
@@ -1330,6 +1372,46 @@ function shouldTypeBeDrawn (marker_type) { //this function will return true if a
 			break;
 
 		case 'NGO' : return ngoToggle;
+
+			break;
+
+	}
+
+	return true;
+
+}
+
+function shouldCategoryBeDrawn (marker_type) { //this function will return true if a marker should be drawn on the map based on its type or false otherwise
+
+	if (!competitionToggle && !conferenceToggle && !educationToggle && !incubatorToggle && !infrastructureToggle && !mobileToggle && !ventureToggle) return true;
+
+	switch (marker_type) {
+
+		case 'Competition\\Hackathon' : return competitionToggle;
+
+			break;
+
+		case 'Conference\\Exhibition' : return conferenceToggle;
+
+			break;
+
+		case 'Education\\Capacity Building' :  return educationToggle;
+
+			break;
+
+		case 'Incubator' : return incubatorToggle;
+
+			break;
+
+		case 'Infrastructure' : return infrastructureToggle;
+
+			break;
+
+		case 'Mobile App Project' : return mobileToggle;
+
+			break;
+
+		case 'Venture Capital' : return ventureToggle;
 
 			break;
 
@@ -1417,9 +1499,24 @@ function resetCountryFilters () {
 
 function resetTypeFilters () {
 
-	bankToggle = eduToggle = ictToggle = ictToggle2 = govToggle = mediaToggle = mnoToggle = ngoToggle = true;
+	bankToggle = eduToggle = ictToggle = ictToggle2 = govToggle = mediaToggle = mnoToggle = ngoToggle = false;
 
 	$(".type-boxes").each(function(){
+
+		if ($(this).prop("checked")) {
+
+			$(this).prop('checked', false);
+
+		}
+	});
+
+}
+
+function resetCategoryFilters () {
+
+	competitionToggle = conferenceToggle = educationToggle = incubatorToggle = infrastructureToggle = mobileToggle = ventureToggle = false;
+
+	$(".category-boxes").each(function(){
 
 		if ($(this).prop("checked")) {
 

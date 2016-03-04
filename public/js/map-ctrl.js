@@ -4,6 +4,8 @@ var stakeholdersToggle = true; //if false it shows initiatives
 
 var bankToggle = eduToggle = ictToggle = ictToggle2 = govToggle = mediaToggle = mnoToggle = ngoToggle = false;
 
+var competitionToggle = conferenceToggle = educationToggle = incubatorToggle  = infrastructureToggle = mobileToggle = ventureToggle = false;
+
 var jamaicaToggle, regionalToggle, globalToggle, barbadosToggle, bahamasToggle, cubaToggle, haitiToggle, anguillaToggle, grenadaToggle, montserratToggle, saintluciaToggle, saintvincentToggle, trinidadToggle, dominicaToggle, antiguaToggle, saintkittsToggle, belizeToggle, guyanaToggle, surinameToggle, dominicanToggle = false;
 
 var countriesDrawnArray = {}; //associative array used to keep track of the individual countries that have stakeholders rendered
@@ -255,13 +257,13 @@ function plotCountryInitiative (id, country, name, type, url, date, size, latitu
 
 	marker.bindPopup("<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;margin-bottom:5px;'>Initiative Details</p></b><b><span style='color:#0078A8'>" + name + "</span></b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Year : </b>" + date);
 
-	if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(countryNameParse(country.toLowerCase()))) {
+	if (shouldCategoryBeDrawn(type) && shouldCountryBeDrawn(countryNameParse(country.toLowerCase()))) {
 
 		countriesDrawnArray[country] = true;
 
-		if (country == 'Regional') regionalInitiativeCount++;
+		if (country == 'Regional') regionalCount++;
 
-		else if (country == 'Global') globalInitiativeCount++;
+		else if (country == 'Global') globalCount++;
 
 		else stakeholderCount++;
 
