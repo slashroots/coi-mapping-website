@@ -1660,27 +1660,45 @@ function putLayersOnMap () {
 }
 
 $(".mapToggle").click(function(){
-
-	stakeholdersToggle = !stakeholdersToggle;
 	
-	if (stakeholdersToggle) {
-		
-		$("#stakeholders_only").show();
-		
-		document.getElementById("initiatives_only").style.display = "none";
-		
-	}
+	if (!$(this).parent().hasClass( "active" )) {
 
-	else {
+		stakeholdersToggle = !stakeholdersToggle;
 
-		document.getElementById("stakeholders_only").style.display = "none";
+		if (stakeholdersToggle) {
 
-		$("#initiatives_only").show();
+			$("#stakeholders_only").show();
 
-	}
-	
-	handleSearchInput();
+			document.getElementById("initiatives_only").style.display = "none";
+
+		}
+
+		else {
+
+			document.getElementById("stakeholders_only").style.display = "none";
+
+			$("#initiatives_only").show();
+
+		}
+
+		handleSearchInput();
+
+	}	
 	
 });
 
 document.getElementById("initiatives_only").style.display = "none";
+
+jQuery(document).ready(function() {
+	jQuery('.tabs .tab-links a').on('click', function(e)  {
+		var currentAttrValue = jQuery(this).attr('href');
+
+		// Show/Hide Tabs
+		jQuery('.tabs ' + currentAttrValue).show().siblings().hide();
+
+		// Change/remove current tab to active
+		jQuery(this).parent('li').addClass('active').siblings().removeClass('active');
+
+		e.preventDefault();
+	});
+});
