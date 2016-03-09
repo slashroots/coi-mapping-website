@@ -22,7 +22,7 @@ $(document).ready(function(){
 			displayStakeholderCategoryList(data);
 		},
 		error: function(){
-			console.log('Error');
+			alert("Failed to load stakeholders!");
 		}
 	});
 
@@ -34,7 +34,7 @@ $(document).ready(function(){
 			displayInitiativeCategoryList(data);
 		},
 		error: function(){
-			console.log('Error');
+			alert("Failed to load initiatives!");
 		}
 	});
 
