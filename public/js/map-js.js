@@ -60,7 +60,7 @@ function loadCountries () {
 	dominican = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -86,7 +86,7 @@ function loadCountries () {
 	global = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -111,7 +111,7 @@ function loadCountries () {
 	regional = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -135,7 +135,7 @@ function loadCountries () {
 	jamaica = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -159,7 +159,7 @@ function loadCountries () {
 	barbados = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -183,7 +183,7 @@ function loadCountries () {
 	bahamas = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -207,7 +207,7 @@ function loadCountries () {
 	cuba = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -231,7 +231,7 @@ function loadCountries () {
 	haiti = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -255,7 +255,7 @@ function loadCountries () {
 	anguilla = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -280,7 +280,7 @@ function loadCountries () {
 	grenada = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -304,7 +304,7 @@ function loadCountries () {
 	montserrat = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -328,7 +328,7 @@ function loadCountries () {
 	saintlucia = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -352,7 +352,7 @@ function loadCountries () {
 	saintvincent = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -376,7 +376,7 @@ function loadCountries () {
 	trinidad = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -400,7 +400,7 @@ function loadCountries () {
 	dominica = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -424,7 +424,7 @@ function loadCountries () {
 	antigua = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -448,7 +448,7 @@ function loadCountries () {
 	saintkitts = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -472,7 +472,7 @@ function loadCountries () {
 	belize = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -496,7 +496,7 @@ function loadCountries () {
 	guyana = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -520,7 +520,7 @@ function loadCountries () {
 	suriname = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -544,7 +544,7 @@ function loadCountries () {
 	grenada = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -570,7 +570,7 @@ function loadCountries () {
 	dominicaninitiatives = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -596,7 +596,7 @@ function loadCountries () {
 	globalinitiatives = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -621,7 +621,7 @@ function loadCountries () {
 	regionalinitiatives = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -645,7 +645,7 @@ function loadCountries () {
 	jamaicainitiatives = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -671,7 +671,7 @@ function loadCountries () {
 	barbadosinitiatives = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -695,7 +695,7 @@ function loadCountries () {
 	bahamasinitiatives = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -719,7 +719,7 @@ function loadCountries () {
 	cubainitiatives = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -743,7 +743,7 @@ function loadCountries () {
 	haitiinitiatives = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -767,7 +767,7 @@ function loadCountries () {
 	anguillainitiatives = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -792,7 +792,7 @@ function loadCountries () {
 	grenadainitiatives = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -816,7 +816,7 @@ function loadCountries () {
 	montserratinitiatives = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -840,7 +840,7 @@ function loadCountries () {
 	saintluciainitiatives = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -864,7 +864,7 @@ function loadCountries () {
 	saintvincentinitiatives = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -888,7 +888,7 @@ function loadCountries () {
 	trinidadinitiatives = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -912,7 +912,7 @@ function loadCountries () {
 	dominicainitiatives = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -936,7 +936,7 @@ function loadCountries () {
 	antiguainitiatives = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -960,7 +960,7 @@ function loadCountries () {
 	saintkittsinitiatives = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -984,7 +984,7 @@ function loadCountries () {
 	belizeinitiatives = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -1008,7 +1008,7 @@ function loadCountries () {
 	guyanainitiatives = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -1032,7 +1032,7 @@ function loadCountries () {
 	surinameinitiatives = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -1056,7 +1056,7 @@ function loadCountries () {
 	grenadainitiatives = new L.MarkerClusterGroup({
 		maxClusterRadius: 60,
 		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
+		spiderfyOnMaxZoom: false,
 		showCoverageOnHover: true,
 		singleMarkerMode: true,
 		zoomToBoundsOnClick: false
@@ -1138,7 +1138,7 @@ var map = L.map('map',
 //https://a.tiles.mapbox.com/v4/nickjwill.lcnch31p/page.html?access_token=pk.eyJ1Ijoibmlja2p3aWxsIiwiYSI6Im4xQWFQeTQifQ.bwI5KQmy7z7kS9woXzbplw#6/31.625/40.463
 L.tileLayer('http://{s}.tiles.mapbox.com/v4/nickjwill.lcnc6kpo/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoibmlja2p3aWxsIiwiYSI6Im4xQWFQeTQifQ.bwI5KQmy7z7kS9woXzbplw', {
 	attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-	maxZoom: 8,
+	maxZoom: 5,
 	minZoom: 5,
 }).addTo(map);
 
@@ -1149,6 +1149,8 @@ if (stakeholdersToggle) {
 	map.addLayer(jamaica);
 
 	map.addLayer(dominican);
+	
+	drawLabels();
 
 	map.addLayer(global);
 
@@ -1213,6 +1215,8 @@ else {
 	map.addLayer(guyanainitiatives);
 	map.addLayer(surinameinitiatives);
 	map.addLayer(grenadainitiatives);
+
+	drawInitiativeLabels();
 
 	map.addLayer(globalinitiatives);
 
@@ -1702,3 +1706,4 @@ jQuery(document).ready(function() {
 		e.preventDefault();
 	});
 });
+

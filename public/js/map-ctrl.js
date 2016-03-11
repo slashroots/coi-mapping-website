@@ -256,7 +256,7 @@ function plotCountryInitiative (id, country, name, type, url, date, size, latitu
 	});
 
 	marker.bindPopup("<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;margin-bottom:5px;'>Initiative Details</p></b><b><span style='color:#0078A8'>" + name + "</span></b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Year : </b>" + date);
-
+	
 	if (shouldCategoryBeDrawn(type) && shouldCountryBeDrawn(countryNameParse(country.toLowerCase()))) {
 
 		countriesDrawnArray[country] = true;
@@ -276,3 +276,36 @@ function plotCountryInitiative (id, country, name, type, url, date, size, latitu
 	}
 
 }
+
+function drawLabels() {
+
+	mkr = L.marker(new L.LatLng(23.972080, -57.649023), { opacity: 0.01 });
+
+	mkr.bindLabel("Global", {noHide: true, className: "my-label", offset: [-38, 0] });
+
+	map.addLayer(mkr);
+
+	mkr2 = L.marker(new L.LatLng(23.972080, -64.204492), { opacity: 0.01 });
+
+	mkr2.bindLabel("Regional", {noHide: true, className: "my-label", offset: [-35, 0] });
+
+	map.addLayer(mkr2);
+
+};
+
+function drawInitiativeLabels() {
+
+	mkr = L.marker(new L.LatLng(23.972080, -57.649023), { opacity: 0.01 });
+
+	mkr.bindLabel("Global", {noHide: true, className: "my-label", offset: [-38, 0] });
+
+	map.addLayer(mkr);
+
+	mkr2 = L.marker(new L.LatLng(23.972080, -64.204492), { opacity: 0.01 });
+
+	mkr2.bindLabel("Regional", {noHide: true, className: "my-label", offset: [-35, 0] });
+
+	map.addLayer(mkr2);
+
+};
+
