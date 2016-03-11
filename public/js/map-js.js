@@ -1138,7 +1138,7 @@ var map = L.map('map',
 //https://a.tiles.mapbox.com/v4/nickjwill.lcnch31p/page.html?access_token=pk.eyJ1Ijoibmlja2p3aWxsIiwiYSI6Im4xQWFQeTQifQ.bwI5KQmy7z7kS9woXzbplw#6/31.625/40.463
 L.tileLayer('http://{s}.tiles.mapbox.com/v4/nickjwill.lcnc6kpo/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoibmlja2p3aWxsIiwiYSI6Im4xQWFQeTQifQ.bwI5KQmy7z7kS9woXzbplw', {
 	attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-	maxZoom: 5,
+	maxZoom: 6,
 	minZoom: 5,
 }).addTo(map);
 
@@ -1436,15 +1436,6 @@ function shouldCountryBeDrawn (country_name) { //this function will return true 
 
 }
 
-
-
-
-
-/*for (var x = 0;x < eduArray.length;x++) {
-
- jamaica.removeLayer(eduArray[x]);
-
- }*/
 
 function infoSlideDown (element) {
 
