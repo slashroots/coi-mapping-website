@@ -280,11 +280,10 @@ L.Map = L.Map.extend({
 
 var map = L.map('map',
 		{closePopupOnClick : false}).setView([17.96, -71.09], 5);
-//https://a.tiles.mapbox.com/v4/nickjwill.lcnch31p/page.html?access_token=pk.eyJ1Ijoibmlja2p3aWxsIiwiYSI6Im4xQWFQeTQifQ.bwI5KQmy7z7kS9woXzbplw#6/31.625/40.463
-L.tileLayer('http://{s}.tiles.mapbox.com/v4/nickjwill.lcnc6kpo/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoibmlja2p3aWxsIiwiYSI6Im4xQWFQeTQifQ.bwI5KQmy7z7kS9woXzbplw', {
+L.tileLayer(maptileurl + access_token, {
 	attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-	maxZoom: 6,
-	minZoom: 5,
+	maxZoom: maxMapZoom,
+	minZoom: minMapZoom,
 }).addTo(map);
 
 getEverything('');
@@ -557,13 +556,13 @@ $(".mapToggle").click(function(){
 
 			$("#stakeholders_only").show();
 
-			document.getElementById("initiatives_only").style.display = "none";
+			$("#initiatives_only").hide();
 
 		}
 
 		else {
 
-			document.getElementById("stakeholders_only").style.display = "none";
+			$("#stakeholders_only").hide();
 
 			$("#initiatives_only").show();
 
@@ -575,9 +574,10 @@ $(".mapToggle").click(function(){
 	
 });
 
-document.getElementById("initiatives_only").style.display = "none";
-
 jQuery(document).ready(function() {
+
+	$("#initiatives_only").hide();
+	
 	jQuery('.tabs .tab-links a').on('click', function(e)  {
 		var currentAttrValue = jQuery(this).attr('href');
 
