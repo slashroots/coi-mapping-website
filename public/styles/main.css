@@ -248,6 +248,7 @@ ul.treeview-menu > li{
 	max-height:550px;
 	height:550px;
 	margin-left:220px;
+	height:1000px
 }
 
 .creative-commons{
@@ -338,6 +339,14 @@ ul#organizer-list > a{
 	width:100%;
 	display:inline-block;
 	border-bottom: solid #3c8dbc 3px;
+	margin-top:15px !important;
+}
+
+.tab-links {
+
+	padding:0 !important;
+	margin-bottom:0 !important;
+	
 }
 
 /*----- Tab Links -----*/
@@ -433,3 +442,18 @@ li.active a {
 	color:#0078A8 !important;
 	
 }
+
+#country-list {
+
+	height:250px !important;
+	overflow:hidden !important; 
+	overflow-y:scroll !important;
+
+}
+
+#initiatives_only {
+
+	display:none !important;
+	
+}
+
