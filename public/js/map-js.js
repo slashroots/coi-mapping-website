@@ -457,8 +457,24 @@ function shouldCategoryBeDrawn (marker_type) { //this function will return true 
 
 function shouldCountryBeDrawn (country_name) { //this function will return true if a marker should be drawn on the map based on its type or false otherwise
 
-	if (!dominicanToggle && !jamaicaToggle && !regionalToggle && !globalToggle && !barbadosToggle && !bahamasToggle && !cubaToggle && !haitiToggle && !grenadaToggle && !montserratToggle && !saintluciaToggle && !saintvincentToggle && !trinidadToggle && !dominicaToggle && !antiguaToggle && !saintkittsToggle && !belizeToggle && !guyanaToggle && !surinameToggle) return true;
+	var ret = false;
 
+	for (var i = 0; i < countryArr.length; i++) {
+
+		if (window[countryArr[i] + "Toggle"]) ret = true;
+
+	}//endfor
+	
+	if (!ret) return true; //if none of the boxes is checked return true
+	
+	for (var i = 0; i < countryArr.length; i++) {
+
+		map.removeLayer(window[countryArr[i]]);
+
+		map.removeLayer(window[countryArr[i] + "initiatives"]);
+
+	}//endfor
+	
 	var toggleName = countryNameParse (country_name).toLowerCase().replace(/\s+/g, '');
 
 	return window[toggleName + 'Toggle'];
@@ -510,8 +526,12 @@ function resetCountryFilters () {
 
 	$(".country-boxes").each(function(){
 
-		jamaicaToggle = regionalToggle = globalToggle = barbadosToggle = bahamasToggle = cubaToggle = haitiToggle = grenadaToggle = montserratToggle = saintluciaToggle = saintvincentToggle = trinidadToggle = dominicaToggle = antiguaToggle = saintkittsToggle = belizeToggle = guyanaToggle = surinameToggle = dominicanToggle = false;
+		for (var i = 0; i < countryArr.length; i++) {
 
+			window[countryArr[i] + "Toggle"] = false;
+
+		}//endfor
+		
 		if ($(this).prop("checked")) {
 
 			$(this).prop('checked', false);
