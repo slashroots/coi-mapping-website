@@ -155,8 +155,6 @@ function getEverything (search) {
 	
 	//initiatives now
 
-	ajax_url = "placeholder";
-
 	if (search == '') ajax_url = "/initiatives";
 
 	else ajax_url = "/search?q=" + search;
