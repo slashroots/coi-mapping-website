@@ -93,15 +93,15 @@ function countryNameParse (cname) {
 
 function getEverything (search) {
 
-	var ajax_url = "placeholder";
-
 	if (search == '') ajax_url = "/stakeholders";
 
 	else ajax_url = "/search?q=" + search;
 
 	var countries = [];
 
-	if (stakeholdersToggle) $.ajax({
+	if (stakeholdersToggle) 
+		
+		$.ajax({
 
 		type: "GET",
 
@@ -221,7 +221,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 		
 		});
 
-			marker.bindPopup("<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;margin-bottom:5px;'>Organization Details</p></b><b><span style='color:#0078A8'>" + name + "</span></b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
+			marker.bindPopup("<b><p class='markerPopup'>Organization Details</p></b><b><span class='blueTitle'>" + name + "</span></b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Functional Area : </b>" + functional_area);
 
 			if (shouldTypeBeDrawn(type) && shouldCountryBeDrawn(countryNameParse(country.toLowerCase()))) {
 
@@ -233,7 +233,7 @@ function plotCountry (id, country, name, type, url, functional_area, size, latit
 				
 				else stakeholderCount++;
 
-				window[countryNameParse(country.toLowerCase()) + 'PopupText'] += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
+				window[countryNameParse(country.toLowerCase()) + 'PopupText'] += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p class='slideDownParagraph'><span class='plusminus'>+</span> " + name + "</p></a><p class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 				window[countryNameParse(country.toLowerCase())].addLayer(marker);
 
@@ -247,7 +247,7 @@ function plotCountryInitiative (id, country, name, type, url, date, size, latitu
 
 	});
 
-	marker.bindPopup("<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;margin-bottom:5px;'>Initiative Details</p></b><b><span style='color:#0078A8'>" + name + "</span></b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Year : </b>" + date);
+	marker.bindPopup("<b><p class='markerPopup'>Initiative Details</p></b><b><span class='blueTitle'>" + name + "</span></b><br><b>Type : </b>" + type + "<br><b>Website : </b><a href='" + fixUrl(url) + "' target='_blank'>" + url + "</a><br><b>Year : </b>" + date);
 	
 	if (shouldCategoryBeDrawn(type) && shouldCountryBeDrawn(countryNameParse(country.toLowerCase()))) {
 
@@ -259,7 +259,7 @@ function plotCountryInitiative (id, country, name, type, url, date, size, latitu
 
 		else stakeholderCount++;
 
-		window[countryNameParse(country.toLowerCase()) + 'initiativesPopupText'] += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p style='font-weight:bold;margin:0;padding:0;padding-top:4px;'><span class='plusminus' style='font-size:14pt;color:black;'>+</span> " + name + "</p></a><p style='display:none;padding:0;margin:0;padding-left:15px;' class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Date : </b>" + date + "</p></div>";
+		window[countryNameParse(country.toLowerCase()) + 'initiativesPopupText'] += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p class='slideDownParagraph'><span class='plusminus'>+</span> " + name + "</p></a><p class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
 
 		window[countryNameParse(country.toLowerCase()) + "initiatives"].addLayer(marker);
 

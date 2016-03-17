@@ -295,6 +295,10 @@ ul#organizer-list > a{
 .organization-content {
 	
 	word-wrap:break-word;
+	display:none;
+	padding:0 !important;
+	margin:0 !important;
+	padding-left:15px !important;
 	
 }
 
@@ -395,5 +399,37 @@ li.active a {
 .active:first-child {
 	
 	color:white !important;
+	
+}
+
+.markerPopup {
+
+	font-size:11pt !important;
+	border-bottom: 1px solid #000;
+	margin:0 !important;
+	padding:0 !important;
+	margin-bottom:5px !important;
+	
+}
+
+.plusminus {
+
+	font-size:14pt;
+	color:black;
+	
+}
+
+.slideDownParagraph {
+
+	font-weight:bold;
+	margin:0 !important;
+	padding:0 !important;
+	padding-top:4px !important;
+	
+}
+
+.blueTitle {
+
+	color:#0078A8 !important;
 	
 }
