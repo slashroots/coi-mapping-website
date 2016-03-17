@@ -1,6 +1,10 @@
 
 var geocodesData = null;
 
+var stakeholderCategories = null;
+
+var initiativeCategories = null;
+
 var mapLoaded = false;
 
 var size = 0;
@@ -28,16 +32,47 @@ $.ajax({
 
 });
 
+$.ajax({
+
+	type: "GET",
+
+	//url: encodeURI("http://localhost:3000/countries"),
+	url: "/categories?category=stakeholder",
+
+	dataType: "json",
+
+	success: function (data) {
+
+		stakeholderCategories = data;
+
+		loadStakeholderCategories ();
+
+	}
+
+});
+
+$.ajax({
+
+	type: "GET",
+
+	//url: encodeURI("http://localhost:3000/countries"),
+	url: "/categories?category=initiative",
+
+	dataType: "json",
+
+	success: function (data) {
+
+		initiativeCategories = data;
+
+		loadInitiativeCategories ();
+
+	}
+
+});
+
 function clusterClickHandler (event) {
-	//a.layer.spiderfy();
-	//set up a standalone popup (use a popup as a layer)
-	//alert(event.latlng.toString());
 
 	var ctryname = event.target.ctryname;
-	
-	//alert(reverseGeoCode(event.latlng.lat, event.latlng.lng));
-
-	console.log(event);
 
 	var popup = L.popup(
 		{
@@ -50,11 +85,45 @@ function clusterClickHandler (event) {
 		.setContent(window[ctryname + "PopupText"])
 		.openOn(map);
 
-	//alert(ctryname);
-
 }
 
 var countryArr = [];
+
+var stakeholderCatArr = [];
+
+var initiativeCatArr = [];
+
+function loadStakeholderCategories () {
+
+	for (var i = 0; i < stakeholderCategories.length; i++) {
+
+		var scname = stakeholderCategories[i].name;
+
+		stakeholderCatArr.push(scname);
+
+		scname = scname.replace(/\W/g, '');
+		
+		window[scname + "Toggle"] = false;
+
+	}//endfor
+	
+}
+
+function loadInitiativeCategories () {
+
+	for (var i = 0; i < initiativeCategories.length; i++) {
+
+		var icname = initiativeCategories[i].name;
+		
+		initiativeCatArr.push(icname);
+
+		icname = icname.replace(/\W/g, '');
+
+		window[icname + "Toggle"] = false;
+
+	}//endfor
+
+}
 
 function loadCountries () {
 
@@ -89,8 +158,6 @@ function loadCountries () {
 			});
 
 			window[cname].ctryname = cname;
-
-			console.log(window[cname]);
 
 			window[cname].on('clusterclick', clusterClickHandler);
 
@@ -290,39 +357,9 @@ function mapReady ( ){
 
 	$(".type-boxes").click(function (event) {
 
-		switch (event.target.id) {
+		for (var i = 0; i < stakeholderCatArr.length; i++) {
 
-			case 'Bank\\Investment\\Consulting' : bankToggle = !bankToggle;
-
-				break;
-
-			case 'Education\\Research' : eduToggle = !eduToggle;
-
-				break;
-
-			case 'ICT Vendor' : ictToggle = !ictToggle;
-
-				break;
-
-			case 'ICT Services' : ictToggle2 = !ictToggle2;
-
-				break;
-
-			case 'Government' : govToggle = !govToggle;
-
-				break;
-
-			case 'Media\\Marketing' : mediaToggle = !mediaToggle;
-
-				break;
-
-			case 'MNO\\Telecommunications' : mnoToggle = !mnoToggle;
-
-				break;
-
-			case 'NGO' : ngoToggle = !ngoToggle;
-
-				break;
+			if (event.target.id == stakeholderCatArr[i]) window[stakeholderCatArr[i].replace(/\W/g, '') + "Toggle"] = !window[stakeholderCatArr[i].replace(/\W/g, '') + "Toggle"];
 
 		}
 
@@ -332,35 +369,9 @@ function mapReady ( ){
 
 	$(".category-boxes").click(function (event) {
 
-		switch (event.target.id) {
+		for (var i = 0; i < initiativeCatArr.length; i++) {
 
-			case 'Competition\\Hackathon' : competitionToggle = !competitionToggle;
-
-				break;
-
-			case 'Conference\\Exhibition' : conferenceToggle = !conferenceToggle;
-
-				break;
-
-			case 'Education\\Capacity Building' :  educationToggle = !educationToggle;
-
-				break;
-
-			case 'Incubator' : incubatorToggle = !incubatorToggle;
-
-				break;
-
-			case 'Infrastructure' : infrastructureToggle = !infrastructureToggle;
-
-				break;
-
-			case 'Mobile App Project' : mobileToggle = !mobileToggle;
-
-				break;
-
-			case 'Venture Capital' : ventureToggle = !ventureToggle;
-
-				break;
+			if (event.target.id == initiativeCatArr[i]) window[initiativeCatArr[i].replace(/\W/g, '') + "Toggle"] = !window[initiativeCatArr[i].replace(/\W/g, '') + "Toggle"];
 
 		}
 
@@ -372,41 +383,19 @@ function mapReady ( ){
 
 function shouldTypeBeDrawn (marker_type) { //this function will return true if a marker should be drawn on the map based on its type or false otherwise
 
-	if (!bankToggle && !eduToggle && !ictToggle && !ictToggle2 && !govToggle && !mediaToggle && !mnoToggle && !ngoToggle) return true;
+	var bool = false; // this will check to see if they're all false in which case all types will be rendered
+	
+	for (var i = 0; i < stakeholderCatArr.length; i++) {
 
-	switch (marker_type) {
+		if (window[stakeholderCatArr[i].replace(/\W/g, '') + "Toggle"]) bool = true;
 
-		case 'Bank\\Investment\\Consulting' : return bankToggle;
+	}
+	
+	if (!bool) return true;//if still false - it means they're all false so we return true
+	
+	for (var i = 0; i < stakeholderCatArr.length; i++) {
 
-			break;
-
-		case 'Education\\Research' : return eduToggle;
-
-			break;
-
-		case 'ICT Vendor' :  return ictToggle;
-
-			break;
-
-		case 'ICT Services' : return ictToggle2;
-
-			break;
-
-		case 'Government' : return govToggle;
-
-			break;
-
-		case 'Media\\Marketing' : return mediaToggle;
-
-			break;
-
-		case 'MNO\\Telecommunications' : return mnoToggle;
-
-			break;
-
-		case 'NGO' : return ngoToggle;
-
-			break;
+		if (marker_type == stakeholderCatArr[i]) return window[stakeholderCatArr[i].replace(/\W/g, '') + "Toggle"];
 
 	}
 
@@ -416,37 +405,19 @@ function shouldTypeBeDrawn (marker_type) { //this function will return true if a
 
 function shouldCategoryBeDrawn (marker_type) { //this function will return true if a marker should be drawn on the map based on its type or false otherwise
 
-	if (!competitionToggle && !conferenceToggle && !educationToggle && !incubatorToggle && !infrastructureToggle && !mobileToggle && !ventureToggle) return true;
+	var bool = false; // this will check to see if they're all false in which case all types will be rendered
 
-	switch (marker_type) {
+	for (var i = 0; i < initiativeCatArr.length; i++) {
 
-		case 'Competition\\Hackathon' : return competitionToggle;
+		if (window[initiativeCatArr[i].replace(/\W/g, '') + "Toggle"]) bool = true;
 
-			break;
+	}
 
-		case 'Conference\\Exhibition' : return conferenceToggle;
+	if (!bool) return true;//if still false - it means they're all false so we return true
 
-			break;
+	for (var i = 0; i < initiativeCatArr.length; i++) {
 
-		case 'Education\\Capacity Building' :  return educationToggle;
-
-			break;
-
-		case 'Incubator' : return incubatorToggle;
-
-			break;
-
-		case 'Infrastructure' : return infrastructureToggle;
-
-			break;
-
-		case 'Mobile App Project' : return mobileToggle;
-
-			break;
-
-		case 'Venture Capital' : return ventureToggle;
-
-			break;
+		if (marker_type == initiativeCatArr[i]) return window[initiativeCatArr[i].replace(/\W/g, '') + "Toggle"];
 
 	}
 
@@ -543,7 +514,11 @@ function resetCountryFilters () {
 
 function resetTypeFilters () {
 
-	bankToggle = eduToggle = ictToggle = ictToggle2 = govToggle = mediaToggle = mnoToggle = ngoToggle = false;
+	for (var i = 0; i < stakeholderCatArr.length; i++) {
+
+		window[stakeholderCatArr[i].replace(/\W/g, '') + "Toggle"] = false;
+
+	}
 
 	$(".type-boxes").each(function(){
 
@@ -558,8 +533,12 @@ function resetTypeFilters () {
 
 function resetCategoryFilters () {
 
-	competitionToggle = conferenceToggle = educationToggle = incubatorToggle = infrastructureToggle = mobileToggle = ventureToggle = false;
+	for (var i = 0; i < initiativeCatArr.length; i++) {
 
+		window[initiativeCatArr[i].replace(/\W/g, '') + "Toggle"] = false;
+
+	}
+	
 	$(".category-boxes").each(function(){
 
 		if ($(this).prop("checked")) {

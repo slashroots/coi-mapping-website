@@ -2,10 +2,6 @@ var marker = null;
 
 var stakeholdersToggle = true; //if false it shows initiatives
 
-var bankToggle = eduToggle = ictToggle = ictToggle2 = govToggle = mediaToggle = mnoToggle = ngoToggle = false;
-
-var competitionToggle = conferenceToggle = educationToggle = incubatorToggle  = infrastructureToggle = mobileToggle = ventureToggle = false;
-
 var countriesDrawnArray = {}; //associative array used to keep track of the individual countries that have stakeholders rendered
 
 var stakeholderCount = 0;
