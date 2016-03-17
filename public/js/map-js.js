@@ -1,6 +1,8 @@
 
 var geocodesData = null;
 
+var mapLoaded = false;
+
 var size = 0;
 
 $.ajax({
@@ -19,18 +21,12 @@ $.ajax({
 		loadCountries();
 		
 		mapReady();
+		
+		mapLoaded = true;
 
 	}
 
 });
-
-var dominican, jamaica, regional, global, barbados, bahamas, cuba, haiti, anguilla, grenada, montserrat, saintlucia, saintvincent, trinidad, dominica, antigua, saintkitts, belize, guyana, suriname = null;
-
-var dominicaninitiatives, jamaicainitiatives, regionalinitiatives, globalinitiatives, barbadosinitiatives, bahamasinitiatives, cubainitiatives, haitiinitiatives, anguillainitiatives, grenadainitiatives, montserratinitiatives, saintluciainitiatives, saintvincentinitiatives, trinidadinitiatives, dominicainitiatives, antiguainitiatives, saintkittsinitiatives, belizeinitiatives, guyanainitiatives, surinameinitiatives = null;
-
-var dominicanPopupText = jamaicaPopupText = barbadosPopupText = bahamasPopupText = cubaPopupText = antiguaPopupText = haitiPopupText = anguillaPopupText = grenadaPopupText = montserratPopupText = saintluciaPopupText = saintvincentPopupText = trinidadPopupText = dominicaPopupText = saintkittsPopupText = belizePopupText = guyanaPopupText = surinamePopupText = grenadaPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;'>Organizations</p></b>";
-
-var dominicaninitiativesPopupText = jamaicainitiativesPopupText = barbadosinitiativesPopupText = bahamasinitiativesPopupText = cubainitiativesPopupText = antiguainitiativesPopupText = haitiinitiativesPopupText = anguillainitiativesPopupText = grenadainitiativesPopupText = montserratinitiativesPopupText = saintluciainitiativesPopupText = saintvincentinitiativesPopupText = trinidadinitiativesPopupText = dominicainitiativesPopupText = saintkittsinitiativesPopupText = belizeinitiativesPopupText = guyanainitiativesPopupText = surinameinitiativesPopupText = grenadainitiativesPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;'>Initiatives</p></b>";
 
 function clusterClickHandler (event) {
 	//a.layer.spiderfy();
@@ -58,12 +54,70 @@ function clusterClickHandler (event) {
 
 }
 
+var countryArr = [];
+
 function loadCountries () {
 
-	dominicanPopupText = jamaicaPopupText = barbadosPopupText = bahamasPopupText = cubaPopupText = antiguaPopupText = haitiPopupText = anguillaPopupText = grenadaPopupText = montserratPopupText = saintluciaPopupText = saintvincentPopupText = trinidadPopupText = dominicaPopupText = saintkittsPopupText = belizePopupText = guyanaPopupText = surinamePopupText = grenadaPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;''>Organizations</p></b>";
+		for (var i = 0; i < geocodesData.length; i++) {
 
-	dominicaninitiativesPopupText = jamaicainitiativesPopupText = barbadosinitiativesPopupText = bahamasinitiativesPopupText = cubainitiativesPopupText = antiguainitiativesPopupText = haitiinitiativesPopupText = anguillainitiativesPopupText = grenadainitiativesPopupText = montserratinitiativesPopupText = saintluciainitiativesPopupText = saintvincentinitiativesPopupText = trinidadinitiativesPopupText = dominicainitiativesPopupText = saintkittsinitiativesPopupText = belizeinitiativesPopupText = guyanainitiativesPopupText = surinameinitiativesPopupText = grenadainitiativesPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;'>Initiatives</p></b>";
+			/*if (geocodesData[i].name == countryname) {
+			 //alert(geocodesData[i].latitude + ", " + geocodesData[i].longitude);
+			 return geocodesData[i].latitude + ", " + geocodesData[i].longitude;
+			 }*/
 
+			var cname = geocodesData[i].name;
+
+			cname = cname.toLowerCase();
+
+			if (cname.split(" ")[0] == "saint") {
+
+				cname = cname.replace(" ", "");
+
+			}
+
+			else cname = cname.split(" ")[0];
+
+			if (!mapLoaded) countryArr.push(cname);
+
+			window[cname] = new L.MarkerClusterGroup({
+				maxClusterRadius: 60,
+				iconCreateFunction: null,
+				spiderfyOnMaxZoom: false,
+				showCoverageOnHover: true,
+				singleMarkerMode: true,
+				zoomToBoundsOnClick: false,
+			});
+
+			window[cname].ctryname = cname;
+
+			console.log(window[cname]);
+
+			window[cname].on('clusterclick', clusterClickHandler);
+
+			//initiatives now
+
+			window[cname + 'initiatives'] = new L.MarkerClusterGroup({
+				maxClusterRadius: 60,
+				iconCreateFunction: null,
+				spiderfyOnMaxZoom: false,
+				showCoverageOnHover: true,
+				singleMarkerMode: true,
+				zoomToBoundsOnClick: false,
+			});
+
+			window[cname + 'initiatives'].ctryname = cname + 'initiatives';
+
+			window[cname + 'initiatives'].on('clusterclick', clusterClickHandler);
+
+			window[cname + 'PopupText'] = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;'>Organizations</p></b>";
+
+			window[cname + 'initiativesPopupText'] = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;'>Initiatives</p></b>";
+
+			if (!mapLoaded) window[cname + 'Toggle'] = false;
+
+
+		}//endfor
+		
 	globalPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;''>Global Organizations</p></b>";
 
 	regionalPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;''>Regional Organizations</p></b>";
@@ -71,95 +125,33 @@ function loadCountries () {
 	globalinitiativesPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;''>Global Initiatives</p></b>";
 
 	regionalinitiativesPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;''>Regional Initiatives</p></b>";
-	
-
-	for (var i = 0; i < geocodesData.length; i++) {
-
-		/*if (geocodesData[i].name == countryname) {
-				//alert(geocodesData[i].latitude + ", " + geocodesData[i].longitude);
-			return geocodesData[i].latitude + ", " + geocodesData[i].longitude;
-		}*/
-		
-		var cname = geocodesData[i].name;
-		
-		cname = cname.toLowerCase();
-		
-		if (cname.split(" ")[0] == "saint") {
-			
-			cname = cname.replace(" ", "");
-			
-		}
-		
-		else cname = cname.split(" ")[0];
-
-		window[cname] = new L.MarkerClusterGroup({
-			maxClusterRadius: 60,
-			iconCreateFunction: null,
-			spiderfyOnMaxZoom: false,
-			showCoverageOnHover: true,
-			singleMarkerMode: true,
-			zoomToBoundsOnClick: false,
-		});
-
-		window[cname].ctryname = cname;
-		
-		console.log(window[cname]);
-
-		window[cname].on('clusterclick', clusterClickHandler);
-		
-		//initiatives now
-
-		window[cname + 'initiatives'] = new L.MarkerClusterGroup({
-			maxClusterRadius: 60,
-			iconCreateFunction: null,
-			spiderfyOnMaxZoom: false,
-			showCoverageOnHover: true,
-			singleMarkerMode: true,
-			zoomToBoundsOnClick: false,
-		});
-
-		window[cname + 'initiatives'].ctryname = cname + 'initiatives';
-
-		window[cname + 'initiatives'].on('clusterclick', clusterClickHandler);
-		
-
-	}//endfor
 
 	if (stakeholdersToggle) {
 
-		map.addLayer(jamaica);
-
-		map.addLayer(dominican);
-
 		drawLabels();
 
-		map.addLayer(global);
+		for (var i = 0; i < geocodesData.length; i++) {
 
-		map.addLayer(regional);
+			/*if (geocodesData[i].name == countryname) {
+			 //alert(geocodesData[i].latitude + ", " + geocodesData[i].longitude);
+			 return geocodesData[i].latitude + ", " + geocodesData[i].longitude;
+			 }*/
 
-		map.addLayer(bahamas);
+			var cname = geocodesData[i].name;
 
-		map.addLayer(belize);
+			cname = cname.toLowerCase();
 
-		map.addLayer(barbados);
+			if (cname.split(" ")[0] == "saint") {
 
-		map.addLayer(cuba);
-		map.addLayer(haiti);
-		map.addLayer(grenada);
+				cname = cname.replace(" ", "");
 
-		map.addLayer(montserrat);
-		map.addLayer(saintlucia);
-		map.addLayer(saintvincent);
-		map.addLayer(trinidad);
+			}
 
-		map.addLayer(dominica);
-		map.addLayer(antigua);
-		map.addLayer(saintkitts);
-		map.addLayer(belize);
+			else cname = cname.split(" ")[0];
 
-		map.addLayer(guyana);
-		map.addLayer(suriname);
-		map.addLayer(grenada);
+			map.addLayer(window[cname]);
+			
+		}//endfor
 
 	}
 
@@ -167,39 +159,30 @@ function loadCountries () {
 
 		//initiatives
 
-		map.addLayer(dominicaninitiatives);
-
-		map.addLayer(jamaicainitiatives);
-
-		map.addLayer(bahamasinitiatives);
-
-		map.addLayer(belizeinitiatives);
-
-		map.addLayer(barbadosinitiatives);
-
-		map.addLayer(cubainitiatives);
-		map.addLayer(haitiinitiatives);
-		map.addLayer(grenadainitiatives);
-
-		map.addLayer(montserratinitiatives);
-		map.addLayer(saintluciainitiatives);
-		map.addLayer(saintvincentinitiatives);
-		map.addLayer(trinidadinitiatives);
-
-		map.addLayer(dominicainitiatives);
-		map.addLayer(antiguainitiatives);
-		map.addLayer(saintkittsinitiatives);
-		map.addLayer(belizeinitiatives);
-
-		map.addLayer(guyanainitiatives);
-		map.addLayer(surinameinitiatives);
-		map.addLayer(grenadainitiatives);
-
 		drawInitiativeLabels();
 
-		map.addLayer(globalinitiatives);
+		for (var i = 0; i < geocodesData.length; i++) {
 
-		map.addLayer(regionalinitiatives);
+			/*if (geocodesData[i].name == countryname) {
+			 //alert(geocodesData[i].latitude + ", " + geocodesData[i].longitude);
+			 return geocodesData[i].latitude + ", " + geocodesData[i].longitude;
+			 }*/
+
+			var cname = geocodesData[i].name;
+
+			cname = cname.toLowerCase();
+
+			if (cname.split(" ")[0] == "saint") {
+
+				cname = cname.replace(" ", "");
+
+			}
+
+			else cname = cname.split(" ")[0];
+
+			map.addLayer(window[cname + "initiatives"]);
+
+		}//endfor
 
 	}
 
@@ -474,7 +457,7 @@ function shouldCategoryBeDrawn (marker_type) { //this function will return true 
 
 function shouldCountryBeDrawn (country_name) { //this function will return true if a marker should be drawn on the map based on its type or false otherwise
 
-	if (!dominicanToggle && !jamaicaToggle && !regionalToggle && !globalToggle && !barbadosToggle && !bahamasToggle && !cubaToggle && !haitiToggle && !anguillaToggle && !grenadaToggle && !montserratToggle && !saintluciaToggle && !saintvincentToggle && !trinidadToggle && !dominicaToggle && !antiguaToggle && !saintkittsToggle && !belizeToggle && !guyanaToggle && !surinameToggle) return true;
+	if (!dominicanToggle && !jamaicaToggle && !regionalToggle && !globalToggle && !barbadosToggle && !bahamasToggle && !cubaToggle && !haitiToggle && !grenadaToggle && !montserratToggle && !saintluciaToggle && !saintvincentToggle && !trinidadToggle && !dominicaToggle && !antiguaToggle && !saintkittsToggle && !belizeToggle && !guyanaToggle && !surinameToggle) return true;
 
 	var toggleName = countryNameParse (country_name).toLowerCase().replace(/\s+/g, '');
 
@@ -527,7 +510,7 @@ function resetCountryFilters () {
 
 	$(".country-boxes").each(function(){
 
-		jamaicaToggle = regionalToggle = globalToggle = barbadosToggle = bahamasToggle = cubaToggle = haitiToggle = anguillaToggle = grenadaToggle = montserratToggle = saintluciaToggle = saintvincentToggle = trinidadToggle = dominicaToggle = antiguaToggle = saintkittsToggle = belizeToggle = guyanaToggle = surinameToggle = dominicanToggle = false;
+		jamaicaToggle = regionalToggle = globalToggle = barbadosToggle = bahamasToggle = cubaToggle = haitiToggle = grenadaToggle = montserratToggle = saintluciaToggle = saintvincentToggle = trinidadToggle = dominicaToggle = antiguaToggle = saintkittsToggle = belizeToggle = guyanaToggle = surinameToggle = dominicanToggle = false;
 
 		if ($(this).prop("checked")) {
 
@@ -570,49 +553,13 @@ function resetCategoryFilters () {
 
 function handleSearchInput () {
 
-	map.removeLayer(jamaica);
+	for (var i = 0; i < countryArr.length; i++) {
+		
+		map.removeLayer(window[countryArr[i]]);
 
-	map.removeLayer(dominican);
+		map.removeLayer(window[countryArr[i] + "initiatives"]);
 
-	map.removeLayer(global);
-
-	map.removeLayer(regional);
-
-	map.removeLayer(bahamas);
-
-	map.removeLayer(belize);
-
-	map.removeLayer(barbados);
-
-	map.removeLayer(cuba);map.removeLayer(haiti);map.removeLayer(grenada);
-
-	map.removeLayer(montserrat);map.removeLayer(saintlucia);map.removeLayer(saintvincent);map.removeLayer(trinidad);
-
-	map.removeLayer(dominica);map.removeLayer(antigua);map.removeLayer(saintkitts);map.removeLayer(belize);
-
-	map.removeLayer(guyana);map.removeLayer(suriname);map.removeLayer(grenada);
-
-	map.removeLayer(jamaicainitiatives);
-
-	map.removeLayer(dominicaninitiatives);
-
-	map.removeLayer(globalinitiatives);
-
-	map.removeLayer(regionalinitiatives);
-
-	map.removeLayer(bahamasinitiatives);
-
-	map.removeLayer(belizeinitiatives);
-
-	map.removeLayer(barbadosinitiatives);
-
-	map.removeLayer(cubainitiatives);map.removeLayer(haitiinitiatives);map.removeLayer(grenadainitiatives);
-
-	map.removeLayer(montserratinitiatives);map.removeLayer(saintluciainitiatives);map.removeLayer(saintvincentinitiatives);map.removeLayer(trinidadinitiatives);
-
-	map.removeLayer(dominicainitiatives);map.removeLayer(antiguainitiatives);map.removeLayer(saintkittsinitiatives);map.removeLayer(belizeinitiatives);
-
-	map.removeLayer(guyanainitiatives);map.removeLayer(surinameinitiatives);map.removeLayer(grenadainitiatives);
+	}//endfor
 
 	loadCountries();
 
@@ -624,75 +571,25 @@ function putLayersOnMap () {
 
 	if (stakeholdersToggle) {
 
-		map.addLayer(jamaica);
+		drawLabels();
 
-		map.addLayer(dominican);
+		for (var i = 0; i < countryArr.length; i++) {
 
-		map.addLayer(global);
+			map.addLayer(window[countryArr[i]]);
 
-		map.addLayer(regional);
-
-		map.addLayer(bahamas);
-
-		map.addLayer(belize);
-
-		map.addLayer(barbados);
-
-		map.addLayer(cuba);
-		map.addLayer(haiti);
-		map.addLayer(grenada);
-
-		map.addLayer(montserrat);
-		map.addLayer(saintlucia);
-		map.addLayer(saintvincent);
-		map.addLayer(trinidad);
-
-		map.addLayer(dominica);
-		map.addLayer(antigua);
-		map.addLayer(saintkitts);
-		map.addLayer(belize);
-
-		map.addLayer(guyana);
-		map.addLayer(suriname);
-		map.addLayer(grenada);
-
+		}//endfor
 	}	
 	
 	else {
 
-		//initiatives
+		drawInitiativeLabels();
 
-		map.addLayer(dominicaninitiatives);
+		for (var i = 0; i < countryArr.length; i++) {
 
-		map.addLayer(jamaicainitiatives);
+			map.addLayer(window[countryArr[i] + "initiatives"]);
 
-		map.addLayer(bahamasinitiatives);
+		}//endfor
 
-		map.addLayer(belizeinitiatives);
-
-		map.addLayer(barbadosinitiatives);
-
-		map.addLayer(cubainitiatives);
-		map.addLayer(haitiinitiatives);
-		map.addLayer(grenadainitiatives);
-
-		map.addLayer(montserratinitiatives);
-		map.addLayer(saintluciainitiatives);
-		map.addLayer(saintvincentinitiatives);
-		map.addLayer(trinidadinitiatives);
-
-		map.addLayer(dominicainitiatives);
-		map.addLayer(antiguainitiatives);
-		map.addLayer(saintkittsinitiatives);
-		map.addLayer(belizeinitiatives);
-
-		map.addLayer(guyanainitiatives);
-		map.addLayer(surinameinitiatives);
-		map.addLayer(grenadainitiatives);
-		
-		map.addLayer(globalinitiatives);
-
-		map.addLayer(regionalinitiatives);
 
 	}	
 

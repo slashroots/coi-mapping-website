@@ -6,8 +6,6 @@ var bankToggle = eduToggle = ictToggle = ictToggle2 = govToggle = mediaToggle = 
 
 var competitionToggle = conferenceToggle = educationToggle = incubatorToggle  = infrastructureToggle = mobileToggle = ventureToggle = false;
 
-var jamaicaToggle, regionalToggle, globalToggle, barbadosToggle, bahamasToggle, cubaToggle, haitiToggle, anguillaToggle, grenadaToggle, montserratToggle, saintluciaToggle, saintvincentToggle, trinidadToggle, dominicaToggle, antiguaToggle, saintkittsToggle, belizeToggle, guyanaToggle, surinameToggle, dominicanToggle = false;
-
 var countriesDrawnArray = {}; //associative array used to keep track of the individual countries that have stakeholders rendered
 
 var stakeholderCount = 0;
