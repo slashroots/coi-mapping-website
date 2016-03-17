@@ -1,4 +1,3 @@
-
 var geocodesData = null;
 
 var stakeholderCategories = null;
@@ -13,7 +12,6 @@ $.ajax({
 
 	type: "GET",
 
-	//url: encodeURI("http://localhost:3000/countries"),
 	url: "/countries",
 
 	dataType: "json",
@@ -129,11 +127,6 @@ function loadCountries () {
 
 		for (var i = 0; i < geocodesData.length; i++) {
 
-			/*if (geocodesData[i].name == countryname) {
-			 //alert(geocodesData[i].latitude + ", " + geocodesData[i].longitude);
-			 return geocodesData[i].latitude + ", " + geocodesData[i].longitude;
-			 }*/
-
 			var cname = geocodesData[i].name;
 
 			cname = cname.toLowerCase();
@@ -161,8 +154,6 @@ function loadCountries () {
 
 			window[cname].on('clusterclick', clusterClickHandler);
 
-			//initiatives now
-
 			window[cname + 'initiatives'] = new L.MarkerClusterGroup({
 				maxClusterRadius: 60,
 				iconCreateFunction: null,
@@ -182,7 +173,6 @@ function loadCountries () {
 
 			if (!mapLoaded) window[cname + 'Toggle'] = false;
 
-
 		}//endfor
 		
 	globalPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;''>Global Organizations</p></b>";
@@ -198,12 +188,7 @@ function loadCountries () {
 		drawLabels();
 
 		for (var i = 0; i < geocodesData.length; i++) {
-
-			/*if (geocodesData[i].name == countryname) {
-			 //alert(geocodesData[i].latitude + ", " + geocodesData[i].longitude);
-			 return geocodesData[i].latitude + ", " + geocodesData[i].longitude;
-			 }*/
-
+			
 			var cname = geocodesData[i].name;
 
 			cname = cname.toLowerCase();
@@ -224,16 +209,9 @@ function loadCountries () {
 
 	else {
 
-		//initiatives
-
 		drawInitiativeLabels();
 
 		for (var i = 0; i < geocodesData.length; i++) {
-
-			/*if (geocodesData[i].name == countryname) {
-			 //alert(geocodesData[i].latitude + ", " + geocodesData[i].longitude);
-			 return geocodesData[i].latitude + ", " + geocodesData[i].longitude;
-			 }*/
 
 			var cname = geocodesData[i].name;
 
@@ -252,14 +230,8 @@ function loadCountries () {
 		}//endfor
 
 	}
-
-
-
+	
 }
-
-//loadCountries();
-
-//
 
 L.NumberedDivIcon = L.Icon.extend({
 	options: {
@@ -289,15 +261,10 @@ L.NumberedDivIcon = L.Icon.extend({
 		return div;
 	},
 
-	//you could change this to add a shadow like in the normal marker if you really wanted
 	createShadow: function () {
 		return null;
 	}
 });
-
-//
-
-
 
 /***  little hack starts here ***/
 L.Map = L.Map.extend({
@@ -321,16 +288,6 @@ L.tileLayer('http://{s}.tiles.mapbox.com/v4/nickjwill.lcnc6kpo/{z}/{x}/{y}.png?a
 }).addTo(map);
 
 getEverything('');
-
-/*var sidebar = L.control.sidebar('sidebar', {
- position: 'left'
- });
-
- map.addControl(sidebar);
-
- sidebar.show();*/
-
-//
 
 function mapReady ( ){
 
@@ -425,7 +382,6 @@ function shouldCategoryBeDrawn (marker_type) { //this function will return true 
 
 }
 
-
 function shouldCountryBeDrawn (country_name) { //this function will return true if a marker should be drawn on the map based on its type or false otherwise
 
 	var ret = false;
@@ -480,8 +436,6 @@ document.getElementById('search-box').onkeypress = function(e){
 		//handleSearchInput();
 		return false;
 	}
-
-	//return false;
 
 }
 
@@ -588,8 +542,7 @@ function putLayersOnMap () {
 			map.addLayer(window[countryArr[i] + "initiatives"]);
 
 		}//endfor
-
-
+		
 	}	
 
 }
@@ -637,4 +590,3 @@ jQuery(document).ready(function() {
 		e.preventDefault();
 	});
 });
-
