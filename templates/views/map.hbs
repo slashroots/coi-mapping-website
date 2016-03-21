@@ -6,6 +6,13 @@
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
 
+            <div class="tabs">
+                <ul class="tab-links">
+                    <li class="active mapToggle"><a href="#stakeholders">&nbsp;Stakeholders</a></li>
+                    <li><a class="mapToggle" href="#initiatives">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Initiatives&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+                </ul>
+            </div>
+
             <!-- search form (Optional) -->
             <form class="sidebar-form">
                 <input type="text" class="form-control" id="search-box" placeholder="Search stakeholders"
@@ -26,12 +33,12 @@
 
             <ul class="sidebar-menu">
                 <li class="treeview">
-                    <a  href="#clear" onclick="resetSearchBox();resetCountryFilters();resetTypeFilters();">
+                    <a  href="#clear" onclick="resetSearchBox();resetCountryFilters();resetTypeFilters();resetCategoryFilters();">
                         <span>Clear Filters</span>
                     </a>
                 </li>
 
-                <li class="treeview">
+                <li class="treeview" id="stakeholders_only">
                     <a  href="#filterentity">
                         <span>Filter By Entity:</span>
                         <i class="fa fa-angle-left pull-right"></i>
@@ -40,14 +47,24 @@
                     </ul>
                 </li>
 
+                <li class="treeview" id="initiatives_only">
+                    <a  href="#filtercategory">
+                        <span>Filter By Category:</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu category-boxes" id="category-list">
+                    </ul>
+                </li>
+
                 <li class="treeview">
                     <a href="#filtercountry">
                         <span>Filter By Country :</span>
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
-                    <ul style="height:250px;overflow:hidden; overflow-y:scroll;"  class="treeview-menu country-boxes" id="country-list">
+                    <ul class="treeview-menu country-boxes" id="country-list">
                     </ul>
                 </li>
+				
             </ul><!-- /.sidebar-menu -->
 			<div class="creative-commons">
 				<p>The Caribbean  Caribbean Tech Stakeholder Map,  a joint initiative of CMIP and DevCA, is licensed under  <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-Share Alike 4.0 International License</a></p>
@@ -75,7 +92,7 @@
 
             <link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
 
-            <div id="map" style="height:1000px"></div>
+            <div id="map"></div>
 
             <script src="/js/map-js.js"></script>
 

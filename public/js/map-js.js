@@ -1,553 +1,156 @@
-
 var geocodesData = null;
-
+var stakeholderCategories = null;
+var initiativeCategories = null;
+var mapLoaded = false;
 var size = 0;
-
 $.ajax({
-
 	type: "GET",
-
-	//url: encodeURI("http://localhost:3000/countries"),
 	url: "/countries",
-
 	dataType: "json",
-
 	success: function (data) {
-
 		geocodesData = data;
-
+		loadCountries();
+		mapReady();
+		mapLoaded = true;
 	}
-
 });
 
-function geoCode (countryname) {
-
-	//alert(geocodesData.length);
-
-	for (var i = 0; i < geocodesData.length; i++) {
-
-		if (geocodesData[i].name == countryname) {
-			//alert(geocodesData[i].latitude + ", " + geocodesData[i].longitude);
-			return geocodesData[i].latitude + ", " + geocodesData[i].longitude;
-		}
-
+$.ajax({
+	type: "GET",
+	url: "/categories?category=stakeholder",
+	dataType: "json",
+	success: function (data) {
+		stakeholderCategories = data;
+		loadStakeholderCategories ();
 	}
+});
+
+$.ajax({
+	type: "GET",
+	url: "/categories?category=initiative",
+	dataType: "json",
+	success: function (data) {
+		initiativeCategories = data;
+		loadInitiativeCategories ();
+	}
+});
+
+function clusterClickHandler (event) {
+	var ctryname = event.target.ctryname;
+	var popup = L.popup(
+		{
+
+			maxHeight: 300,
+
+		}
+	)
+		.setLatLng(event.latlng)
+		.setContent(window[ctryname + "PopupText"])
+		.openOn(map);
 
 }
 
-var jamaica, regional, global, barbados, bahamas, cuba, haiti, anguilla, grenada, montserrat, saintlucia, saintvincent, trinidad, dominica, antigua, saintkitts, belize, guyana, suriname = null;
+var countryArr = [];
+var stakeholderCatArr = [];
+var initiativeCatArr = [];
 
-var jamaicaPopupText = barbadosPopupText = bahamasPopupText = cubaPopupText = antiguaPopupText = haitiPopupText = anguillaPopupText = grenadaPopupText = montserratPopupText = saintluciaPopupText = saintvincentPopupText = trinidadPopupText = dominicaPopupText = saintkittsPopupText = belizePopupText = guyanaPopupText = surinamePopupText = grenadaPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;'>Organizations</p></b>";
+function loadStakeholderCategories () {
+	for (var i = 0; i < stakeholderCategories.length; i++) {
+		var scname = stakeholderCategories[i].name;
+		stakeholderCatArr.push(scname);
+		scname = scname.replace(/\W/g, '');
+		window[scname + "Toggle"] = false;
+	}//endfor
+}
+
+function loadInitiativeCategories () {
+	for (var i = 0; i < initiativeCategories.length; i++) {
+		var icname = initiativeCategories[i].name;
+		initiativeCatArr.push(icname);
+		icname = icname.replace(/\W/g, '');
+		window[icname + "Toggle"] = false;
+	}//endfor
+}
 
 function loadCountries () {
+		for (var i = 0; i < geocodesData.length; i++) {
+			var cname = geocodesData[i].name;
+			cname = cname.toLowerCase();
+			if (cname.split(" ")[0] == "saint") {
+				cname = cname.replace(" ", "");
+			}
+			else cname = cname.split(" ")[0];
 
-	jamaicaPopupText = barbadosPopupText = bahamasPopupText = cubaPopupText = antiguaPopupText = haitiPopupText = anguillaPopupText = grenadaPopupText = montserratPopupText = saintluciaPopupText = saintvincentPopupText = trinidadPopupText = dominicaPopupText = saintkittsPopupText = belizePopupText = guyanaPopupText = surinamePopupText = grenadaPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;''>Organizations</p></b>";
+			if (!mapLoaded) countryArr.push(cname);
+			
+			window[cname] = new L.MarkerClusterGroup({
+				maxClusterRadius: 60,
+				iconCreateFunction: null,
+				spiderfyOnMaxZoom: false,
+				showCoverageOnHover: true,
+				singleMarkerMode: true,
+				zoomToBoundsOnClick: false,
+			});
 
+			window[cname].ctryname = cname;
+			window[cname].on('clusterclick', clusterClickHandler);
+			window[cname + 'initiatives'] = new L.MarkerClusterGroup({
+				maxClusterRadius: 60,
+				iconCreateFunction: null,
+				spiderfyOnMaxZoom: false,
+				showCoverageOnHover: true,
+				singleMarkerMode: true,
+				zoomToBoundsOnClick: false,
+			});
+			window[cname + 'initiatives'].ctryname = cname + 'initiatives';
+			window[cname + 'initiatives'].on('clusterclick', clusterClickHandler);
+			window[cname + 'PopupText'] = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;'>Organizations</p></b>";
+			window[cname + 'initiativesPopupText'] = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;'>Initiatives</p></b>";
+
+			if (!mapLoaded) window[cname + 'Toggle'] = false;
+		}//endfor
+		
 	globalPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;''>Global Organizations</p></b>";
-
 	regionalPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;''>Regional Organizations</p></b>";
+	globalinitiativesPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;''>Global Initiatives</p></b>";
+	regionalinitiativesPopupText = "<b><p style='font-size:11pt;border-bottom: 1px solid #000;margin:0;padding:0;''>Regional Initiatives</p></b>";
 
-	global = new L.MarkerClusterGroup({
-		maxClusterRadius: 60,
-		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
-		showCoverageOnHover: true,
-		singleMarkerMode: true,
-		zoomToBoundsOnClick: false
-	});
+	if (stakeholdersToggle) {
+		drawLabels();
 
-	global.on('clusterclick', function (a) {
-		//a.layer.spiderfy();
-		//set up a standalone popup (use a popup as a layer)
-		var popup = L.popup(
-			{
-
-				maxHeight: 300,
-
+		for (var i = 0; i < geocodesData.length; i++) {
+			var cname = geocodesData[i].name;
+			cname = cname.toLowerCase();
+			if (cname.split(" ")[0] == "saint") {
+				cname = cname.replace(" ", "");
 			}
-		)
-			.setLatLng([geoCode("Global").split(",")[0], geoCode("Global").split(",")[1]])
-			.setContent(globalPopupText)
-			.openOn(map);
+			else cname = cname.split(" ")[0];
+			map.addLayer(window[cname]);
+		}//endfor
+	}
 
-	});
-
-	regional = new L.MarkerClusterGroup({
-		maxClusterRadius: 60,
-		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
-		showCoverageOnHover: true,
-		singleMarkerMode: true,
-		zoomToBoundsOnClick: false
-	});
-
-	regional.on('clusterclick', function (a) {
-		//a.layer.spiderfy();
-		//set up a standalone popup (use a popup as a layer)
-		var popup = L.popup(
-			{
-
-				maxHeight: 300,
-
+	else {
+		drawInitiativeLabels();
+		for (var i = 0; i < geocodesData.length; i++) {
+			var cname = geocodesData[i].name;
+			cname = cname.toLowerCase();
+			if (cname.split(" ")[0] == "saint") {
+				cname = cname.replace(" ", "");
 			}
-		)
-			.setLatLng([geoCode("Regional").split(",")[0], geoCode("Regional").split(",")[1]])
-			.setContent(regionalPopupText)
-			.openOn(map);
-	});
-
-	jamaica = new L.MarkerClusterGroup({
-		maxClusterRadius: 60,
-		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
-		showCoverageOnHover: true,
-		singleMarkerMode: true,
-		zoomToBoundsOnClick: false
-	});
-
-	jamaica.on('clusterclick', function (a) {
-		//a.layer.spiderfy();
-		//set up a standalone popup (use a popup as a layer)
-		var popup = L.popup(
-			{
-
-				maxHeight: 300,
-
-			}
-		)
-			.setLatLng([geoCode("Jamaica").split(",")[0], geoCode("Jamaica").split(",")[1]])
-			.setContent(jamaicaPopupText)
-			.openOn(map);
-	});
-
-	barbados = new L.MarkerClusterGroup({
-		maxClusterRadius: 60,
-		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
-		showCoverageOnHover: true,
-		singleMarkerMode: true,
-		zoomToBoundsOnClick: false
-	});
-
-	barbados.on('clusterclick', function (a) {
-		//a.layer.spiderfy();
-		//set up a standalone popup (use a popup as a layer)
-		var popup = L.popup(
-			{
-
-				maxHeight: 300,
-
-			}
-		)
-			.setLatLng([geoCode("Barbados").split(",")[0], geoCode("Barbados").split(",")[1]])
-			.setContent(barbadosPopupText)
-			.openOn(map);
-	});
-
-	bahamas = new L.MarkerClusterGroup({
-		maxClusterRadius: 60,
-		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
-		showCoverageOnHover: true,
-		singleMarkerMode: true,
-		zoomToBoundsOnClick: false
-	});
-
-	bahamas.on('clusterclick', function (a) {
-		//a.layer.spiderfy();
-		//set up a standalone popup (use a popup as a layer)
-		var popup = L.popup(
-			{
-
-				maxHeight: 300,
-
-			}
-		)
-			.setLatLng([geoCode("Bahamas").split(",")[0], geoCode("Bahamas").split(",")[1]])
-			.setContent(bahamasPopupText)
-			.openOn(map);
-	});
-
-	cuba = new L.MarkerClusterGroup({
-		maxClusterRadius: 60,
-		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
-		showCoverageOnHover: true,
-		singleMarkerMode: true,
-		zoomToBoundsOnClick: false
-	});
-
-	cuba.on('clusterclick', function (a) {
-		//a.layer.spiderfy();
-		//set up a standalone popup (use a popup as a layer)
-		var popup = L.popup(
-			{
-
-				maxHeight: 300,
-
-			}
-		)
-			.setLatLng([geoCode("Cuba").split(",")[0], geoCode("Cuba").split(",")[1]])
-			.setContent(cubaPopupText)
-			.openOn(map);
-	});
-
-	haiti = new L.MarkerClusterGroup({
-		maxClusterRadius: 60,
-		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
-		showCoverageOnHover: true,
-		singleMarkerMode: true,
-		zoomToBoundsOnClick: false
-	});
-
-	haiti.on('clusterclick', function (a) {
-		//a.layer.spiderfy();
-		//set up a standalone popup (use a popup as a layer)
-		var popup = L.popup(
-			{
-
-				maxHeight: 300,
-
-			}
-		)
-			.setLatLng([geoCode("Haiti").split(",")[0], geoCode("Haiti").split(",")[1]])
-			.setContent(haitiPopupText)
-			.openOn(map);
-	});
-
-	anguilla = new L.MarkerClusterGroup({
-		maxClusterRadius: 60,
-		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
-		showCoverageOnHover: true,
-		singleMarkerMode: true,
-		zoomToBoundsOnClick: false
-	});
-
-	anguilla.on('clusterclick', function (a) {
-		//a.layer.spiderfy();
-		//set up a standalone popup (use a popup as a layer)
-		var popup = L.popup(
-			{
-
-				maxHeight: 300,
-
-			}
-		)
-			.setLatLng([geoCode("Anguilla").split(",")[0], geoCode("Anguilla").split(",")[1]])
-			.setContent(anguillaPopupText)
-			.openOn(map);
-	});
-
-
-	grenada = new L.MarkerClusterGroup({
-		maxClusterRadius: 60,
-		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
-		showCoverageOnHover: true,
-		singleMarkerMode: true,
-		zoomToBoundsOnClick: false
-	});
-
-	grenada.on('clusterclick', function (a) {
-		//a.layer.spiderfy();
-		//set up a standalone popup (use a popup as a layer)
-		var popup = L.popup(
-			{
-
-				maxHeight: 300,
-
-			}
-		)
-			.setLatLng([geoCode("Grenada").split(",")[0], geoCode("Grenada").split(",")[1]])
-			.setContent(grenadaPopupText)
-			.openOn(map);
-	});
-
-	montserrat = new L.MarkerClusterGroup({
-		maxClusterRadius: 60,
-		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
-		showCoverageOnHover: true,
-		singleMarkerMode: true,
-		zoomToBoundsOnClick: false
-	});
-
-	montserrat.on('clusterclick', function (a) {
-		//a.layer.spiderfy();
-		//set up a standalone popup (use a popup as a layer)
-		var popup = L.popup(
-			{
-
-				maxHeight: 300,
-
-			}
-		)
-			.setLatLng([geoCode("Montserrat").split(",")[0], geoCode("Montserrat").split(",")[1]])
-			.setContent(montserratPopupText)
-			.openOn(map);
-	});
-
-	saintlucia = new L.MarkerClusterGroup({
-		maxClusterRadius: 60,
-		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
-		showCoverageOnHover: true,
-		singleMarkerMode: true,
-		zoomToBoundsOnClick: false
-	});
-
-	saintlucia.on('clusterclick', function (a) {
-		//a.layer.spiderfy();
-		//set up a standalone popup (use a popup as a layer)
-		var popup = L.popup(
-			{
-
-				maxHeight: 300,
-
-			}
-		)
-			.setLatLng([geoCode("Saint Lucia").split(",")[0], geoCode("Saint Lucia").split(",")[1]])
-			.setContent(saintluciaPopupText)
-			.openOn(map);
-	});
-
-	saintvincent = new L.MarkerClusterGroup({
-		maxClusterRadius: 60,
-		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
-		showCoverageOnHover: true,
-		singleMarkerMode: true,
-		zoomToBoundsOnClick: false
-	});
-
-	saintvincent.on('clusterclick', function (a) {
-		//a.layer.spiderfy();
-		//set up a standalone popup (use a popup as a layer)
-		var popup = L.popup(
-			{
-
-				maxHeight: 300,
-
-			}
-		)
-			.setLatLng([geoCode("Saint Vincent").split(",")[0], geoCode("Saint Vincent").split(",")[1]])
-			.setContent(saintvincentPopupText)
-			.openOn(map);
-	});
-
-	trinidad = new L.MarkerClusterGroup({
-		maxClusterRadius: 60,
-		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
-		showCoverageOnHover: true,
-		singleMarkerMode: true,
-		zoomToBoundsOnClick: false
-	});
-
-	trinidad.on('clusterclick', function (a) {
-		//a.layer.spiderfy();
-		//set up a standalone popup (use a popup as a layer)
-		var popup = L.popup(
-			{
-
-				maxHeight: 300,
-
-			}
-		)
-			.setLatLng([geoCode("Trinidad and Tobago").split(",")[0], geoCode("Trinidad and Tobago").split(",")[1]])
-			.setContent(trinidadPopupText)
-			.openOn(map);
-	});
-
-	dominica = new L.MarkerClusterGroup({
-		maxClusterRadius: 60,
-		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
-		showCoverageOnHover: true,
-		singleMarkerMode: true,
-		zoomToBoundsOnClick: false
-	});
-
-	dominica.on('clusterclick', function (a) {
-		//a.layer.spiderfy();
-		//set up a standalone popup (use a popup as a layer)
-		var popup = L.popup(
-			{
-
-				maxHeight: 300,
-
-			}
-		)
-			.setLatLng([geoCode("Dominica").split(",")[0], geoCode("Dominica").split(",")[1]])
-			.setContent(dominicaPopupText)
-			.openOn(map);
-	});
-
-	antigua = new L.MarkerClusterGroup({
-		maxClusterRadius: 60,
-		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
-		showCoverageOnHover: true,
-		singleMarkerMode: true,
-		zoomToBoundsOnClick: false
-	});
-
-	antigua.on('clusterclick', function (a) {
-		//a.layer.spiderfy();
-		//set up a standalone popup (use a popup as a layer)
-		var popup = L.popup(
-			{
-
-				maxHeight: 300,
-
-			}
-		)
-			.setLatLng([geoCode("Antigua").split(",")[0], geoCode("Antigua").split(",")[1]])
-			.setContent(antiguaPopupText)
-			.openOn(map);
-	});
-
-	saintkitts = new L.MarkerClusterGroup({
-		maxClusterRadius: 60,
-		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
-		showCoverageOnHover: true,
-		singleMarkerMode: true,
-		zoomToBoundsOnClick: false
-	});
-
-	saintkitts.on('clusterclick', function (a) {
-		//a.layer.spiderfy();
-		//set up a standalone popup (use a popup as a layer)
-		var popup = L.popup(
-			{
-
-				maxHeight: 300,
-
-			}
-		)
-			.setLatLng([geoCode("Saint Kitts").split(",")[0], geoCode("Saint Kitts").split(",")[1]])
-			.setContent(saintkittsPopupText)
-			.openOn(map);
-	});
-
-	belize = new L.MarkerClusterGroup({
-		maxClusterRadius: 60,
-		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
-		showCoverageOnHover: true,
-		singleMarkerMode: true,
-		zoomToBoundsOnClick: false
-	});
-
-	belize.on('clusterclick', function (a) {
-		//a.layer.spiderfy();
-		//set up a standalone popup (use a popup as a layer)
-		var popup = L.popup(
-			{
-
-				maxHeight: 300,
-
-			}
-		)
-			.setLatLng([geoCode("Belize").split(",")[0], geoCode("Belize").split(",")[1]])
-			.setContent(belizePopupText)
-			.openOn(map);
-	});
-
-	guyana = new L.MarkerClusterGroup({
-		maxClusterRadius: 60,
-		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
-		showCoverageOnHover: true,
-		singleMarkerMode: true,
-		zoomToBoundsOnClick: false
-	});
-
-	guyana.on('clusterclick', function (a) {
-		//a.layer.spiderfy();
-		//set up a standalone popup (use a popup as a layer)
-		var popup = L.popup(
-			{
-
-				maxHeight: 300,
-
-			}
-		)
-			.setLatLng([geoCode("Guyana").split(",")[0], geoCode("Guyana").split(",")[1]])
-			.setContent(guyanaPopupText)
-			.openOn(map);
-	});
-
-	suriname = new L.MarkerClusterGroup({
-		maxClusterRadius: 60,
-		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
-		showCoverageOnHover: true,
-		singleMarkerMode: true,
-		zoomToBoundsOnClick: false
-	});
-
-	suriname.on('clusterclick', function (a) {
-		//a.layer.spiderfy();
-		//set up a standalone popup (use a popup as a layer)
-		var popup = L.popup(
-			{
-
-				maxHeight: 300,
-
-			}
-		)
-			.setLatLng([geoCode("Suriname").split(",")[0], geoCode("Suriname").split(",")[1]])
-			.setContent(surinamePopupText)
-			.openOn(map);
-	});
-
-	grenada = new L.MarkerClusterGroup({
-		maxClusterRadius: 60,
-		iconCreateFunction: null,
-		spiderfyOnMaxZoom: true,
-		showCoverageOnHover: true,
-		singleMarkerMode: true,
-		zoomToBoundsOnClick: false
-	});
-
-	grenada.on('clusterclick', function (a) {
-		//a.layer.spiderfy();
-		//set up a standalone popup (use a popup as a layer)
-		var popup = L.popup(
-			{
-
-				maxHeight: 300,
-
-			}
-		)
-			.setLatLng([geoCode("Grenada").split(",")[0], geoCode("Grenada").split(",")[1]])
-			.setContent(grenadaPopupText)
-			.openOn(map);
-	});
-
+			else cname = cname.split(" ")[0];
+			map.addLayer(window[cname + "initiatives"]);
+		}//endfor
+	}
 }
-
-loadCountries();
-
-//
 
 L.NumberedDivIcon = L.Icon.extend({
 	options: {
-		// EDIT THIS TO POINT TO THE FILE AT http://www.charliecroom.com/marker_hole.png (or your own marker)
 		iconUrl: 'http://www.charliecroom.com/marker_hole.png',
 		number: '',
 		shadowUrl: null,
 		iconSize: new L.Point(25, 41),
 		iconAnchor: new L.Point(13, 41),
 		popupAnchor: new L.Point(0, -33),
-		/*
-		 iconAnchor: (Point)
-		 popupAnchor: (Point)
-		 */
 		className: 'leaflet-div-icon'
 	},
 
@@ -563,204 +166,107 @@ L.NumberedDivIcon = L.Icon.extend({
 		return div;
 	},
 
-	//you could change this to add a shadow like in the normal marker if you really wanted
 	createShadow: function () {
 		return null;
 	}
 });
 
-//
-
-
-
-/***  little hack starts here ***/
-L.Map = L.Map.extend({
-	openPopup: function(popup) {
-		//        this.closePopup();  // just comment this
-		this._popup = popup;
-
-		return this.addLayer(popup).fire('popupopen', {
-			popup: this._popup
-		});
-	}
-}); /***  end of hack ***/
-
 var map = L.map('map',
 		{closePopupOnClick : false}).setView([17.96, -71.09], 5);
-//https://a.tiles.mapbox.com/v4/nickjwill.lcnch31p/page.html?access_token=pk.eyJ1Ijoibmlja2p3aWxsIiwiYSI6Im4xQWFQeTQifQ.bwI5KQmy7z7kS9woXzbplw#6/31.625/40.463
-L.tileLayer('http://{s}.tiles.mapbox.com/v4/nickjwill.lcnc6kpo/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoibmlja2p3aWxsIiwiYSI6Im4xQWFQeTQifQ.bwI5KQmy7z7kS9woXzbplw', {
+L.tileLayer(maptileurl + access_token, {
 	attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-	maxZoom: 8,
-	minZoom: 5,
+	maxZoom: maxMapZoom,
+	minZoom: minMapZoom,
 }).addTo(map);
 
 getEverything('');
 
-map.addLayer(jamaica);
-
-map.addLayer(bahamas);
-
-map.addLayer(belize);
-
-map.addLayer(barbados);
-
-map.addLayer(cuba);map.addLayer(anguilla);map.addLayer(haiti);map.addLayer(grenada);
-
-map.addLayer(montserrat);map.addLayer(saintlucia);map.addLayer(saintvincent);map.addLayer(trinidad);
-
-map.addLayer(dominica);map.addLayer(antigua);map.addLayer(saintkitts);map.addLayer(belize);
-
-map.addLayer(guyana);map.addLayer(suriname);map.addLayer(grenada);
-
-/*var sidebar = L.control.sidebar('sidebar', {
- position: 'left'
- });
-
- map.addControl(sidebar);
-
- sidebar.show();*/
-
-//
-
-$(document).ready(function(){
-
+function mapReady ( ){
 	$( ".accordion" ).accordion({
 		collapsible: true,
 		active: 2
 	});
-
+	
 	$(".country-boxes").click(function (event) {
-
 		var layerToRemove = event.target.id;
-
 		if (layerToRemove.split(" ")[0] == 'saint') layerToRemove = layerToRemove.split(" ")[0]+layerToRemove.split(" ")[1];
-
 		else if (layerToRemove.split(" ")[1] == 'and') layerToRemove = layerToRemove.split(" ")[0];
-
+		else layerToRemove = layerToRemove.split(" ")[0];
 		window[layerToRemove + 'Toggle'] = !window[layerToRemove + 'Toggle'];
-
 		handleSearchInput();
-
 	});
 
 	$(".type-boxes").click(function (event) {
-
-		switch (event.target.id) {
-
-			case 'Bank\\Investment\\Consulting' : bankToggle = !bankToggle;
-
-				break;
-
-			case 'Education\\Research' : eduToggle = !eduToggle;
-
-				break;
-
-			case 'ICT Vendor' : ictToggle = !ictToggle;
-
-				break;
-
-			case 'ICT Services' : ictToggle2 = !ictToggle2;
-
-				break;
-
-			case 'Government' : govToggle = !govToggle;
-
-				break;
-
-			case 'Media\\Marketing' : mediaToggle = !mediaToggle;
-
-				break;
-
-			case 'MNO\\Telecommunications' : mnoToggle = !mnoToggle;
-
-				break;
-
-			case 'NGO' : ngoToggle = !ngoToggle;
-
-				break;
-
+		for (var i = 0; i < stakeholderCatArr.length; i++) {
+			if (event.target.id == stakeholderCatArr[i]) window[stakeholderCatArr[i].replace(/\W/g, '') + "Toggle"] = !window[stakeholderCatArr[i].replace(/\W/g, '') + "Toggle"];
 		}
-
 		handleSearchInput();
-
 	});
 
-});
-
+	$(".category-boxes").click(function (event) {
+		for (var i = 0; i < initiativeCatArr.length; i++) {
+			if (event.target.id == initiativeCatArr[i]) window[initiativeCatArr[i].replace(/\W/g, '') + "Toggle"] = !window[initiativeCatArr[i].replace(/\W/g, '') + "Toggle"];
+		}
+		handleSearchInput();
+	});
+}
 
 function shouldTypeBeDrawn (marker_type) { //this function will return true if a marker should be drawn on the map based on its type or false otherwise
-
-	if (!bankToggle && !eduToggle && !ictToggle && !ictToggle2 && !govToggle && !mediaToggle && !mnoToggle && !ngoToggle) return true;
-
-	switch (marker_type) {
-
-		case 'Bank\\Investment\\Consulting' : return bankToggle;
-
-			break;
-
-		case 'Education\\Research' : return eduToggle;
-
-			break;
-
-		case 'ICT Vendor' :  return ictToggle;
-
-			break;
-
-		case 'ICT Services' : return ictToggle2;
-
-			break;
-
-		case 'Government' : return govToggle;
-
-			break;
-
-		case 'Media\\Marketing' : return mediaToggle;
-
-			break;
-
-		case 'MNO\\Telecommunications' : return mnoToggle;
-
-			break;
-
-		case 'NGO' : return ngoToggle;
-
-			break;
-
+	var bool = false; // this will check to see if they're all false in which case all types will be rendered
+	
+	for (var i = 0; i < stakeholderCatArr.length; i++) {
+		if (window[stakeholderCatArr[i].replace(/\W/g, '') + "Toggle"]) bool = true;
+	}
+	
+	if (!bool) return true;//if still false - it means they're all false so we return true
+	
+	for (var i = 0; i < stakeholderCatArr.length; i++) {
+		if (marker_type == stakeholderCatArr[i]) return window[stakeholderCatArr[i].replace(/\W/g, '') + "Toggle"];
 	}
 
 	return true;
-
 }
 
+function shouldCategoryBeDrawn (marker_type) { //this function will return true if a marker should be drawn on the map based on its type or false otherwise
+	var bool = false; // this will check to see if they're all false in which case all types will be rendered
+	for (var i = 0; i < initiativeCatArr.length; i++) {
+		if (window[initiativeCatArr[i].replace(/\W/g, '') + "Toggle"]) bool = true;
+	}
+
+	if (!bool) return true;//if still false - it means they're all false so we return true
+
+	for (var i = 0; i < initiativeCatArr.length; i++) {
+		if (marker_type == initiativeCatArr[i]) return window[initiativeCatArr[i].replace(/\W/g, '') + "Toggle"];
+	}
+
+	return true;
+}
 
 function shouldCountryBeDrawn (country_name) { //this function will return true if a marker should be drawn on the map based on its type or false otherwise
+	var ret = false;
 
-	if (!jamaicaToggle && !regionalToggle && !globalToggle && !barbadosToggle && !bahamasToggle && !cubaToggle && !haitiToggle && !anguillaToggle && !grenadaToggle && !montserratToggle && !saintluciaToggle && !saintvincentToggle && !trinidadToggle && !dominicaToggle && !antiguaToggle && !saintkittsToggle && !belizeToggle && !guyanaToggle && !surinameToggle) return true;
-
-	var toggleName = country_name.toLowerCase().replace(/\s+/g, '');
+	for (var i = 0; i < countryArr.length; i++) {
+		if (window[countryArr[i] + "Toggle"]) ret = true;
+	}//endfor
+	
+	if (!ret) return true; //if none of the boxes is checked return true
+	
+	for (var i = 0; i < countryArr.length; i++) {
+		map.removeLayer(window[countryArr[i]]);
+		map.removeLayer(window[countryArr[i] + "initiatives"]);
+	}//endfor
+	
+	var toggleName = countryNameParse (country_name).toLowerCase().replace(/\s+/g, '');
 
 	return window[toggleName + 'Toggle'];
-
 }
 
 
-
-
-
-/*for (var x = 0;x < eduArray.length;x++) {
-
- jamaica.removeLayer(eduArray[x]);
-
- }*/
-
 function infoSlideDown (element) {
-
 	var subElement = $(element).next().slideToggle("fast");
-
+	
 	if(element.childNodes[0].childNodes[0].innerHTML == "+") element.childNodes[0].childNodes[0].innerHTML = '-';
-
 	else if(element.childNodes[0].childNodes[0].innerHTML == "-") element.childNodes[0].childNodes[0].innerHTML = '+';
-
 }
 
 var options = {
@@ -781,97 +287,102 @@ document.getElementById('search-box').onkeypress = function(e){
 		return false;
 	}
 
-	//return false;
-
 }
 
 function resetSearchBox () {
-
 	document.getElementById('search-box').value = '';
-
 	handleSearchInput();
-
 }
 
 function resetCountryFilters () {
-
 	$(".country-boxes").each(function(){
-
-		jamaicaToggle = regionalToggle = globalToggle = barbadosToggle = bahamasToggle = cubaToggle = haitiToggle = anguillaToggle = grenadaToggle = montserratToggle = saintluciaToggle = saintvincentToggle = trinidadToggle = dominicaToggle = antiguaToggle = saintkittsToggle = belizeToggle = guyanaToggle = surinameToggle = false;
-
+		for (var i = 0; i < countryArr.length; i++) {
+			window[countryArr[i] + "Toggle"] = false;
+		}//endfor
+		
 		if ($(this).prop("checked")) {
-
 			$(this).prop('checked', false);
-
 		}
 	});
-
 }
 
 function resetTypeFilters () {
-
-	bankToggle = eduToggle = ictToggle = ictToggle2 = govToggle = mediaToggle = mnoToggle = ngoToggle = true;
+	for (var i = 0; i < stakeholderCatArr.length; i++) {
+		window[stakeholderCatArr[i].replace(/\W/g, '') + "Toggle"] = false;
+	}
 
 	$(".type-boxes").each(function(){
-
 		if ($(this).prop("checked")) {
-
 			$(this).prop('checked', false);
-
 		}
 	});
+}
 
+function resetCategoryFilters () {
+	for (var i = 0; i < initiativeCatArr.length; i++) {
+		window[initiativeCatArr[i].replace(/\W/g, '') + "Toggle"] = false;
+	}
+	
+	$(".category-boxes").each(function(){
+
+		if ($(this).prop("checked")) {
+			$(this).prop('checked', false);
+		}
+	});
 }
 
 function handleSearchInput () {
-
-	map.removeLayer(jamaica);
-
-	map.removeLayer(global);
-
-	map.removeLayer(regional);
-
-	map.removeLayer(bahamas);
-
-	map.removeLayer(belize);
-
-	map.removeLayer(barbados);
-
-	map.removeLayer(cuba);map.removeLayer(anguilla);map.removeLayer(haiti);map.removeLayer(grenada);
-
-	map.removeLayer(montserrat);map.removeLayer(saintlucia);map.removeLayer(saintvincent);map.removeLayer(trinidad);
-
-	map.removeLayer(dominica);map.removeLayer(antigua);map.removeLayer(saintkitts);map.removeLayer(belize);
-
-	map.removeLayer(guyana);map.removeLayer(suriname);map.removeLayer(grenada);
+	for (var i = 0; i < countryArr.length; i++) {
+		map.removeLayer(window[countryArr[i]]);
+		map.removeLayer(window[countryArr[i] + "initiatives"]);
+	}//endfor
 
 	loadCountries();
-
 	getEverything(document.getElementById('search-box').value);
-
 }
 
 function putLayersOnMap () {
+	if (stakeholdersToggle) {
+		drawLabels();
 
-	map.addLayer(jamaica);
+		for (var i = 0; i < countryArr.length; i++) {
+			map.addLayer(window[countryArr[i]]);
+		}//endfor
+	}	
+	
+	else {
+		drawInitiativeLabels();
 
-	map.addLayer(global);
-
-	map.addLayer(regional);
-
-	map.addLayer(bahamas);
-
-	map.addLayer(belize);
-
-	map.addLayer(barbados);
-
-	map.addLayer(cuba);map.addLayer(anguilla);map.addLayer(haiti);map.addLayer(grenada);
-
-	map.addLayer(montserrat);map.addLayer(saintlucia);map.addLayer(saintvincent);map.addLayer(trinidad);
-
-	map.addLayer(dominica);map.addLayer(antigua);map.addLayer(saintkitts);map.addLayer(belize);
-
-	map.addLayer(guyana);map.addLayer(suriname);map.addLayer(grenada);
-
+		for (var i = 0; i < countryArr.length; i++) {
+			map.addLayer(window[countryArr[i] + "initiatives"]);
+		}//endfor
+	}
 }
 
+$(".mapToggle").click(function(){
+	if (!$(this).parent().hasClass( "active" )) {
+		stakeholdersToggle = !stakeholdersToggle;
+
+		if (stakeholdersToggle) {
+			$("#stakeholders_only").show();
+			$("#initiatives_only").hide();
+		}
+		else {
+			$("#stakeholders_only").hide();
+			$("#initiatives_only").show();
+		}
+		handleSearchInput();
+	}
+});
+
+jQuery(document).ready(function() {
+	$("#initiatives_only").hide();
+	jQuery('.tabs .tab-links a').on('click', function(e)  {
+		var currentAttrValue = jQuery(this).attr('href');
+		// Show/Hide Tabs
+		jQuery('.tabs ' + currentAttrValue).show().siblings().hide();
+		// Change/remove current tab to active
+		jQuery(this).parent('li').addClass('active').siblings().removeClass('active');
+		e.preventDefault();
+	});
+});
