@@ -10,11 +10,12 @@
 	 */
 	exports.index = function(req, res){
 		Initiative.model
-			.find('state', 'published')
-			.populate('category')
+			.find()
+			.where('state', 'published')
+			.populate('category country')
 			.exec(function(err, initiatives){
 			 	if(err) common.handleDBError(err, res);
-			 	res.json(initiatives);
+				res.json({"stakeholders": initiatives});
 			});
 	};
 	/**
