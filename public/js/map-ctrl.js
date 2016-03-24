@@ -36,7 +36,7 @@ var updateStats = function(q){
 	}else{
 		$.ajax({
 			type: 'GET',
-			url: '/search?q=' + q + '&type=' + searchType,
+			url: '/search?q=' + encodeURIComponent(q) + '&type=' + searchType,
 			success: function(data){
 				displayStats(data, true);
 			},error: function(){
@@ -80,7 +80,7 @@ function getEverything (search) {
 
 	if (search == '') ajax_url = "/stakeholders";
 	
-	else ajax_url = "/search?q=" + search + "&type=stakeholder";
+	else ajax_url = "/search?q=" + encodeURIComponent(search) + "&type=stakeholder";
 
 	var countries = [];
 	
@@ -116,7 +116,7 @@ function getEverything (search) {
 	});
 
 	if (search == '') ajax_url = "/initiatives";
-	else ajax_url = "/search?q=" + search + "&type=initiative";
+	else ajax_url = "/search?q=" + encodeURIComponent(search) + "&type=initiative";
 
 	if (!stakeholdersToggle) $.ajax({
 		type: "GET",
