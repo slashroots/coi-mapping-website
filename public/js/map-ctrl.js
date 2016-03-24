@@ -180,19 +180,23 @@ function plotCountryInitiative (id, country, name, type, url, date, size, latitu
 }
 
 function drawLabels() {
-	mkr = L.marker(new L.LatLng(globalLabelLat, globalLabelLng), { opacity: 0.01 });
+	var icon = new L.Icon.Default();
+	icon.options.shadowSize = [0,0];
+	mkr = L.marker(new L.LatLng(globalLabelLat, globalLabelLng), { opacity: 0.001, icon: icon });
 	mkr.bindLabel("Global", {noHide: true, className: "my-label", offset: [globalXoffset, globalYoffset] });
 	map.addLayer(mkr);
-	mkr2 = L.marker(new L.LatLng(regionalLabelLat, regionalLabelLng), { opacity: 0.01 });
+	mkr2 = L.marker(new L.LatLng(regionalLabelLat, regionalLabelLng), { opacity: 0.001 });
 	mkr2.bindLabel("Regional", {noHide: true, className: "my-label", offset: [regionalXoffset, regionalYoffset] });
 	map.addLayer(mkr2);
 };
 
 function drawInitiativeLabels() {
-	mkr = L.marker(new L.LatLng(globalLabelLat, globalLabelLng), { opacity: 0.01 });
+	var icon = new L.Icon.Default();
+	icon.options.shadowSize = [0,0];
+	mkr = L.marker(new L.LatLng(globalLabelLat, globalLabelLng), { opacity: 0.001, icon: icon });
 	mkr.bindLabel("Global", {noHide: true, className: "my-label", offset: [globalXoffset, globalYoffset] });
 	map.addLayer(mkr);
-	mkr2 = L.marker(new L.LatLng(regionalLabelLat, regionalLabelLng), { opacity: 0.01 });
+	mkr2 = L.marker(new L.LatLng(regionalLabelLat, regionalLabelLng), { opacity: 0.001 });
 	mkr2.bindLabel("Regional", {noHide: true, className: "my-label", offset: [regionalXoffset, regionalYoffset] });
 	map.addLayer(mkr2);
 };
