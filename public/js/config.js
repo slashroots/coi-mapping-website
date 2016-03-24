@@ -25,3 +25,8 @@ var globalYoffset = 0;
 var regionalXoffset = -35;
 
 var regionalYoffset = 0;
+
+var opacity = 0.001;
+
+var shadowsize = [0,0];
+
