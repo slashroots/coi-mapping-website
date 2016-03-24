@@ -10,8 +10,12 @@
 		country: {type: Types.Relationship, ref: 'Country', index: true},
 		functionalArea: {type: Types.Relationship, ref: 'FunctionalArea' },
 		description: {type: String},
-		url: {type: Types.Url},		
+		url: {type: Types.Url},
 		email: {type: Types.Email},
+		founded: {type: String},
+		size: {type: String},
+		impact: {type: String},
+		industry: {type: String},
 		state: {type: Types.Select, options: 'draft, published, archived', default: 'draft'}//,
 	});
 
