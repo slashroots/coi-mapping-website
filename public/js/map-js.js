@@ -366,10 +366,12 @@ $(".mapToggle").click(function(){
 		if (stakeholdersToggle) {
 			$("#stakeholders_only").show();
 			$("#initiatives_only").hide();
+			$('#search-box').attr('placeholder','Search stakeholders');
 		}
 		else {
 			$("#stakeholders_only").hide();
 			$("#initiatives_only").show();
+			$('#search-box').attr('placeholder','Search initiatives');
 		}
 		handleSearchInput();
 	}

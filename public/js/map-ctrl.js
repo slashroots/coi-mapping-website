@@ -26,12 +26,17 @@ var getStats = function(search){
  * Updates the map statistics upon keypress.
  */
 var updateStats = function(q){
+	
+	if (stakeholdersToggle) searchType = "stakeholder";
+	
+	else searchType = "initiative";
+	
 	if(q === "" || q.length <= 1){
 		getStats(false);
 	}else{
 		$.ajax({
 			type: 'GET',
-			url: '/search?q=' + q,
+			url: '/search?q=' + q + '&type=' + searchType,
 			success: function(data){
 				displayStats(data, true);
 			},error: function(){
@@ -74,7 +79,8 @@ function countryNameParse (cname) {
 function getEverything (search) {
 
 	if (search == '') ajax_url = "/stakeholders";
-	else ajax_url = "/search?q=" + search;
+	
+	else ajax_url = "/search?q=" + search + "&type=stakeholder";
 
 	var countries = [];
 	
@@ -110,7 +116,7 @@ function getEverything (search) {
 	});
 
 	if (search == '') ajax_url = "/initiatives";
-	else ajax_url = "/search?q=" + search;
+	else ajax_url = "/search?q=" + search + "&type=initiative";
 
 	if (!stakeholdersToggle) $.ajax({
 		type: "GET",
@@ -168,7 +174,7 @@ function plotCountryInitiative (id, country, name, type, url, date, size, latitu
 		if (country == 'Regional') regionalCount++;
 		else if (country == 'Global') globalCount++;
 		else stakeholderCount++;
-		window[countryNameParse(country.toLowerCase()) + 'initiativesPopupText'] += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p class='slideDownParagraph'><span class='plusminus'>+</span> " + name + "</p></a><p class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
+		window[countryNameParse(country.toLowerCase()) + 'initiativesPopupText'] += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p class='slideDownParagraph'><span class='plusminus'>+</span> " + name + "</p></a><p class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Year : </b>" + date + "</p></div>";
 		window[countryNameParse(country.toLowerCase()) + "initiatives"].addLayer(marker);
 	}
 }
