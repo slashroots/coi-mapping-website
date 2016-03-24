@@ -12,10 +12,29 @@
 	exports.search = function(req, res){
 		if(req.query.q){
 			var term = new RegExp(req.query.q.toLowerCase(), 'i');
-			Stakeholder.model
+			
+			var searchTarget, populateString;
+			
+			if (req.query.type == "stakeholder") {
+
+				searchTarget = Stakeholder;
+				
+				populateString = 'category country functionalArea'
+				
+			}
+
+			else if (req.query.type == "initiative") {
+
+				searchTarget = Initiative;
+
+				populateString = 'category country'
+
+			}
+			
+			searchTarget.model
 				.find({'name_lower': {$regex: term}})
 				.select('-name_lower')
-				.populate('category country functionalArea')
+				.populate(populateString)
 				.exec(function(err, stakeholders){
 					if(err || !stakeholders) common.handleDBError(err, res);
 
