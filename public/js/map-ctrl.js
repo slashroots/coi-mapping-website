@@ -189,14 +189,3 @@ function drawLabels() {
 	mkr2.bindLabel("Regional", {noHide: true, className: "my-label", offset: [regionalXoffset, regionalYoffset] });
 	map.addLayer(mkr2);
 };
-
-function drawInitiativeLabels() {
-	var icon = new L.Icon.Default();
-	icon.options.shadowSize = shadowsize;
-	mkr = L.marker(new L.LatLng(globalLabelLat, globalLabelLng), { opacity: opacity, icon: icon });
-	mkr.bindLabel("Global", {noHide: true, className: "my-label", offset: [globalXoffset, globalYoffset] });
-	map.addLayer(mkr);
-	mkr2 = L.marker(new L.LatLng(regionalLabelLat, regionalLabelLng), { opacity: opacity });
-	mkr2.bindLabel("Regional", {noHide: true, className: "my-label", offset: [regionalXoffset, regionalYoffset] });
-	map.addLayer(mkr2);
-};

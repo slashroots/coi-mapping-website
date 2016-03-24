@@ -130,7 +130,7 @@ function loadCountries () {
 	}
 
 	else {
-		drawInitiativeLabels();
+		drawLabels();
 		for (var i = 0; i < geocodesData.length; i++) {
 			var cname = geocodesData[i].name;
 			cname = cname.toLowerCase();
@@ -351,7 +351,7 @@ function putLayersOnMap () {
 	}	
 	
 	else {
-		drawInitiativeLabels();
+		drawLabels();
 
 		for (var i = 0; i < countryArr.length; i++) {
 			map.addLayer(window[countryArr[i] + "initiatives"]);
