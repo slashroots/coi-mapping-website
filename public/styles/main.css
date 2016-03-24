@@ -450,3 +450,17 @@ li.active a {
 	overflow-y:scroll !important;
 
 }
+
+.cc-image {
+	
+	height:27px;
+	width:auto;
+	padding:3px;
+	
+}
+
+.footer {
+	
+	font-size: 12pt;
+	
+}

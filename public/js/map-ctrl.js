@@ -26,12 +26,17 @@ var getStats = function(search){
  * Updates the map statistics upon keypress.
  */
 var updateStats = function(q){
+	
+	if (stakeholdersToggle) searchType = "stakeholder";
+	
+	else searchType = "initiative";
+	
 	if(q === "" || q.length <= 1){
 		getStats(false);
 	}else{
 		$.ajax({
 			type: 'GET',
-			url: '/search?q=' + q,
+			url: '/search?q=' + encodeURIComponent(q) + '&type=' + searchType,
 			success: function(data){
 				displayStats(data, true);
 			},error: function(){
@@ -74,7 +79,8 @@ function countryNameParse (cname) {
 function getEverything (search) {
 
 	if (search == '') ajax_url = "/stakeholders";
-	else ajax_url = "/search?q=" + search;
+	
+	else ajax_url = "/search?q=" + encodeURIComponent(search) + "&type=stakeholder";
 
 	var countries = [];
 	
@@ -110,7 +116,7 @@ function getEverything (search) {
 	});
 
 	if (search == '') ajax_url = "/initiatives";
-	else ajax_url = "/search?q=" + search;
+	else ajax_url = "/search?q=" + encodeURIComponent(search) + "&type=initiative";
 
 	if (!stakeholdersToggle) $.ajax({
 		type: "GET",
@@ -168,25 +174,18 @@ function plotCountryInitiative (id, country, name, type, url, date, size, latitu
 		if (country == 'Regional') regionalCount++;
 		else if (country == 'Global') globalCount++;
 		else stakeholderCount++;
-		window[countryNameParse(country.toLowerCase()) + 'initiativesPopupText'] += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p class='slideDownParagraph'><span class='plusminus'>+</span> " + name + "</p></a><p class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Functional Area : </b>" + functional_area + "</p></div>";
+		window[countryNameParse(country.toLowerCase()) + 'initiativesPopupText'] += "<div class='organization-name'><a href='#' onclick='infoSlideDown(this);return false;'><p class='slideDownParagraph'><span class='plusminus'>+</span> " + name + "</p></a><p class='organization-content'>" + "<b>Type : </b>" + type + "<br><b>Website : </b><a target='_blank' href='" + fixUrl(url) + "'>" + url + "</a><br><b>Year : </b>" + date + "</p></div>";
 		window[countryNameParse(country.toLowerCase()) + "initiatives"].addLayer(marker);
 	}
 }
 
 function drawLabels() {
-	mkr = L.marker(new L.LatLng(globalLabelLat, globalLabelLng), { opacity: 0.01 });
-	mkr.bindLabel("Global", {noHide: true, className: "my-label", offset: [globalXoffset, globalYoffset] });
+	var icon = new L.Icon.Default();
+	icon.options.shadowSize = SHADOW_SIZE;
+	mkr = L.marker(new L.LatLng(GLOBAL_LABEL_LAT, GLOBAL_LABEL_LNG), { opacity: OPACITY, icon: icon });
+	mkr.bindLabel("Global", {noHide: true, className: "my-label", offset: [GLOBAL_X_OFFSET, GLOBAL_Y_OFFSET] });
 	map.addLayer(mkr);
-	mkr2 = L.marker(new L.LatLng(regionalLabelLat, regionalLabelLng), { opacity: 0.01 });
-	mkr2.bindLabel("Regional", {noHide: true, className: "my-label", offset: [regionalXoffset, regionalYoffset] });
-	map.addLayer(mkr2);
-};
-
-function drawInitiativeLabels() {
-	mkr = L.marker(new L.LatLng(globalLabelLat, globalLabelLng), { opacity: 0.01 });
-	mkr.bindLabel("Global", {noHide: true, className: "my-label", offset: [globalXoffset, globalYoffset] });
-	map.addLayer(mkr);
-	mkr2 = L.marker(new L.LatLng(regionalLabelLat, regionalLabelLng), { opacity: 0.01 });
-	mkr2.bindLabel("Regional", {noHide: true, className: "my-label", offset: [regionalXoffset, regionalYoffset] });
+	mkr2 = L.marker(new L.LatLng(REGIONAL_LABEL_LAT, REGIONAL_LABEL_LNG), { opacity: OPACITY });
+	mkr2.bindLabel("Regional", {noHide: true, className: "my-label", offset: [REGIONAL_X_OFFSET, REGIONAL_Y_OFFSET] });
 	map.addLayer(mkr2);
 };
