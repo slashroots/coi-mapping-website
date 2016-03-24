@@ -181,11 +181,11 @@ function plotCountryInitiative (id, country, name, type, url, date, size, latitu
 
 function drawLabels() {
 	var icon = new L.Icon.Default();
-	icon.options.shadowSize = shadowsize;
-	mkr = L.marker(new L.LatLng(globalLabelLat, globalLabelLng), { opacity: opacity, icon: icon });
-	mkr.bindLabel("Global", {noHide: true, className: "my-label", offset: [globalXoffset, globalYoffset] });
+	icon.options.shadowSize = SHADOW_SIZE;
+	mkr = L.marker(new L.LatLng(GLOBAL_LABEL_LAT, GLOBAL_LABEL_LNG), { opacity: OPACITY, icon: icon });
+	mkr.bindLabel("Global", {noHide: true, className: "my-label", offset: [GLOBAL_X_OFFSET, GLOBAL_Y_OFFSET] });
 	map.addLayer(mkr);
-	mkr2 = L.marker(new L.LatLng(regionalLabelLat, regionalLabelLng), { opacity: opacity });
-	mkr2.bindLabel("Regional", {noHide: true, className: "my-label", offset: [regionalXoffset, regionalYoffset] });
+	mkr2 = L.marker(new L.LatLng(REGIONAL_LABEL_LAT, REGIONAL_LABEL_LNG), { opacity: OPACITY });
+	mkr2.bindLabel("Regional", {noHide: true, className: "my-label", offset: [REGIONAL_X_OFFSET, REGIONAL_Y_OFFSET] });
 	map.addLayer(mkr2);
 };

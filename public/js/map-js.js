@@ -173,10 +173,10 @@ L.NumberedDivIcon = L.Icon.extend({
 
 var map = L.map('map',
 		{closePopupOnClick : false}).setView([17.96, -71.09], 5);
-L.tileLayer(maptileurl + access_token, {
+L.tileLayer(maptileurl + ACCESS_TOKEN, {
 	attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-	maxZoom: maxMapZoom,
-	minZoom: minMapZoom,
+	maxZoom: MAX_MAP_ZOOM,
+	minZoom: MIN_MAP_ZOOM,
 }).addTo(map);
 
 getEverything('');
