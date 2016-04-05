@@ -9,9 +9,14 @@
 		category: {type: Types.Relationship, ref: 'StakeholderCategory'},
 		country: {type: Types.Relationship, ref: 'Country', index: true},
 		functionalArea: {type: Types.Relationship, ref: 'FunctionalArea' },
+		organizationType: {type: String, options: "Non-profit, For-profit, Developer group, Other", required: true, initial: true, default: 'Other'},
+		firstName: {type: String, initial: true, required: true},
+		lastName: {type: String, initial: true, required: true},
+		title: {type: String, options: 'Mr, Mrs, Miss, Dr', default: 'Mr'},
+		email: {type: Types.Email, required: true, initial: true},
+		phone: {type: String},
 		description: {type: String},
-		url: {type: Types.Url},		
-		email: {type: Types.Email},
+		url: {type: Types.Url},
 		state: {type: Types.Select, options: 'draft, published, archived', default: 'draft'}//,
 	});
 

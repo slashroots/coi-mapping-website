@@ -17,13 +17,14 @@
 		 * Views
 		 */
 		app.get('/', routes.views.index);
+		app.get('/form', routes.views.form);
 		/**
 		 * Renders map
 		 */
 		app.get('/map', routes.views.map);
-		/**
+		/**************************************
 		 * API Endpoints
-		 */
+		 **************************************/
 		/**
 		 * Stakeholders
 		 */

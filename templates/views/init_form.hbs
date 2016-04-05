@@ -1,0 +1,140 @@
+{{> top }}
+<div class="wrapper">
+	{{> header}}
+	<div class="container">
+
+		<form>
+			<div class="panel panel-default">
+				<div class="panel-heading">Organization</div>
+				<div class="panel-body">
+					<form>
+						<div class="form-group">
+							<label for="name">Organization Name</label>
+							<input type="text" class="form-control" id="name" placeholder="Meduim Development Inc">
+						</div>
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="url">Organization's URL</label>
+									<input type="text" class="form-control" id="url" placeholder="www.mediumdevinc.com">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="email">Email</label>
+									<input type="text" class="form-control" id="email" placeholder="admin@mediumdevinc.com">
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="description">Description</label>
+							<textarea class="form-control" rows="4" id="description"></textarea>
+						</div>
+
+						<div class="row">
+							<div class="col-md-4">
+								<label for="org_type">Type of Organization</label>
+								<select class="form-control" id="org_type">
+									<option val="" selected="selected">Select Organization Type</option>
+									<option val="non-profit">Non Profit</option>
+									<option val="for-profit">For Profit</option>
+									<option val="developer-group">Developer Group</option>
+									<option val="other">Other</option>
+								</select>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="category">Category</label>
+									<select class="form-control" id="category">
+										<option val="" selected="selected">Select Category</option>
+										{{#each data.cats_stakeholders}}
+											<option value="{{id}}">{{name}}</option>
+										{{/each}}
+									</select>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="functional_area">Functional Area</label>
+									<select class="form-control" id="functional_area">
+										<option val="" selected="selected">Select Functional Area</option>
+										{{#each data.func_areas}}
+											<option value="{{id}}">{{name}}</option>
+										{{/each}}
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="country">Country</label>
+									<select class="form-control" id="country">
+										<option val="" selected="selected">Select Country</option>
+										{{#each data.countries}}
+											<option value="{{id}}">{{name}}</option>
+										{{/each}}
+									</select>
+								</div>
+							</div>
+							<div class="col-md-6">
+
+							</div>
+						</div>
+					</form>
+				</div><!-- end of panel body -->
+			</div><!-- end of panel -->
+			<div class="panel panel-default">
+				<div class="panel-heading">Contact Information</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-2">
+							<div class="form-group">
+								<label for="title">Title (Optional)</label>
+								<select class="form-control" id="title">
+									<option value="Mr">Mr</option>
+									<option value="Mrs">Mrs</option>
+									<option value="Miss">Miss</option>
+									<option value="Dr">Dr</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="col-md-5">
+							<div class="form-group">
+								<label>First Name</label>
+								<input class="form-control">
+							</div>
+						</div>
+						<div class="col-md-5">
+							<div class="form-group">
+								<label>Last Name</label>
+								<input class="form-control">
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Email</label>
+								<input class="form-control">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<label>Phone (Optional)</label>
+							<input class="form-control">
+						</div>
+					</div>
+				</div>
+			</div>
+			<button type="button" class="btn btn-primary btn-lg" id="submit_initiative">Submit</button>
+		</form>
+	</div>
+
+</div>
+
+{{> dialog_success_init}}
