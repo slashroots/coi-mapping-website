@@ -249,9 +249,9 @@ $(document).ready(function(){
 		}		
 	});
 
-	$("#register").on('show.bs.modal', function () {
-		$("#extrafields").hide();
-	});
+	
+	$("#extrafields").hide();
+
 	
 	$('#showExtraFields').change(function(){
 		$("#extrafields").show();
