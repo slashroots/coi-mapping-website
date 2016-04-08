@@ -248,5 +248,18 @@ $(document).ready(function(){
 			$(this).focus();
 		}		
 	});
+
+	$("#register").on('show.bs.modal', function () {
+		$("#extrafields").hide();
+	});
+	
+	$('#showExtraFields').change(function(){
+		$("#extrafields").show();
+	});
+
+	$('#hideExtraFields').change(function(){
+
+		$("#extrafields").hide();
+	});
 	
 });

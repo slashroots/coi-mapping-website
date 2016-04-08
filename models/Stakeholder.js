@@ -16,6 +16,10 @@
 		impact: {type: String},
 		industry: {type: String},
 		size: {type: String},
+		question1: {type: String},
+		question2: {type: String},
+		question3: {type: String},
+		question4: {type: String},
 		state: {type: Types.Select, options: 'draft, published, archived', default: 'draft'}//,
 	});
 
