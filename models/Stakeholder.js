@@ -12,6 +12,10 @@
 		description: {type: String},
 		url: {type: Types.Url},		
 		email: {type: Types.Email},
+		year: {type: String},
+		impact: {type: String},
+		industry: {type: String},
+		size: {type: String},
 		state: {type: Types.Select, options: 'draft, published, archived', default: 'draft'}//,
 	});
 
