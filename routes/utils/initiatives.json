@@ -1,0 +1,535 @@
+[
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc269d"
+    },
+    "category": "565a0b181254331658432d29",
+    "country": "565b59aa7631649209bc2058",
+    "date": 2012,
+    "name": "Government-Assisted Technology Endeavour (GATE)",
+    "name_lower": "government-assisted technology endeavour (gate)",
+    "organizer": "Ministry of Information, Broadcasting, Telecommunications, Science \u0026 Technology",
+    "state": "published",
+    "url": "http://www.gateantigua.ag/components.php"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc269e"
+    },
+    "category": "565a0b041254331658432d28",
+    "country": "565b59aa7631649209bc2058",
+    "date": 2005,
+    "name": "ICT Fest Antigua \u0026 Barbuda",
+    "name_lower": "ict fest antigua \u0026 barbuda",
+    "organizer": "Ministry of Information, Broadcasting, Telecommunications, Science \u0026 Technology",
+    "state": "published",
+    "url": "http://ab.gov.ag/article_details.php?id=3498\u0026category=38"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc269f"
+    },
+    "category": "565a0b181254331658432d29",
+    "country": "565b59aa7631649209bc2058",
+    "date": 2013,
+    "name": "Mobile App Development Workshop Antigua \u0026 Barbuda",
+    "name_lower": "mobile app development workshop antigua \u0026 barbuda",
+    "organizer": "BrightPath Foundation",
+    "state": "published",
+    "url": "http://www.brightpathfoundation.org/news/brightpath-partners-with-government-of-antigua-barbuda-for-mobile-app-workshop/"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26a1"
+    },
+    "category": "565a0ae71254331658432d27",
+    "country": "565b59aa7631649209bc205a",
+    "date": 2012,
+    "name": "Lime Hackathon",
+    "name_lower": "lime hackathon",
+    "organizer": "LIME",
+    "state": "published",
+    "url": "http://www.barbadosadvocate.com/newsitem.asp?more=local\u0026NewsID=24277"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26a2"
+    },
+    "category": "565a0b391254331658432d2b",
+    "country": "565b59aa7631649209bc205c",
+    "date": 2013,
+    "name": "Dominica ICT Park",
+    "name_lower": "dominica ict park",
+    "organizer": "Dominica Agricultural, Industrial and Development Bank",
+    "state": "published",
+    "url": "http://www.aidbank.com/news/index.php?id=65"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26a3"
+    },
+    "category": "565a0b181254331658432d29",
+    "country": "565b59aa7631649209bc205c",
+    "date": 2013,
+    "name": "Mobile App Development Workshop Dominica",
+    "name_lower": "mobile app development workshop dominica",
+    "organizer": "BrightPath Foundation",
+    "state": "published",
+    "url": "http://www.brightpathfoundation.org/news/bright-future-for-dominica-mobile-apps/"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26a4"
+    },
+    "category": "565a0ae71254331658432d27",
+    "country": "566701efc5ca29035a075696",
+    "date": 2013,
+    "name": "VentureOut Challenge",
+    "name_lower": "ventureout challenge",
+    "organizer": "The World Bank - Infodev, CRDF Global",
+    "state": "published",
+    "url": "http://ventureoutchallenge.org/"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26a5"
+    },
+    "category": "565a0b181254331658432d29",
+    "country": "565b59aa7631649209bc205e",
+    "date": 2012,
+    "name": "iCAN 101 Mobile Application Development Workshop",
+    "name_lower": "ican 101 mobile application development workshop",
+    "organizer": "BrightPath Foundation",
+    "state": "published",
+    "url": "http://www.brightpathfoundation.org/news/brightpath-ican-mobile-101-in-grenada/"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26a6"
+    },
+    "category": "565a0b181254331658432d29",
+    "country": "565b59aa7631649209bc205e",
+    "date": 2013,
+    "name": "TechLink",
+    "name_lower": "techlink",
+    "organizer": "BrightPath Foundation",
+    "state": "published",
+    "url": "http://www.brightpathfoundation.org/programs-and-initiatives/techlink/"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26a7"
+    },
+    "category": "565a0b041254331658432d28",
+    "country": "565b59aa7631649209bc205e",
+    "date": 2012,
+    "name": "Texpo",
+    "name_lower": "texpo",
+    "organizer": "Department of ICT – Office of the Prime Minister",
+    "state": "published",
+    "url": "http://www.texpo.gd/"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26a8"
+    },
+    "category": "565a0b181254331658432d29",
+    "country": "565b59aa7631649209bc205f",
+    "date": 2012,
+    "name": "Guyana Global Entrepreneurship Week",
+    "name_lower": "guyana global entrepreneurship week",
+    "organizer": "Guyana Youth Business Trust",
+    "state": "published",
+    "url": "https://www.facebook.com/GuyanaYouth"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26a9"
+    },
+    "category": "565a0b181254331658432d29",
+    "country": "565b59aa7631649209bc205f",
+    "date": 2013,
+    "name": "Workshop “Stimulating Education, Innovation and Entrepreneurship in Science and Engineering”",
+    "name_lower": "workshop “stimulating education, innovation and entrepreneurship in science and engineering”",
+    "organizer": "Caribbean Diaspora for Science, Technology and Innovation",
+    "state": "published",
+    "url": "http://cadsti.org/files/2013-CSF-Workshop-Draft-Agenda.pdf"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26aa"
+    },
+    "category": "565a0ae71254331658432d27",
+    "country": "565b59aa7631649209bc2060",
+    "date": 2013,
+    "name": "Code For The Caribbean",
+    "name_lower": "code for the caribbean",
+    "organizer": "Slashroots Foundation",
+    "state": "published",
+    "url": "http://www.codeforthecaribbean.org/"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26ab"
+    },
+    "category": "565a0ae71254331658432d27",
+    "country": "565b59aa7631649209bc2060",
+    "date": 2012,
+    "name": "Digital Jam 2.0",
+    "name_lower": "digital jam 2.0",
+    "organizer": "The World Bank, Ministry of Youth and Culture",
+    "state": "published",
+    "url": "http://www.worldbank.org/en/news/press-release/2012/06/28/digital-jam-two-pt-o-creating-new-job-opportunities-jamaicas-youth"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26ac"
+    },
+    "category": "565a0b5a1254331658432d2d",
+    "country": "565b59aa7631649209bc2060",
+    "date": 2013,
+    "name": "Jamaica Venture Capital Programme",
+    "name_lower": "jamaica venture capital programme",
+    "organizer": "Development Bank of Jamaica",
+    "state": "published",
+    "url": "http://venturecapitaljamaica.com/"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26ad"
+    },
+    "category": "565a0b041254331658432d28",
+    "country": "565b59aa7631649209bc2060",
+    "date": 2007,
+    "name": "Kingston Beta",
+    "name_lower": "kingston beta",
+    "organizer": "Connectimass",
+    "state": "published",
+    "url": "http://kingstonbeta.com/about/"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26ae"
+    },
+    "category": "565a0ae71254331658432d27",
+    "country": "565b59aa7631649209bc2060",
+    "date": 2013,
+    "name": "Startup Weekend Jamaica",
+    "name_lower": "startup weekend jamaica",
+    "organizer": "Startup Weekend",
+    "state": "published",
+    "url": "http://jamaica.startupweekend.org/"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26af"
+    },
+    "category": "565a0b271254331658432d2a",
+    "country": "565b59aa7631649209bc2060",
+    "date": 2002,
+    "name": "Technology Innovation Centre (TIC)",
+    "name_lower": "technology innovation centre (tic)",
+    "organizer": "UTECH - Joan Duncan School of Entrepreneurship, Ethics and Leadership (JDSEEL)",
+    "state": "published",
+    "url": "http://www.ticjamaica.com/"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26b0"
+    },
+    "category": "565a0b041254331658432d28",
+    "country": "565b59aa7631649209bc2061",
+    "date": 2006,
+    "name": "YES Caribbean",
+    "name_lower": "yes caribbean",
+    "organizer": "Goldenmedia MNI",
+    "state": "published",
+    "url": "http://yes.trulycaribbean.net"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26b1"
+    },
+    "category": "565a0b391254331658432d2b",
+    "country": "566701c7c5ca29035a075695",
+    "date": 2012,
+    "name": "CARCIP - Caribbean Regional Communication Infrastructure Program",
+    "name_lower": "carcip - caribbean regional communication infrastructure program",
+    "organizer": "The World Bank, CTU",
+    "state": "published",
+    "url": "http://www.ctu.int/carcip"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26b2"
+    },
+    "category": "565a0b041254331658432d28",
+    "country": "566701c7c5ca29035a075695",
+    "date": 2011,
+    "name": "Caribbean BETA",
+    "name_lower": "caribbean beta",
+    "organizer": "Connectimass",
+    "state": "published",
+    "url": "http://caribbeanbeta.com/"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26b3"
+    },
+    "category": "565a0b271254331658432d2a",
+    "country": "566701c7c5ca29035a075695",
+    "date": 2009,
+    "name": "Caribbean Business Incubation Association (CBIA)",
+    "name_lower": "caribbean business incubation association (cbia)",
+    "organizer": "The World Bank - Infodev",
+    "state": "published",
+    "url": "http://www.infodev.org/highlights/infodev-launches-regional-business-incubator-network-ten-caribbean-countries"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26b4"
+    },
+    "category": "565a0ae71254331658432d27",
+    "country": "566701c7c5ca29035a075695",
+    "date": 2012,
+    "name": "Caribbean Idea Marketplace",
+    "name_lower": "caribbean idea marketplace",
+    "organizer": "International Diaspora Engagement Alliance",
+    "state": "published",
+    "url": "http://diasporaalliance.org/featured/caribbean-idea-marketplace/"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26b5"
+    },
+    "category": "565a0b181254331658432d29",
+    "country": "566701c7c5ca29035a075695",
+    "date": 2006,
+    "name": "Caribbean Information Society Project",
+    "name_lower": "caribbean information society project",
+    "organizer": "Caribbean Community Secretariat (CARICOM)",
+    "state": "published",
+    "url": "http://carib-is.net/"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26b6"
+    },
+    "category": "565a0b181254331658432d29",
+    "country": "566701c7c5ca29035a075695",
+    "date": 2012,
+    "name": "Caribbean Innovation Challenge",
+    "name_lower": "caribbean innovation challenge",
+    "organizer": "United Nations Development Program (UNDP)",
+    "state": "published",
+    "url": "http://www.youthin-cic.net/"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26b7"
+    },
+    "category": "565a0ae71254331658432d27",
+    "country": "566701c7c5ca29035a075695",
+    "date": 2012,
+    "name": "Caribbean Open Data Conference \u0026 Codesprint",
+    "name_lower": "caribbean open data conference \u0026 codesprint",
+    "organizer": "Slashroots Foundation (SLR)",
+    "state": "published",
+    "url": "http://developingcaribbean.org/"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26b8"
+    },
+    "category": "565a0b181254331658432d29",
+    "country": "566701c7c5ca29035a075695",
+    "date": 2010,
+    "name": "Compete Caribbean",
+    "name_lower": "compete caribbean",
+    "organizer": "Inter-American Development Bank",
+    "state": "published",
+    "url": "http://www.competecaribbean.org/"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26b9"
+    },
+    "category": "565a0b041254331658432d28",
+    "country": "566701c7c5ca29035a075695",
+    "date": 2009,
+    "name": "Connected Caribbean Initiative - ICT Roadshow",
+    "name_lower": "connected caribbean initiative - ict roadshow",
+    "organizer": "Caribbean Telecommunications Union (CTU)",
+    "state": "published",
+    "url": "http://www.connectedcaribbean.com/"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26ba"
+    },
+    "category": "565a0ae71254331658432d27",
+    "country": "566701c7c5ca29035a075695",
+    "date": 2013,
+    "name": "Digital Jam 3.0",
+    "name_lower": "digital jam 3.0",
+    "organizer": "The World Bank",
+    "state": "published",
+    "url": "https://www.facebook.com/DigitalJam3"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26bb"
+    },
+    "category": "565a0ae71254331658432d27",
+    "country": "566701c7c5ca29035a075695",
+    "date": 2013,
+    "name": "i-Create Caribbean e-Content",
+    "name_lower": "i-create caribbean e-content",
+    "organizer": "CANTO",
+    "state": "published",
+    "url": "http://cantoicreate.com/"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26bc"
+    },
+    "category": "565a0b181254331658432d29",
+    "country": "566701c7c5ca29035a075695",
+    "date": 2013,
+    "name": "Women Innovators Network in the Caribbean (WINC)",
+    "name_lower": "women innovators network in the caribbean (winc)",
+    "organizer": "The World Bank - Infodev",
+    "state": "published",
+    "url": "http://infodev.org/EPICgrowyourbusiness"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26bd"
+    },
+    "category": "565a0b181254331658432d29",
+    "country": "565b59aa7631649209bc2062",
+    "date": 2012,
+    "name": "iCAN 101 Mobile Application Development Workshop St. Kitts \u0026 Nevis (iCKN)",
+    "name_lower": "ican 101 mobile application development workshop st. kitts \u0026 nevis (ickn)",
+    "organizer": "BrightPath Foundation",
+    "state": "published",
+    "url": "http://www.brightpathfoundation.org/news/successful-mobile-apps-workshop-in-st-kitts-nevis/"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26be"
+    },
+    "category": "565a0b181254331658432d29",
+    "country": "565b59aa7631649209bc2063",
+    "date": 2012,
+    "name": "Mobile App Development Workshop St. Lucia",
+    "name_lower": "mobile app development workshop st. lucia",
+    "organizer": "BrightPath Foundation",
+    "state": "published",
+    "url": "http://www.thevoiceslu.com/features/2012/april/14_04_12/St_Lucia_Holds.htm"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26bf"
+    },
+    "category": "565a0ae71254331658432d27",
+    "country": "565b59aa7631649209bc2065",
+    "date": 2013,
+    "name": "Telesur / IT Core Hackathon",
+    "name_lower": "telesur / it core hackathon",
+    "organizer": "Telesur",
+    "state": "published",
+    "url": "http://www.hackathon.sr/"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26c0"
+    },
+    "category": "565a0b271254331658432d2a",
+    "country": "565b59aa7631649209bc2065",
+    "date": 2011,
+    "name": "Telesur Multimedia Innovation Laboratory (TMIL)",
+    "name_lower": "telesur multimedia innovation laboratory (tmil)",
+    "organizer": "Telesur",
+    "state": "published",
+    "url": "http://www.tmil.sr/"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26c1"
+    },
+    "category": "565a0b271254331658432d2a",
+    "country": "565b59aa7631649209bc2066",
+    "date": 2000,
+    "name": "BIZBOOSTER",
+    "name_lower": "bizbooster",
+    "organizer": "UWI St. Augustine - Arthur Lok Jack School of Business",
+    "state": "published",
+    "url": "http://www.lokjackgsb.edu.tt/bizbooster/index.htm"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26c2"
+    },
+    "category": "565a0b041254331658432d28",
+    "country": "565b59aa7631649209bc2066",
+    "date": 2011,
+    "name": "Caribbean Digital Expo",
+    "name_lower": "caribbean digital expo",
+    "organizer": "Caribbean Ideas",
+    "state": "published",
+    "url": "http://caribbeandigitalexpo.com/about-cdx/"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26c3"
+    },
+    "category": "565a0b491254331658432d2c",
+    "country": "565b59aa7631649209bc2066",
+    "date": 2010,
+    "name": "mFisheries",
+    "name_lower": "mfisheries",
+    "organizer": "UWI St. Augustine - Department of Electrical and Computer Engineering",
+    "state": "published",
+    "url": "http://cirp.org.tt/mfisheries/"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26c4"
+    },
+    "category": "565a0ae71254331658432d27",
+    "country": "565b59aa7631649209bc2066",
+    "date": 2013,
+    "name": "Startup Weekend Trinidad \u0026 Tobago",
+    "name_lower": "startup weekend trinidad \u0026 tobago",
+    "organizer": "Startup Weekend",
+    "state": "published",
+    "url": "http://trinidad.startupweekend.org/"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26c5"
+    },
+    "category": "565a0ae71254331658432d27",
+    "country": "565b59aa7631649209bc2066",
+    "date": 2009,
+    "name": "Teleios Code Jam",
+    "name_lower": "teleios code jam",
+    "organizer": "Teleios Systems",
+    "state": "published",
+    "url": "http://www.teleios-systems.com/teleios/article/2013/12/04/teleios-code-jam-celebrates-5-years-of-competition-sbcs-team-emerges-2013-champions"
+  },
+  {
+    "_id": {
+      "$oid": "56674c237631649209bc26c6"
+    },
+    "category": "565a0b181254331658432d29",
+    "country": "565b59aa7631649209bc2066",
+    "date": 2013,
+    "name": "TT.TechCamp",
+    "name_lower": "tt.techcamp",
+    "organizer": "BrightPath Foundation",
+    "state": "published",
+    "url": "http://www.brightpathfoundation.org/news/brightpath-launches-tech-camp-for-youth/"
+  }
+]
