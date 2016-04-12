@@ -1,5 +1,6 @@
 /**
  * Created by Tremaine Buchanan (tremaine@slashroots.org)
+ * Updated by Nicholas Williams (nick@slashroots.org) on April 12th, 2016
  */
 $(document).ready(function(){
 	//TODO Refract code to handle better handle validation
@@ -38,7 +39,61 @@ $(document).ready(function(){
 			formData.url = $('#url').val();
 		}
 	});
+	
+	//new form fields here
 
+	$('#stakeholderyear').focusout(function(){
+			formData.year = $('#stakeholderyear').val();
+	});
+
+	$('#impact').focusout(function(){
+		formData.impact = $('#impact').val();
+	});
+
+	$('#industry').focusout(function(){
+		formData.industry = $('#industry').val();
+	});
+
+	$('#size').focusout(function(){
+		formData.size = $('#size').val();
+	});
+
+	$('#question1').focusout(function(){
+		formData.mostRelevantTypesOfDataUsed = $('#question1').val();
+	});
+
+	$('#question2').focusout(function(){
+		formData.whichCountriesTheyUseOpenDataFrom = $('#question2').val();
+	});
+
+	$('#question3').focusout(function(){
+		formData.howTheyUseOpenData = $('#question3').val();
+	});
+
+	$('#question4').focusout(function(){
+		formData.additionalInformation = $('#question4').val();
+	});
+
+	$('#contacttitle').focusout(function(){
+		formData.title = $('#contacttitle').val();
+	});
+
+	$('#contactfname').focusout(function(){
+		formData.firstName = $('#contactfname').val();
+	});
+
+	$('#contactlname').focusout(function(){
+		formData.lastName = $('#contactlname').val();
+	});
+
+	$('#contactphone').focusout(function(){
+		formData.phoneNumber = $('#contactphone').val();
+	});
+
+	$('#contactemail').focusout(function(){
+		formData.submitterEmail = $('#contactemail').val();
+	});
+	
 	$('#close').click(function(){
 			pristine();
 	});
@@ -247,6 +302,19 @@ $(document).ready(function(){
 			$(this).parent().removeClass('has-success').addClass('has-error');
 			$(this).focus();
 		}		
+	});
+
+	
+	$("#extrafields").hide();
+
+	
+	$('#showExtraFields').change(function(){
+		$("#extrafields").show();
+	});
+
+	$('#hideExtraFields').change(function(){
+
+		$("#extrafields").hide();
 	});
 	
 });
