@@ -28,7 +28,7 @@
 			if(err){
 				common.handleDBError(err, res);
 			}else{
-				common.handleDBSuccess({'http_code': 200, 'name': 'Initiaitve'}, res);
+				common.handleDBSuccess({'http_code': 200, 'name': 'Initiative'}, res);
 			}
 		});
 	};
