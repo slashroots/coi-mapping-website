@@ -30,7 +30,6 @@
 		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.js"></script>
 
-        <!--<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>-->
 
         <link rel="stylesheet" href="/styles/L.Control.Sidebar.css" />
 
@@ -38,8 +37,11 @@
 
         <script src="/js/L.Control.Sidebar.js"></script>
 
+        <script src="/js/jquery.tokenize.js"></script>
+
+        <link rel="stylesheet" href="/styles/jquery.tokenize.css" />
+
         <script src="/js/map-ctrl.js"></script>
-	
 		
 		{{!-- This file provides the default styling for the KeystoneJS Content Editor
             - only renders when user is logged in and admin--}}
@@ -105,6 +107,19 @@
 			//- them specifically here, instead of bootstrap-3.3.5.min.js
 		--}}
 
+        <script type="text/javascript">
+
+            jQuery(document).ready(function() {
+
+                $('#tokenize').tokenize({
+
+                    datas: "organizers"
+
+                });
+
+            });	
+			
+        </script>
 
         <script src="/js/bootstrap/bootstrap-3.3.5.min.js"></script>
 		<script src="/dist/js/app.min.js"></script>
