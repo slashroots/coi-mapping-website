@@ -4,9 +4,7 @@
 		Organizer = new keystone.List('Organizer');
 
 	Organizer.add({
-		name: {type: String},
-		text: {type:String},
-		value: {type:String}
+		name: {type: String}
 	});
 
 	Organizer.defaultColumns = 'name';

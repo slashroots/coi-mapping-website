@@ -18,20 +18,7 @@
 			function(err,docs) {
 
 			})
-			//.where('state', 'published')
-			//.populate('')
 			.exec(function(err, organizers){
-				
-				for (var i = 0;i < organizers.length; i++) {
-
-					organizers[i].text = organizers[i].name;
-
-					organizers[i].value = organizers[i]["_id"];
-					
-				}
-				
-				console.log(organizers);
-				
 				if(err) common.handleDBError(err, res);
 				res.json(organizers);
 			});
