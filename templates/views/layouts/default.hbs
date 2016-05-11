@@ -112,11 +112,13 @@
             jQuery(document).ready(function() {
                 $('#tokenize').tokenize().clear();
                 $.getJSON( "organizers", function( data ) {
-                    $.each( data, function( key, val ) {
-                        $('#tokenize').tokenize().tokenAdd(val, val);
+                    $.each( data, function( key, obj ) {
+						
+						$('#tokenize').tokenize().tokenAdd(obj._id, obj.name);
+						
                     });
                 });
-
+				
             });	
 			
         </script>

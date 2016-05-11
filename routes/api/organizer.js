@@ -13,15 +13,32 @@
 	 * @return {[type]}     [description]
 	 */
 	exports.index = function(req, res){
-		Organizer.model
-			.find( { "name": { "$regex": req.query.search, "$options": "i" } },
-			function(err,docs) {
+		
+		if(req.query.search != null) {
+			
+			Organizer.model
+				.find({"name": {"$regex": req.query.search, "$options": "i"}},
+				function (err, docs) {
 
-			})
-			.exec(function(err, organizers){
-				if(err) common.handleDBError(err, res);
-				res.json(organizers);
-			});
+				})
+				.exec(function (err, organizers) {
+					if (err) common.handleDBError(err, res);
+					res.json(organizers);
+				});
+
+		}
+		
+		else {
+
+			Organizer.model
+				.find()
+				.exec(function(err, organizers){
+					if(err) common.handleDBError(err, res);
+					res.json(organizers);
+				});
+			
+		}
+			
 	};
 	
 	/**
