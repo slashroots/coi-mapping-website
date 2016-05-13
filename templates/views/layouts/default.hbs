@@ -110,14 +110,24 @@
         <script type="text/javascript">
 
             jQuery(document).ready(function() {
-                $('#tokenize').tokenize().clear();
+                /*$('#tokenize').tokenize().clear();*/
                 $.getJSON( "organizers", function( data ) {
                     $.each( data, function( key, obj ) {
 						
-						$('#tokenize').tokenize().tokenAdd(obj._id, obj.name);
+						//$('#tokenize').tokenize().tokenAdd(obj._id, obj.name);
+
+                        var x = document.createElement("OPTION");
+						
+						x.text = obj.name;
+						
+						x.value = obj._id;
+						
+						document.getElementById("tokenize").appendChild(x);
 						
                     });
                 });
+
+                $('#tokenize').tokenize()
 				
             });	
 			
