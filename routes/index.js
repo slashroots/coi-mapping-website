@@ -57,6 +57,7 @@
 		/**
 		 * Organizers
 		 */
+		app.get('/organizers', routes.api.organizer.index);
 		app.post('/organizers', routes.api.organizer.create);
 	};
 })();
