@@ -65,6 +65,7 @@ $(document).ready(function(){
 	$('#question2').focusout(function(){
 		formData.whichCountriesTheyUseOpenDataFrom = $('#question2').val();
 	});
+	
 
 	$('#question3').focusout(function(){
 		formData.howTheyUseOpenData = $('#question3').val();
@@ -202,28 +203,6 @@ $(document).ready(function(){
 	/*
 	* Initiative Form
 	*/
-	//Hide Organizer List/Table
-	 $('#organizers').hide();
-	$('#add-organizer').click(function(ev){		
-		//increase list by 1 organizer
-		ev.preventDefault();
-		var organizer_name = $('#organizer'),
-			organizers_tbl = $('#organizers');		
-		//show organizers table
-		if(organizer_name.val().length > 3){
-			organizers_tbl.append('<tr><td>'+organizer_name.val()+'</td><td><button type="button" class="btn btn-default remove" value="'+organizer_name+'">Remove</button></td></tr>');
-			organizers_tbl.show();
-			organizer_name.val('');
-		}		
-	});
-	/**
-	 * Removes an organizer from the list.
-	 */
-	$('#organizers').on('click', 'button.remove', function(){
-		$(this).closest('tr').remove();		
-		if($('#organizers > tbody > tr').length === 0) $('#organizers').hide();
-		return false;
-	});
 	
 	$('#name_initiative').focusout(function(){
 		var name = $('#name_initiative');
@@ -247,26 +226,16 @@ $(document).ready(function(){
 		}	
 	});
 	
-	var createOrganizers = function(){
-		$('#organizers tr:gt(0)').each(function(){
-			var organizer = {'name': $('td:first', $(this)).html()};
-			$.ajax({
-				url: '/organizers',
-				data: organizer,
-				type: 'POST',
-				success: function(data){
-					formInitiative.organizers.push(data._id);
-				},
-				error: function(){
-					// $('#message').show();
-				}
-			});
-		});
+	$('#submit_initiative').click(function(){
+		
+		var organizer = $('#tokenize');
+		
+		formInitiative.organizer = organizer.val();
+		
+		console.log(formInitiative.organizer);
+		
 		submitInit(formInitiative);
-	};
-	
-	$('#submit_initiative').click(function(){		
-		createOrganizers();
+		
 	});
 	
 	$('#category_initiative').change(function(){		

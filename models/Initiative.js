@@ -14,6 +14,7 @@
 		country: {type: Types.Relationship, ref: 'Country'},
 		url: {type: Types.Url},
 		date: {type: String},
+		description: {type: String},
 		state: {type: Types.Select, options: 'draft, published, archived', default: 'draft', required: true},
 		createdAt: { type: Date, default: Date.now, noedit: true}
 	});
